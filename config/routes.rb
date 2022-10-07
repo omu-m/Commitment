@@ -1,42 +1,17 @@
 Rails.application.routes.draw do
+
+  # 管理者用
+  # URL /admin/sign_in ...
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
   namespace :admin do
-    get 'subtasks/index'
-    get 'subtasks/show'
-    get 'subtasks/edit'
+    root 'homes#top'
+    resources :members, only: [:index, :show]
+    resources :tasks, only: [:index, :show, :edit]
+    resources :subtasks, only: [:index, :show, :edit]
   end
-  namespace :admin do
-    get 'tasks/index'
-    get 'tasks/show'
-    get 'tasks/edit'
-  end
-  namespace :admin do
-    get 'members/index'
-    get 'members/show'
-    get 'members/unsubscribe'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'subtasks/index'
-    get 'subtasks/show'
-    get 'subtasks/edit'
-  end
-  namespace :public do
-    get 'tasks/index'
-    get 'tasks/show'
-    get 'tasks/edit'
-  end
-  namespace :public do
-    get 'members/show'
-    get 'members/edit'
-    get 'members/unsubscribe'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # 顧客用
   # URL /members/sign_in ...
@@ -45,9 +20,25 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  # 管理者用
-  # URL /admin/sign_in ...
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
+  scope module: :public do
+    root 'homes#top'
+    get '/about' => "homes#about", as: 'about'
+    get 'members/mypage' => 'members#show', as: 'mypage'
+    # members/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
+    get 'members/information/edit' => 'members#edit', as: 'edit_information'
+    patch 'members/information' => 'members#update', as: 'update_information'
+    # 退会機能
+    get 'members/unsubscribe' => 'members#unsubscribe', as: 'confirm_unsubscribe'
+    put 'members/information' => 'members#update'
+    patch 'members/withdraw' => 'members#withdraw', as: 'withdraw_member'
+
+    resources :tasks, only: [:index, :show, :edit]
+    resources :subtasks, only: [:index, :show, :edit]
+
+    resources :tasks do
+      resources :subtasks
+    end
+  end
+
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
