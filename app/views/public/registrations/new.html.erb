@@ -1,64 +1,42 @@
-</div><div class="container">
+<div class="container">
   <div class="row">
-    <div class="col3-md offset-2 mb-4">
-      <h4 class="my-4 mt-5"><strong>新規会員登録</strong></h4>
-    </div>
-  </div>
+    <div class="col-5 px-0 mx-auto">
+      <div class="mb-4　mt-5">
+        <h4><strong>新規会員登録</strong></h4>
+      </div>
 
-  <%= form_with model: @public, url: new_member_registration_path do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
+      <%= form_with model: @public, url: new_member_registration_path do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+      
+      <div class="field mb-4 mt-5">
+        <%= f.label :display_name, "表示名" %>
+        <%= f.text_field :display_name, autofocus: true, autocomplete: "display_name", class: "form-control" %>
+      </div>
+      <div class="field mb-4">
+        <%= f.label :user_name, "ユーザーネーム" %>
+          <br><span class="text">※『半角英数字／ﾋﾟﾘｵﾄﾞ(.)／ｱﾝﾀﾞｰﾊﾞｰ(_)』のみ使用可能</span></td>
+        <%= f.text_field :user_name, autocomplete: "user_name", class: "form-control" %>
+      </div>
+      <div class="field mb-4">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+      </div>
+      <div class="field mb-4">
+       <%= f.label :password, "パスワード" %>
+        <% if @minimum_password_length %>
+          <br><span class="text">※<%= @minimum_password_length %>文字以上で入力</span>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      </div>
+      <div class="field mb-4">
+        <%= f.label :password_confirmation, "パスワード" %>
+          <br><span class="note-text">※確認用</span></td>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
 
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <table class="table　table-borderless table-sm">
-        <div class="field">
-          <tr>
-            <td><%= f.label :display_name, "表示名" %></td>
-            <td></td>
-            <td><%= f.text_field :display_name, autofocus: true, autocomplete: "display_name" %></td>
-          </tr>
-        </div>
-        <div class="field">
-          <tr>
-            <td><%= f.label :user_name, "ユーザーネーム" %><br>
-            <span class="text">※『半角英数字／ﾋﾟﾘｵﾄﾞ(.)／ｱﾝﾀﾞｰﾊﾞｰ(_)』のみ使用可能</span></td>
-            <td></td>
-            <td><%= f.text_field :user_name, autocomplete: "user_name" %></td>
-          </tr>
-        </div>
-        <div class="field">
-          <tr>
-            <td><%= f.label :email, "メールアドレス" %></td>
-            <td></td>
-            <td><%= f.email_field :email, autocomplete: "email"%></td>
-          </tr>
-        </div>
-        <div class="field">
-          <tr>
-            <td><%= f.label :password, "パスワード" %>
-            <% if @minimum_password_length %><br>
-              <span class="text">※<%= @minimum_password_length %>文字以上で入力</span>
-            <% end %></td>
-            <td></td>
-            <td><%= f.password_field :password, autocomplete: "new-password" %></td>
-          </tr>
-        </div>
-        <div class="field">
-          <tr>
-            <td><%= f.label :password_confirmation, "パスワード" %><br>
-            <span class="note-text">※確認用</span></td>
-            <td></td>
-            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
-          </tr>
-        </div>
-
-        <div class="actions">
-          <tr>
-            <td></td>
-            <td><%= f.submit "新規登録", class: "btn btn-secondary" %></td>
-          </tr>
-        </div>
-      </table>
+      <div class="actions text-center mb-4 mt-5">
+        <%= f.submit "新規登録", class: "btn btn-secondary" %>
+      </div>
     </div>
   </div>
   <% end %>
