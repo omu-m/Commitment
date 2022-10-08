@@ -28,7 +28,7 @@
 
         <!--会員側/ログイン後-->
         <% elsif member_signed_in? %>
-          <p><%= current_member.nickname %>さん</p>
+          <p><%= current_member.user_name %>さん</p>
           <li class="nav-item">
             <%= link_to "マイページ", mypage_path, class: "nav-link text-light" %>
           </li>

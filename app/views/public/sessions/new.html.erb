@@ -7,20 +7,19 @@
 
       <%= form_with model: @public, url: new_member_session_path do |f| %>
 
-      <div class="field mb-4">
-        <%= f.label :user_name, "ユーザーネーム" %>
-        <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
-      </div>
-
-      <div class="field mb-4">
-        <%= f.label "パスワード" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-      </div>
-
-         <div class="actions text-center mb-4 mt-5">
+        <div class="field mb-4">
+          <%= f.label :user_name, "ユーザーネーム" %>
+          <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
+        </div>
+        <div class="field mb-4">
+          <%= f.label "パスワード" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+        
+        <div class="actions text-center mb-4 mt-5">
           <%= f.submit "ログイン", class: "btn btn-secondary" %>
-         </div>
-       <% end %>
+        </div>
+      <% end %>
 
       <div class="row mt-5 mb-2">
        <h6 style="background-color:#EEEEEE">会員登録がお済みでない方</h6>
