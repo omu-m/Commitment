@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2022_10_07_113822) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "display_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -30,8 +31,8 @@ ActiveRecord::Schema.define(version: 2022_10_07_113822) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name", null: false
-    t.string "nickname", null: false
+    t.string "display_name", null: false
+    t.string "user_name", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

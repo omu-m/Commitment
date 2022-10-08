@@ -1,4 +1,4 @@
-<div class="container">
+</div><div class="container">
   <div class="row">
     <div class="col3-md offset-2 mb-4">
       <h4 class="my-4 mt-5"><strong>新規会員登録</strong></h4>
@@ -11,37 +11,42 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <table class="table　table-borderless table-sm">
-        <div class="member_info">
+        <div class="field">
           <tr>
-            <td><%= f.label :name, "名前" %></td>
+            <td><%= f.label :display_name, "表示名" %></td>
             <td></td>
-            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "name" %></td>
+            <td><%= f.text_field :display_name, autofocus: true, autocomplete: "display_name" %></td>
           </tr>
         </div>
-        <div class="member_info">
+        <div class="field">
           <tr>
-            <td><%= f.label :nickname, "ニックネーム" %></td>
+            <td><%= f.label :user_name, "ユーザーネーム" %><br>
+            <span class="text">※『半角英数字／ﾋﾟﾘｵﾄﾞ(.)／ｱﾝﾀﾞｰﾊﾞｰ(_)』のみ使用可能</span></td>
             <td></td>
-            <td><%= f.text_field :nickname, autocomplete: "nickname" %></td>
+            <td><%= f.text_field :user_name, autocomplete: "user_name" %></td>
           </tr>
         </div>
-        <div class="member_info">
+        <div class="field">
           <tr>
             <td><%= f.label :email, "メールアドレス" %></td>
             <td></td>
             <td><%= f.email_field :email, autocomplete: "email"%></td>
           </tr>
         </div>
-        <div class="member_info">
+        <div class="field">
           <tr>
-            <td><%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %></td>
+            <td><%= f.label :password, "パスワード" %>
+            <% if @minimum_password_length %><br>
+              <span class="text">※<%= @minimum_password_length %>文字以上で入力</span>
+            <% end %></td>
             <td></td>
             <td><%= f.password_field :password, autocomplete: "new-password" %></td>
           </tr>
         </div>
-        <div class="member_info">
+        <div class="field">
           <tr>
-            <td><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
+            <td><%= f.label :password_confirmation, "パスワード" %><br>
+            <span class="note-text">※確認用</span></td>
             <td></td>
             <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
           </tr>
