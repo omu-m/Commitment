@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :subtasks, only: [:index, :show, :edit]
   end
 
-  # 顧客用
+  # 会員用
   # URL /members/sign_in ...
   devise_for :members,skip: [:passwords], controllers: {
     registrations: "public/registrations",
