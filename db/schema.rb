@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2022_10_07_113822) do
   create_table "subtasks", force: :cascade do |t|
     t.integer "task_id", null: false
     t.integer "member_id", null: false
-    t.text "subtask", null: false
+    t.text "subtask_content", null: false
     t.integer "progress_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -57,10 +57,8 @@ ActiveRecord::Schema.define(version: 2022_10_07_113822) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "member_id", null: false
     t.string "task_title", null: false
-    t.text "task", null: false
-    t.float "achievement_rate", null: false
+    t.text "task_content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

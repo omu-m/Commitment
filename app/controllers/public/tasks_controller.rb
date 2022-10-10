@@ -8,14 +8,14 @@ class Public::TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    # @task.member_id = current_member.id
+    @tasks = current_member.id
     if @task.save
-      redirect_to task_path(@task)
       flash[:notice] = "親タスクが正常に作成されました。"
+      redirect_to task_path(@task)
     else
-      @tasks = Task.all
-      @member = current_member
-      render "index"
+      flash[:notice] = "親タスクの作成に失敗しました。"
+      @tasks = current_member.tasks.all
+      redirect_to task_path
     end
   end
 
@@ -28,6 +28,6 @@ class Public::TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:task_title, :task)
+    params.require(:task).permit(:task_title, :task_content)
   end
 end
