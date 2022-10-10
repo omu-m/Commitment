@@ -5,7 +5,12 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :display_name, presence: true
-  validates :user_name, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\z/, message: "は半角英数字で入力してください。" }
+  validates :user_name, presence: true, uniqueness: true, format: { with: /\A[a-z0-9]+\z/, message: "は半角英数字で入力してください。" }
   validates :email, presence: true, uniqueness: true
+
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
 end

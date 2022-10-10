@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    root 'homes#top'
+    root to: "homes#top"
     resources :members, only: [:index, :show]
     resources :tasks, only: [:index, :show, :edit]
     resources :subtasks, only: [:index, :show, :edit]
@@ -17,11 +17,11 @@ Rails.application.routes.draw do
   # URL /members/sign_in ...
   devise_for :members,skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
 
   scope module: :public do
-    root 'homes#top'
+    root to: "homes#top"
     get '/about' => "homes#about", as: 'about'
     get 'members/mypage' => 'members#show', as: 'mypage'
     # members/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
