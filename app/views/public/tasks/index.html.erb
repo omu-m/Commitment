@@ -1,2 +1,12 @@
-<h1>Public::Tasks#index</h1>
-<p>Find me in app/views/public/tasks/index.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2 class="mt-4">New Task</h2>
+      <%= render 'form', task: @task %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <h2>Tasks</h2>
+      <%= render "index", tasks: @tasks%>
+    </div>
+  </div>
+</div>
