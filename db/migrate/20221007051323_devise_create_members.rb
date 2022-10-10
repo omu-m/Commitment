@@ -37,7 +37,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       # ユーザーネームを保存するカラム
       t.string :user_name, null: false
       # enumで管理　boolean型のis_deletedカラム
-      t.boolean :is_deleted, null: false, default: true
+      t.boolean :is_deleted, null: false, default: false
 
       t.timestamps null: false
     end
