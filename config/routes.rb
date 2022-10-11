@@ -23,14 +23,14 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get '/about' => "homes#about", as: 'about'
-    get 'members/mypage' => 'members#show', as: 'mypage'
+    get '/members/mypage' => 'members#show', as: 'mypage'
     # members/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
-    get 'members/information/edit' => 'members#edit', as: 'edit_information'
-    patch 'members/information' => 'members#update', as: 'update_information'
+    get '/members/information/edit' => 'members#edit', as: 'edit_information'
+    patch '/members/information' => 'members#update', as: 'update_information'
     # 退会機能
-    get 'members/unsubscribe' => 'members#unsubscribe', as: 'confirm_unsubscribe'
-    put 'members/information' => 'members#update'
-    patch 'members/withdraw' => 'members#withdraw', as: 'withdraw_member'
+    get '/members/unsubscribe' => 'members#unsubscribe', as: 'confirm_unsubscribe'
+    put '/members/information' => 'members#update'
+    patch '/members/withdraw' => 'members#withdraw', as: 'withdraw_member'
 
     resources :tasks, only: [:index, :show, :edit]
     resources :subtasks, only: [:index, :show, :edit]
