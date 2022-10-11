@@ -9,11 +9,15 @@
 <%= form_with model:task,local:true do |f| %>
   <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :task_title, class: 'form-control book_title' %>
+    <%= f.text_field :task_title, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :Content %>
-    <%= f.text_area :task_content, class: 'form-control book_body' %>
+    <%= f.text_area :task_content, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, accept: "image/*" %>
   </div>
   <div class="form-group">
     <%= f.submit 'Create Task', class: 'btn btn-success' %>

@@ -4,14 +4,18 @@
       <th></th>
       <th>Title</th>
       <th>Content</th>
-      <th colspan="2"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td></td>
-        <td><%= link_to task.task_title,task %></td>
+        <td><% if task.image.attached? %>
+            <%= image_tag task.image, size: "50x50" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+          <% end %></td>
+        <td><%= link_to task.task_title, task_path(task) %></td>
         <td><%= task.task_content %></td>
       </tr>
     <% end %>
