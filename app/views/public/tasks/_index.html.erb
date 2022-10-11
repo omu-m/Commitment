@@ -10,13 +10,20 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><% if task.image.attached? %>
+        <td>
+          <% if task.image.attached? %>
             <%= image_tag task.image, size: "50x50" %>
           <% else %>
             <%= image_tag 'no_image', size: "50x50" %>
-          <% end %></td>
+          <% end %>
+        </td>
         <td><%= link_to task.task_title, task_path(task) %></td>
         <td><%= task.task_content %></td>
+        <td>
+          <% if task.owner_id == current_member.id %>
+            <%= link_to "編集", edit_task_path(task), class: "btn btn-sm btn-danger" %></td>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
