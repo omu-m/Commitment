@@ -1,2 +1,28 @@
-<h1>Public::Tasks#show</h1>
-<p>Find me in app/views/public/tasks/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+
+      <h2 class="mt-3">New task</h2>
+      <%= render 'form', task: @tasks %>
+    </div>
+
+    <div class='col-md-8 offset-md-1'>
+  		<h2>Task detail</h2>
+  		<table class='table'>
+  		  <tr>
+  		    <td><% if @task.image.attached? %>
+            <%= image_tag @task.image, size: "50x50" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+          <% end %></td>
+  		    <td><%= @task.task_title %></td>
+          <td><%= @task.task_content %></td>
+          <td><%= link_to "子タスク一覧", subtasks_path, class: "btn btn-sm btn-success" %></td>
+          <% if @task.owner_id == current_member.id %>
+            <td><%= link_to "編集", edit_task_path(@task), class: "btn btn-sm btn-danger" %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
