@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9 mx-auto">
+      <h4><strong>マイページ</strong></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9 px-0 mt-3 mx-auto">
+      <div class="col-6">
+        <h5 class="font-weight-bold mb-3">
+          登録情報
+          <%= link_to "編集する" , edit_information_path, class: "btn btn-success ml-5" %>
+        </h5>
+      </div>
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-active">表示名</th><td><%= @member.display_name %></td>
+        </tr>
+        <tr>
+          <th class="table-active">ユーザーネーム</th><td><%= @member.user_name %></td>
+        </tr>
+        <tr>
+          <th class="table-active">メールアドレス</th><td><%= @member.email %></td>
+        </tr>
+      </table>
+      <div class="col-9 px-0">
+        <table class="table table-borderless">
+          <tr>
+            <th>親タスク履歴一覧</th>
+            <th><%= link_to '未完成',  tasks_path, class: "btn btn-primary" %></th>
+            <th>子タスク履歴一覧</th>
+            <th><%= link_to '未完成', subtasks_path, class: "btn btn-primary" %></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
