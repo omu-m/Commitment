@@ -1,4 +1,6 @@
 class Public::TasksController < ApplicationController
+  
+  # 親タスクをグループとして作成しています。
 
   before_action :authenticate_member!
   before_action :ensure_correct_member, only: [:edit, :update, :destroy]
@@ -16,7 +18,7 @@ class Public::TasksController < ApplicationController
       redirect_to tasks_path
     else
       flash[:notice] = "親タスクの作成に失敗しました。"
-      redirect_to task_path
+      redirect_to tasks_path
     end
   end
 
@@ -27,6 +29,23 @@ class Public::TasksController < ApplicationController
 
   def edit
   end
+
+  def update
+    if @task.update(task_params)
+      flash[:notice] = "親タスクが正常に編集されました。"
+      redirect_to tasks_path
+    else
+      flash[:notice] = "親タスクの編集に失敗しました。"
+      render "edit"
+    end
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to task_path
+  end
+
 
   private
 
