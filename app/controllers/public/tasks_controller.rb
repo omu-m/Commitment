@@ -1,5 +1,5 @@
 class Public::TasksController < ApplicationController
-  
+
   # 親タスクをグループとして作成しています。
 
   before_action :authenticate_member!
@@ -18,7 +18,8 @@ class Public::TasksController < ApplicationController
       redirect_to tasks_path
     else
       flash[:notice] = "親タスクの作成に失敗しました。"
-      redirect_to tasks_path
+      @tasks = Task.all
+      render "index"
     end
   end
 

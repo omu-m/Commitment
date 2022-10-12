@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     # 退会機能
     get '/members/unsubscribe' => 'members#unsubscribe', as: 'confirm_unsubscribe'
     put '/members/information' => 'members#update'
-    patch '/members/withdraw' => 'members#withdraw', as: 'withdraw_member'
+    patch '/members/withdrawal' => 'members#withdrawal', as: 'withdrawal_member'
 
     resources :tasks, only: [:index, :show, :edit]
     resources :subtasks, only: [:index, :show, :edit]
