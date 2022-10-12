@@ -22,15 +22,15 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    get '/about' => "homes#about", as: 'about'
-    get '/members/mypage' => 'members#show', as: 'mypage'
+    get "/about" => "homes#about", as: "about"
+    get "/members/mypage" => "members#show", as: "mypage"
     # members/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
-    get '/members/information/edit' => 'members#edit', as: 'edit_information'
-    patch '/members/information' => 'members#update', as: 'update_information'
+    get "/members/information/edit" => "members#edit", as: "edit_information"
+    patch "/members/information" => "members#update", as: "update_information"
     # 退会機能
-    get '/members/unsubscribe' => 'members#unsubscribe', as: 'confirm_unsubscribe'
-    put '/members/information' => 'members#update'
-    patch '/members/withdrawal' => 'members#withdrawal', as: 'withdrawal_member'
+    get "/members/unsubscribe" => "members#unsubscribe", as: "confirm_unsubscribe"
+    put "/members/information" => "members#update"
+    patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
 
     resources :tasks, only: [:index, :show, :edit]
     resources :subtasks, only: [:index, :show, :edit]
@@ -38,6 +38,11 @@ Rails.application.routes.draw do
     resources :tasks do
       resources :subtasks
     end
+  end
+
+  # ゲストログイン（閲覧用）
+  devise_scope :member do
+    post "members/guest_sign_in", to: "public/sessions#guest_sign_in", as: "members_guest_sign_in"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
