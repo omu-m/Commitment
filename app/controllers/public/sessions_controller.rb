@@ -27,6 +27,14 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
+  # ゲストログイン（閲覧用）
+  def guest_sign_in
+    member = Member.guest
+    sign_in member
+    redirect_to tasks_path
+    flash[:notice] = "ゲストユーザーでログインしました。"
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
