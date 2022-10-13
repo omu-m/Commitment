@@ -10,10 +10,6 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.text :task_content, null: false
       # # 達成率を保存するカラム
       # t.float :achievement_rate, null: false
-      
-      # ゲストユーザーが遷移できないように
-      # ユーザーネームを保存するカラム
-      t.string :user_name, null: false
 
       t.timestamps null: false
     end
