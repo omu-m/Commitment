@@ -2,9 +2,10 @@
   <thead>
     <tr>
       <th></th>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
+      <th>親タスク</th>
+      <th>内容</th>
+      <th>メンバー</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
   <tbody>
@@ -19,11 +20,7 @@
         </td>
         <td><%= link_to task.task_title, task_path(task) %></td>
         <td><%= task.task_content %></td>
-        <td>
-          <% if task.owner_id == current_member.id %>
-            <%= link_to "編集", edit_task_path(task), class: "btn btn-sm btn-danger" %></td>
-          <% end %>
-        </td>
+        <td><%= task.members.count %></td>
       </tr>
     <% end %>
   </tbody>

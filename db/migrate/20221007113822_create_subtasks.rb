@@ -11,10 +11,6 @@ class CreateSubtasks < ActiveRecord::Migration[6.1]
       # enumで管理　integer型の進捗ステータスカラム
       t.integer :progress_status,null: false, default: 0
 
-      # ゲストユーザーが遷移できないように
-      # ユーザーネームを保存するカラム
-      t.string :user_name, null: false
-
       t.timestamps null: false
     end
   end

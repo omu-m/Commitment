@@ -32,7 +32,11 @@ Rails.application.routes.draw do
     put "/members/information" => "members#update"
     patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
 
-    resources :tasks, only: [:index, :show, :edit]
+    resources :tasks, only: [:index, :show, :edit] do
+      # 親タスク(グループ)
+      get "join" => "tasks#join"
+    end
+
     resources :subtasks, only: [:index, :show, :edit]
 
     resources :tasks do
