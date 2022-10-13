@@ -35,12 +35,7 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :show, :edit] do
       # 親タスク(グループ)
       get "join" => "tasks#join"
-    end
-
-    resources :subtasks, only: [:index, :show, :edit]
-
-    resources :tasks do
-      resources :subtasks
+      resources :subtasks, only: [:index, :show, :edit]
     end
   end
 
