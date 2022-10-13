@@ -4,8 +4,6 @@ class Public::TasksController < ApplicationController
   before_action :authenticate_member!
   before_action :ensure_correct_member, only: [:edit, :update, :destroy]
 
-  before_action :ensure_guest_member, only: [:index]
-
   def index
     @tasks = Task.all
     @task = Task.new
@@ -50,16 +48,6 @@ class Public::TasksController < ApplicationController
 
 
   private
-
-  # ゲストログイン（閲覧用）
-  def ensure_guest_member
-    @task.owner_id = current_member.id
-    if @task.user_name == "guestuser"
-      flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
-      @tasks = Task.all
-      render "index"
-    end
-  end
 
   def task_params
     params.require(:task).permit(:task_title, :task_content, :image, :user_name)
