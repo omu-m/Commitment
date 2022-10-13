@@ -1,6 +1,6 @@
 class TaskMember < ApplicationRecord
 
-  belongs_to :member, dependent: :destroy
-  belongs_to :task, dependent: :destroy
+  belongs_to :member
+  belongs_to :task
 
 end
