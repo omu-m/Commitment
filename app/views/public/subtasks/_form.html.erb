@@ -6,7 +6,7 @@
     <% end %>
   </ul>
 <% end %>
-<%= form_with model: @subtask, url: task_subtasks_path(@task.id), local: true do |f| %>
+<%= form_with model: @subtask, url: task_subtasks_path, local: true do |f| %>
   <div class="form-group">
     <%= f.label :内容 %>
     <%= f.text_area :subtask_content, class: "form-control" %>

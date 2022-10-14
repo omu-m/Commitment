@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @task.subtasks.each do |subtask| %>
+    <% @subtasks.each do |subtask| %>
       <tr>
         <td>
           <% if subtask.image.attached? %>
@@ -19,12 +19,7 @@
           <%= subtask.member.display_name %>
         </td>
         <td><%= subtask.subtask_content %></td>
-        <td><%= @subtask.progress_status %></td>
-        <td>
-          <% if subtask.member_id == current_member.id %>
-            <%= link_to "編集", edit_task_subtask_path(@task,subtask.id), class: "btn btn-sm btn-danger" %>
-          <% end %>
-        </td>
+        <td><%= subtask.progress_status %></td>
       </tr>
     <% end %>
   </tbody>
