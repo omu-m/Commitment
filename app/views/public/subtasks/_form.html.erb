@@ -1,0 +1,17 @@
+<% if @subtask.errors.any? %>
+<%= @subtask.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @subtask.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with model: @subtask, url: task_subtasks_path(@task.id), local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :内容 %>
+    <%= f.text_area :subtask_content, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "投稿", class: "btn btn-success" %>
+  </div>
+<% end %>
