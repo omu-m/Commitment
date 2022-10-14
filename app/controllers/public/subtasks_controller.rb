@@ -31,6 +31,6 @@ class Public::SubtasksController < ApplicationController
   private
 
   def subtask_params
-    params.require(:subtask).permit(:subtask_content)
+    params.require(:subtask).permit(:subtask_content, :progress_status)
   end
 end
