@@ -1,0 +1,31 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>メンバー</th>
+      <th>内容</th>
+      <th>進捗</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @task.subtasks.each do |subtask| %>
+      <tr>
+        <td>
+          <% if subtask.image.attached? %>
+            <%= image_tag task.image, size: "50x50" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+          <% end %>
+          <%= subtask.member.display_name %>
+        </td>
+        <td><%= subtask.subtask_content %></td>
+        <td><%= @subtask.progress_status %></td>
+        <td>
+          <% if subtask.member_id == current_member.id %>
+            <%= link_to "編集", edit_task_subtask_path(@task,subtask.id), class: "btn btn-sm btn-danger" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

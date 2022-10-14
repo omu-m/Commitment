@@ -1,0 +1,8 @@
+ja: #日本語の設定を行う
+  enums: #enumの設定を行う
+    subtasks: #モデル名
+      progress_status: #カラム名
+        incomplete: "未完了"
+        processing: "処理中"
+        treated: "処理済み"
+        complete: "完了"
