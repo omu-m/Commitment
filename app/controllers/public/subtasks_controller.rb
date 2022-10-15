@@ -28,6 +28,10 @@ class Public::SubtasksController < ApplicationController
   def edit
   end
 
+  def update
+    @subtask.task_id = params[:task_id]
+  end
+
   private
 
   def subtask_params
