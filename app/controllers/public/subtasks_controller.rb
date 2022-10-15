@@ -25,6 +25,7 @@ class Public::SubtasksController < ApplicationController
   end
 
   def show
+     @subtask = Subtask.find(params[:id])
   end
 
   def edit
@@ -33,7 +34,7 @@ class Public::SubtasksController < ApplicationController
   def update
     if @subtask.update(subtask_params)
       flash[:notice] = "子タスクが正常に編集されました。"
-      redirect_to task_subtask_path
+      redirect_to task_subtasks_path(@subtask.task_id)
     else
       flash[:notice] = "子タスクの編集に失敗しました。"
       render "edit"
