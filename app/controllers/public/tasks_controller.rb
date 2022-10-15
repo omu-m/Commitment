@@ -26,7 +26,7 @@ class Public::TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-    @tasks = Task.new
+    @tasknew = Task.new
   end
 
   # 参加／退出
@@ -50,12 +50,19 @@ class Public::TasksController < ApplicationController
   end
 
   def destroy
-    #@task = Task.find(params[:id])
+    # @task = Task.find(params[:id])
     task_member = TaskMember.find_by(task_id: params[:id], member_id: current_member.id)
     task_member.destroy
-    #current_memberは、@task.membersから消されるという記述。
-    #@task.members.delete(current_member)
+    # # current_memberは、@task.membersから消されるという記述。
+    # @task.members.delete(current_member)
     redirect_to tasks_path
+  end
+
+  def all_destroy
+    @task = Task.find(params[:task_id])
+    if @task.destroy
+    redirect_to tasks_path
+    end
   end
 
   private
