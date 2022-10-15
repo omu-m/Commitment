@@ -33,12 +33,8 @@
             <% memberids = [] %>
             <% @task.members.each do |member| %>
             <% memberids.push(member.id) %>
-            <% if @task.image.attached? %>
-              <%= image_tag task.image, size: "50x50" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "50x50" %>
-            <% end %>
-              <%= member.display_name %><br>
+            <%= image_tag member.get_profile_image, size: "50x50" %>
+            <%= member.display_name %>
             <% end %>
           </td>
           <td>

@@ -21,6 +21,13 @@
         <td><%= link_to task.task_title, task_path(task) %></td>
         <td><%= task.task_content %></td>
         <td><%= task.members.count %></td>
+        <td>
+          <% if task.subtasks.size.zero? %>
+            0 %
+          <% else %>
+            <%= ((task.subtasks.where(progress_status: 3).size / task.subtasks.size.to_f) * 100).round(2)%> %
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

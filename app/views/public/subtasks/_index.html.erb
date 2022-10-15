@@ -12,7 +12,7 @@
       <tr>
         <td>
           <% if subtask.image.attached? %>
-            <%= image_tag task.image, size: "50x50" %>
+            <%= image_tag subtask.image, size: "50x50" %>
           <% else %>
             <%= image_tag 'no_image', size: "50x50" %>
           <% end %>

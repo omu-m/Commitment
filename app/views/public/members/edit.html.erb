@@ -19,6 +19,11 @@
         <%= f.label :email, "メールアドレス" %>
         <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
       </div>
+      <div class="field mb-4">
+        <%= f.label :profile_image, "プロフィール画像" %><br>
+        <%= image_tag @member.get_profile_image, size: "80x80" %>
+        <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
+      </div>
       <div class="actions mt-3 text-center">
         <th><%= f.submit "編集内容を保存", class: "btn btn-success mr-5" %></th>
         <th><%= link_to "退会する" , confirm_unsubscribe_path, class: 'btn btn-danger' %></th>

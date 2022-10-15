@@ -14,6 +14,9 @@
       </div>
       <table class="table table-bordered">
         <tr>
+          <th class="table-active">プロフィール画像</th><td><%= image_tag @member.get_profile_image, size: "80x80" %></td>
+        </tr>
+        <tr>
           <th class="table-active">表示名</th><td><%= @member.display_name %></td>
         </tr>
         <tr>
