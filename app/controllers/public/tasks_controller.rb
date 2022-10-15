@@ -50,9 +50,11 @@ class Public::TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
+    #@task = Task.find(params[:id])
+    task_member = TaskMember.find_by(task_id: params[:id], member_id: current_member.id)
+    task_member.destroy
     #current_memberは、@task.membersから消されるという記述。
-    @task.members.delete(current_member)
+    #@task.members.delete(current_member)
     redirect_to tasks_path
   end
 
