@@ -1,2 +1,29 @@
-<h1>Public::Subtasks#edit</h1>
-<p>Find me in app/views/public/subtasks/edit.html.erb</p>
+<div class="container">
+
+<% if @subtask.errors.any? %>
+  <%= @subtask.errors.count %>errors prohibited this obj from being saved:
+    <ul>
+      <% @subtask.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing</h1>
+      <%= form_with model: @subtask, url: task_subtask_path(@task.id, @subtask.id), local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :Content %>
+          <%= f.text_area :subtask_content, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+          <% if @subtask.member_id == current_member.id %>
+          <%= link_to "削除", task_subtask_path(@task.id, @subtask.id),method: :delete, data: { confirm: "本当に削除しますか？" } ,class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      <% end %>
+  	</div>
+  </div>
+</div>
