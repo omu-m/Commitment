@@ -6,6 +6,6 @@ class Task < ApplicationRecord
 
   validates :task_title, presence: true
   validates :task_content, presence: true
-  has_one_attached :image
 
+  has_one_attached :image
 end

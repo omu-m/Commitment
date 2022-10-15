@@ -33,6 +33,11 @@
           <br><span class="note-text">※確認用です。</span></td>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
       </div>
+      <div class="field mb-4">
+        <%= f.label :profile_image, "プロフィール画像" %><br>
+        <img id="preview" src="/assets/no_image.jpeg" class="member-icon" style="width: 100px; height: 100px">
+        <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
+      </div>
 
       <div class="actions text-center mb-4 mt-5">
         <%= f.submit "新規登録", class: "btn btn-secondary" %>
