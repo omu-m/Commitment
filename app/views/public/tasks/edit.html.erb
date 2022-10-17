@@ -1,0 +1,35 @@
+<div class='container'>
+
+  <% if @task.errors.any? %>
+  <%= @task.errors.count %>errors prohibited this obj from being saved:
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing</h1>
+  		<%= form_with model: @task, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :task_title, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :Content %>
+          <%= f.text_area :task_content, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+          <%= link_to "削除(未完成)", task_path, method: :delete, class: "btn btn-danger" %>
+        </div>
+      <% end %>
+  	</div>
+  </div>
+</div>

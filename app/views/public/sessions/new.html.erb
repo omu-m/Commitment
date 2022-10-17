@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5 px-0 mx-auto">
+      <div class="mb-4 mt-5">
+        <h4><strong>ログイン</strong></h4>
+      </div>
+
+      <%= form_with model: @member, url: member_session_path, local: true do |f| %>
+
+        <div class="field mb-4">
+          <%= f.label :user_name, "ユーザーネーム" %>
+          <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
+        </div>
+        <div class="field mb-4">
+          <%= f.label "パスワード" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+
+        <div class="actions text-center mb-4 mt-5">
+          <%= f.submit "ログイン", class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+
+      <div class="row mt-5 mb-2">
+       <h6 style="background-color:#EEEEEE">会員登録がお済みでない方</h6>
+      </div>
+     <p class="ml-4"><%= link_to "こちら", new_member_registration_path %>から新規登録を行ってください。</p>
+    </div>
+  </div>
+</div>

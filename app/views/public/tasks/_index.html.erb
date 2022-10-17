@@ -1,0 +1,34 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>親タスク</th>
+      <th>内容</th>
+      <th>メンバー</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td>
+          <% if task.image.attached? %>
+            <%= image_tag task.image, size: "50x50" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "50x50" %>
+          <% end %>
+        </td>
+        <td><%= link_to task.task_title, task_path(task) %></td>
+        <td><%= task.task_content %></td>
+        <td><%= task.members.count %></td>
+        <td>
+          <% if task.subtasks.size.zero? %>
+            0 %
+          <% else %>
+            <%= ((task.subtasks.where(progress_status: 3).size / task.subtasks.size.to_f) * 100).round(2)%> %
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
