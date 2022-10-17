@@ -25,7 +25,7 @@ class Public::SubtasksController < ApplicationController
   end
 
   def show
-     @subtask = Subtask.find(params[:id])
+    @subtask = Subtask.find(params[:id])
   end
 
   def edit

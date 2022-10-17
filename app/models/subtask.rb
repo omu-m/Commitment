@@ -3,7 +3,10 @@ class Subtask < ApplicationRecord
   belongs_to :task
   belongs_to :member
 
+  has_many :comments, dependent: :destroy
+
   validates :subtask_content, presence: true
+  
   has_one_attached :image
 
   # 進捗ステータス
