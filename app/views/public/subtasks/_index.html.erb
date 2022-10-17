@@ -21,6 +21,17 @@
         <td><%= subtask.subtask_content %></td>
         <td><%= link_to subtask.progress_status, task_subtask_path(@task, subtask.id) %></td>
         <td>
+          <% if subtask.favorited_by?(current_member) %>
+            <%= link_to task_subtask_favorites_path(@task, subtask.id), method: :delete do %>
+              ♥ <%= subtask.favorites.count %>
+            <% end %>
+          <% else %>
+            <%=link_to task_subtask_favorites_path(@task, subtask.id), method: :post do %>
+              ♡ <%= subtask.favorites.count %>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
           <% if subtask.member_id == current_member.id %>
             <%= link_to "編集", edit_task_subtask_path(@task, subtask.id), class: "btn btn-sm btn-danger" %>
           <% end %>
