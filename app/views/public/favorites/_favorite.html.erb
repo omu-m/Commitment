@@ -1,0 +1,11 @@
+<td>
+  <% if @subtask.favorited_by?(current_member) %>
+    <%= link_to task_subtask_favorites_path(@task, subtask.id), method: :delete do %>
+      <i class="fa-solid fa-face-smile"></i> <%= subtask.favorites.count %>
+    <% end %>
+  <% else %>
+    <%=link_to task_subtask_favorites_path(@task, subtask), method: :post do %>
+      <i class="fa-regular fa-face-smile"></i> <%= @subtask.favorites.count %>
+    <% end %>
+  <% end %>
+</td>
