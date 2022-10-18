@@ -26,11 +26,11 @@
       	  <% end %>
         </td>
       </table>
-      <div id="form-group">
+      <div class="form-group">
         <%= render "public/comments/form", subtask: @subtask, comment: @comment %>
       </div>
-      <div id="form-group">
-        <%= render "public/comments/index", subtask: @subtask %>
+      <div id="comments-area">
+        <%= render "public/comments/index", subtask: @subtask, comments: @comments %>
       </div>
     </div>
   </div>

@@ -19,8 +19,8 @@
           <%= subtask.member.display_name %>
         </td>
         <td><%= subtask.subtask_content %></td>
-        <td><%= link_to subtask.progress_status, task_subtask_path(@task, subtask.id) %></td>
-        <%= render "public/favorites/favorite", subtask: @subtasks %>
+        <td><%= link_to subtask.progress_status, task_subtask_path(@task, subtask) %></td>
+        <%= render "public/favorites/favorite", subtask: subtask %>
         <td><i class="fa-regular fa-comment-dots"></i> <%= subtask.comments.count %></td>
         <td>
           <% if subtask.member_id == current_member.id %>

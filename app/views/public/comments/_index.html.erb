@@ -1,19 +1,25 @@
 <h2 class="mt-4">コメント一覧 <%= subtask.comments.count %>件</h2>
 <hr>
-<% @comments.first(2).each do |comment| %>
-  <%= render "public/comments/hide_comments", comment: comment %>
+<% if comments.length  > 1 %>
+  <% comments.each_with_index  do |comment, index| %>
   <!--コメントが3件以上の場合、残りのコメントをプルダウンで表示するボタンの作成-->
-  <% if comments.offset(2).any? %>
-    <div class="text-right">
-      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        もっと見る
-      </a>
-    <div class="collapse" id="collapseExample">
-    <div class="form-group">
-      <% comments.where(parent_id: nil).offset(2).each do |comment| %>
-        <%= render "public/comments/hide_comments", comment: @comment %>
-      <% end %>
-    </div>
+  <%if index + 1 < 4 %>
+      <%= render "public/comments/hide_comments", comment: comment %>
+    <%else %>
+      <div class="collapse" id="collapseExample">
+        <div class="form-group">
+          <%= render "public/comments/hide_comments", comment: comment %>
+        </div>
+      </div>
+    <%end%>
   <% end %>
-<% end %>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      もっと見る
+    </a>
+  <%else%>
+  <% comments.each do |comment| %>
+    <%= render "public/comments/hide_comments", comment: comment %>
+  <% end %>
+<%end%>
+
 
