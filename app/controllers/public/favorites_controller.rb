@@ -2,8 +2,8 @@ class Public::FavoritesController < ApplicationController
 
   def create
     @subtask = Subtask.find(params[:subtask_id])
-    @subtask.task_id = params[:task_id]
-    @favorite = Favorite.new(member_id: current_member.id, subtask_id: @subtask.id)
+    @favorite = Favorite.new(subtask_id: @subtask.id)
+    @favorite.member_id = current_member.id
     @subtask.save
     redirect_to request.referer
   end
