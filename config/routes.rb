@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       get "join" => "tasks#join"
       delete "all_destroy" => "tasks#all_destroy"
       resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy] do
-        resources :favorites, only: [:create, :destroy]
+        resource :favorites, only: [:create, :destroy]
         resources :comments, only: [:create, :destroy]
       end
     end

@@ -1,17 +1,15 @@
 class Public::FavoritesController < ApplicationController
 
   def create
-    @subtask = Subtask.find(params[:subtask_id])
-    @favorite = Favorite.new(subtask_id: @subtask.id)
-    @favorite.member_id = current_member.id
-    @subtask.save
+    current_member.favorites.create(subtask_id: params[:subtask_id])
     redirect_to request.referer
   end
 
   def destroy
-    @subtask = Subtask.find(params[:subtask_id])
-    @subtask = current_member.favorites.find_by(subtask_id: @subtask.id)
-    subtask.destroy
+    favorite = current_member.favorites.find_by(subtask_id: params[:subtask_id])
+    if favorite.present?
+      favorite.destroy
+    end
     redirect_to request.referer
   end
 end

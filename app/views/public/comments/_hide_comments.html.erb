@@ -1,8 +1,7 @@
 <%= comment.subtask.member.display_name %>
-<%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+<%= comment.created_at.strftime('%Y/%m/%d') %>s<%= comment.comment %>
   <% if comment.member == current_member %>
     <div class="form-group">
-      <%= link_to "削除", ptask_subtask_comment_path(comment.subtask, comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+      <%= link_to "削除", task_subtask_comment_path(comment.subtask.task, comment.subtask, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger", remote: true %>
     </div>
   <% end %>
- 
