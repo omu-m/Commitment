@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       delete "all_destroy" => "tasks#all_destroy"
       resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy] do
         get "search" => "subtasks#search"
+        # リロードをするとルーティングエラーになる。
+        # post "search" => "subtasks#search"
         resource :task_favorites, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
         resources :comments, only: [:create, :destroy]

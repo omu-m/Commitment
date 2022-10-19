@@ -5,7 +5,7 @@ class Public::SubtasksController < ApplicationController
 
   def index
     @task = Task.find(params[:task_id])
-    @subtasks = Subtask.all
+    @subtasks = @task.subtasks.all
     @subtask = Subtask.new
   end
 
@@ -25,8 +25,10 @@ class Public::SubtasksController < ApplicationController
   end
 
   def search
-    @subtasks = Subtask.search(params[:keyword])
+    @task = Task.find(params[:task_id])
+    @subtasks = @task.subtasks.search(params[:keyword])
     @keyword = params[:keyword]
+    @subtask = Subtask.new
     render "index"
   end
 
