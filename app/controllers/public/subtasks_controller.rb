@@ -24,11 +24,17 @@ class Public::SubtasksController < ApplicationController
     end
   end
 
+  def search
+    @subtasks = Subtask.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   def show
     @subtask = Subtask.find(params[:id])
     # order(created_at: :desc)を付与することで、コメントを新着順（降順）で表示することができる。
     @comments = @subtask.comments.order(created_at: :desc)
-  
+
   end
 
   def edit
