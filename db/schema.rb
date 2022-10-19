@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_17_080539) do
+ActiveRecord::Schema.define(version: 2022_10_19_055925) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -88,6 +88,13 @@ ActiveRecord::Schema.define(version: 2022_10_17_080539) do
     t.integer "member_id", null: false
     t.text "subtask_content", null: false
     t.integer "progress_status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "task_favourites", force: :cascade do |t|
+    t.integer "btask_id", null: false
+    t.integer "member_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
