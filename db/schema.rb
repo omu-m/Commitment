@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(version: 2022_10_19_055925) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "task_favourites", force: :cascade do |t|
-    t.integer "btask_id", null: false
+  create_table "task_favorites", force: :cascade do |t|
+    t.integer "task_id", null: false
     t.integer "member_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

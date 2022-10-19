@@ -5,7 +5,9 @@
       <th>親タスク</th>
       <th>内容</th>
       <th>メンバー</th>
-      <th colspan="4"></th>
+      <th></th>
+      <th>お気に入り</th>
+      <th>達成率</th>
     </tr>
   </thead>
   <tbody>
@@ -21,9 +23,10 @@
         <td><%= link_to task.task_title, task_path(task) %></td>
         <td><%= task.task_content %></td>
         <td><%= task.members.count %></td>
-        <!--NoMethodError-->
         <!--task_favorites非同期-->
-        <!--<= render "public/task_favorites/task_favorite", task: task %>-->
+        <td id="task_favorite_">
+          <%= render "public/task_favorites/task_favorite", task: task %>
+        </td>
         <td>
           <% if task.subtasks.size.zero? %>
             0 %

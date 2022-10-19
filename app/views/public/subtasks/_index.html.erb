@@ -4,7 +4,9 @@
       <th>メンバー</th>
       <th>内容</th>
       <th>進捗</th>
-      <th colspan="2"></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +23,9 @@
         <td><%= subtask.subtask_content %></td>
         <td><%= link_to subtask.progress_status, task_subtask_path(@task, subtask) %></td>
         <!--favorites非同期-->
-        <%= render "public/favorites/favorite", subtask: subtask %>
+        <td id="favorite_">
+          <%= render "public/favorites/favorite", subtask: subtask %>
+        </td>
         <td><i class="fa-regular fa-comment-dots"></i> <%= subtask.comments.count %></td>
         <td>
           <% if subtask.member_id == current_member.id %>
