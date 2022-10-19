@@ -1,10 +1,10 @@
 <td>
   <% if subtask.favorited_by?(current_member) %>
-    <%= link_to task_subtask_favorites_path(subtask.task, subtask), method: :delete do %>
+    <%= link_to task_subtask_favorites_path(subtask.task, subtask), method: :delete, remote: true do %>
       <i class="fa-solid fa-face-smile"></i> <%= subtask.favorites.count %>
     <% end %>
   <% else %>
-    <%=link_to task_subtask_favorites_path(subtask.task, subtask), method: :post do %>
+    <%=link_to task_subtask_favorites_path(subtask.task, subtask), method: :post, remote: true do %>
       <i class="fa-regular fa-face-smile"></i> <%= subtask.favorites.count %>
     <% end %>
   <% end %>
