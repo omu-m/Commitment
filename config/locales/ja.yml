@@ -6,3 +6,8 @@ ja: #日本語の設定を行う
         processing: "処理中"
         treated: "処理済み"
         complete: "完了"
+        
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
