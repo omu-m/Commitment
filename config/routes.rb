@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :members, only: [:index, :show]
+    resources :members, only: [:index, :show, :edit]
     resources :tasks, only: [:index, :show, :edit]
     resources :subtasks, only: [:index, :show, :edit]
   end
@@ -40,7 +40,6 @@ Rails.application.routes.draw do
         get "search" => "subtasks#search"
         # リロードをするとルーティングエラーになる。
         # post "search" => "subtasks#search"
-        resource :task_favorites, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
         resources :comments, only: [:create, :destroy]
       end
