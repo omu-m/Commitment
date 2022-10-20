@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       # 親タスク(グループ)
       get "join" => "tasks#join"
       delete "all_destroy" => "tasks#all_destroy"
+      resource :task_favorites, only: [:create, :destroy]
       resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy] do
         get "search" => "subtasks#search"
         # リロードをするとルーティングエラーになる。

@@ -1,8 +1,8 @@
-class Public::TaskFavouritesController < ApplicationController
+class Public::TaskFavoritesController < ApplicationController
 
   def create
+    @task = Task.find(params[:task_id])
     current_member.task_favorites.create(task_id: params[:task_id])
-    redirect_to request.referer
   end
 
   def destroy
@@ -10,7 +10,7 @@ class Public::TaskFavouritesController < ApplicationController
     if task_favorite.present?
       task_favorite.destroy
     end
-    redirect_to request.referer
+    @task = Task.find(params[:task_id])
   end
 end
 

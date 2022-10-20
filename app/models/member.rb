@@ -7,7 +7,7 @@ class Member < ApplicationRecord
   has_many :task_members, dependent: :destroy
   has_many :tasks, through: :task_members
   has_many :tasks, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  has_many :task_favorites, dependent: :destroy
   has_many :subtasks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
