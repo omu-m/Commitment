@@ -1,4 +1,4 @@
-class CreateTaskFavourites < ActiveRecord::Migration[6.1]
+class CreateTaskFavorites < ActiveRecord::Migration[6.1]
   def change
     create_table :task_favorites do |t|
 
