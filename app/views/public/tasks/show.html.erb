@@ -41,7 +41,7 @@
             <% if @task.owner_id == current_member.id %>
               <%= link_to "編集", edit_task_path(@task), class: "btn btn-sm btn-danger" %>
             <% elsif @task.members.include?(current_member) %>
-              <%= link_to "退出", task_path(@task), method: :delete, class: "btn btn-sm btn-danger" %>
+              <%= link_to "退出", (@task), method: :delete, class: "btn btn-sm btn-danger" %>
             <% else %>
               <%= link_to "参加", task_join_path(@task), class: "btn btn-sm btn-success" %>
             <% end %>

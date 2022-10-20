@@ -29,10 +29,17 @@ class Public::TasksController < ApplicationController
     @tasknew = Task.new
   end
 
-  # 参加／退出
+  # 参加
   def join
     @task = Task.find(params[:task_id])
     @task.members << current_member
+    redirect_to  task_subtasks_path(@task)
+  end
+  
+  # 退出
+  def out
+    @task = Task.find(params[:task_id])
+    @task.members.delete(current_member)
     redirect_to  tasks_path
   end
 
