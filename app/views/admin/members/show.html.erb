@@ -1,2 +1,42 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h2 class="mt-4"><%= @member.display_name %>さんの会員詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9 px-0 mt-3 mx-auto">
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-active">会員ID</th><td><%= @member.id %></td>
+        </tr>
+        <tr>
+          <th class="table-active">プロフィール画像</th><td><%= image_tag @member.get_profile_image, size: "80x80" %></td>
+        </tr>
+        <tr>
+          <th class="table-active">表示名</th><td><%= @member.display_name %></td>
+        </tr>
+        <tr>
+          <th class="table-active">ユーザーネーム</th><td><%= @member.user_name %></td>
+        </tr>
+        <tr>
+          <th class="table-active">メールアドレス</th><td><%= @member.email %></td>
+        </tr>
+        <tr>
+          <th class="table-active">会員ステータス</th>
+          <% if @member.is_deleted == true %>
+            <td class="text-secondary font-weight-bold">退会</td>
+          <% else %>
+            <td class="text-success font-weight-bold">有効</td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <p class="text-center">
+      <%= link_to "編集する", edit_admin_member_path(@member.id), class: 'btn btn-success m-3' %>
+    </p>
+  </div>
+</div>
