@@ -20,7 +20,7 @@
         <div class="form-group">
           <%= f.submit "変更を保存", class: "btn btn-success" %>
           <% if @subtask.member_id == current_member.id %>
-          <%= link_to "削除", task_subtask_path(@task.id, @subtask.id),method: :delete, data: { confirm: "本当に削除しますか？" } ,class: "btn btn-danger" %>
+          <%= link_to "削除", task_subtask_path(@task.id, @subtask.id),method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
           <% end %>
         </div>
       <% end %>
