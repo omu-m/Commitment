@@ -24,9 +24,9 @@
         <td><%= task.task_content %></td>
         <td><%= task.members.count %></td>
         <!--task_favorites非同期-->
-        <td id="task_favorite_">
-          <%= render "public/task_favorites/task_favorite", task: task %>
-        </td>
+        <!--<td id="task_favorite_">-->
+        <!--  <= render "public/task_favorites/task_favorite", task: task %>-->
+        <!--</td>-->
         <td>
           <% if task.subtasks.size.zero? %>
             0 %
