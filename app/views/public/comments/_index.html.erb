@@ -3,19 +3,21 @@
 <!--コメントが3件以上の場合、残りのコメントをプルダウンで表示するボタンの作成-->
 <% if comments.length  > 3 %>
   <% comments.each_with_index  do |comment, index| %>
-  <%if index + 1 < 4 %>
+    <%if index + 1 < 4 %>
       <%= render "public/comments/hide_comments", comment: comment %>
     <%else %>
       <div class="collapse" id="collapseExample">
-        <div class="form-group">
+        <div class="card card-body">
           <%= render "public/comments/hide_comments", comment: comment %>
         </div>
       </div>
     <%end%>
   <% end %>
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      もっと見る
-    </a>
+    <div class="text-center">
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample text-center">
+        もっと見る
+      </a>
+    </div>
   <%else%>
   <% comments.each do |comment| %>
     <%= render "public/comments/hide_comments", comment: comment %>

@@ -29,10 +29,8 @@
       <div class="col-9 px-0">
         <table class="table table-borderless">
           <tr>
-            <th>親タスク履歴一覧</th>
-            <th><%= link_to '未完成',  tasks_path, class: "btn btn-primary" %></th>
-            <th>子タスク履歴一覧</th>
-
+            <th>親タスクお気に入り一覧</th>
+            <th><%= link_to "お気に入り",  task_favorites_path(@member), class: "btn btn-primary" %></th>
           </tr>
         </table>
       </div>

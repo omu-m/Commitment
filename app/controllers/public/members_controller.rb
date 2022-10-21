@@ -21,6 +21,12 @@ class Public::MembersController < ApplicationController
     end
   end
 
+  def task_favorites
+    @member = Member.find(params[:id])
+    task_favorites = TaskFavorite.where(member_id: @member.id).pluck(:task_id)
+    @task_favorite_tasks = Task.find(task_favorites)
+  end
+
   def unsubscribe
   end
 
