@@ -1,2 +1,3 @@
-$('#comments-area').html("<%= j(render "public/comments/index", comments: @comments, subtask: @subtask) %>");
+$("#comments-area").html("<%= j(render "public/comments/index", comments: @comments, subtask: @subtask) %>");
+$("#comments-count").html("<%= j(render "public/comments/count", comments: @comments, subtask: @subtask) %>");
 $("textarea").val('');

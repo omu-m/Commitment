@@ -4,6 +4,7 @@ class Admin::CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
+    @comments = @comments.order(created_at: :desc)
   end
 
   def destroy
