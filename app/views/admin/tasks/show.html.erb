@@ -1,2 +1,52 @@
-<h1>Admin::Tasks#show</h1>
-<p>Find me in app/views/admin/tasks/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h2 class="mt-4">親タスク詳細</h2>
+    </div>
+
+    <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>親タスク</th>
+            <th>内容</th>
+            <th>メンバー</th>
+            <th colspan="4"></th>
+          </tr>
+        </thead>
+        <tbody>
+  		  <tr>
+  		    <td>
+  		      <% if @task.image.attached? %>
+              <%= image_tag @task.image, size: "50x50" %>
+            <% else %>
+              <%= image_tag "no_image", size: "50x50" %>
+            <% end %>
+          </td>
+  		    <td><%= @task.task_title %></td>
+          <td><%= @task.task_content %></td>
+          <td>
+            <!--タスク(グループ)に参加していると子タスク一覧が表示されるようになる仕様。-->
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              メンバー
+            </a>
+            <% memberids = [] %>
+            <% @task.members.each do |member| %>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <% memberids.push(member.id) %>
+                <%= image_tag member.get_profile_image, size: "50x50" %>
+                <%= link_to member.display_name, admin_member_path(member.id) %>
+              </div>
+            </div>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "子タスク一覧", admin_task_subtasks_path(@task), class: "btn btn-sm btn-success" %>
+          </td>
+        </tr>
+      </table>
+      <%= render "edit" %>
+    </div>
+  </div>
+</div>

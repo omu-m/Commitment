@@ -35,7 +35,7 @@ class Public::TasksController < ApplicationController
     @task.members << current_member
     redirect_to  task_subtasks_path(@task)
   end
-  
+
   # 退出
   def out
     @task = Task.find(params[:task_id])
