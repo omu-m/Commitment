@@ -23,6 +23,7 @@
         <td><%= subtask.subtask_content %></td>
         <td><%= link_to subtask.progress_status, task_subtask_path(@task, subtask) %></td>
         <!--favorites非同期-->
+        <td id="favorite_">
         <td id="favorite_<%= subtask.id %>">
           <%= render "public/favorites/favorite", subtask: subtask %>
         </td>

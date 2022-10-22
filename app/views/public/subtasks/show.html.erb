@@ -17,14 +17,15 @@
             <td><%= @subtask.member.display_name %></td>
             <td><%= @subtask.subtask_content %></td>
             <td></td>
-          <td>
-	      	<%= form_with model: [@subtask.task, @subtask], local: true do |f| %>
-          	<%= f.select :progress_status, Subtask.progress_statuses.keys %>
-              <% if @subtask.member_id == current_member.id %>
-          	    <%= f.submit "更新", class: "btn btn-success" %>
+            <td>
+    	      	<%= form_with model: [@subtask.task, @subtask], local: true do |f| %>
+              	<%= f.select :progress_status, Subtask.progress_statuses.keys %>
+                  <% if @subtask.member_id == current_member.id %>
+              	    <%= f.submit "更新", class: "btn btn-success" %>
+              	  <% end %>
           	  <% end %>
-      	  <% end %>
-        </td>
+            </td>
+          </tr>
       </table>
       <!--comments非同期-->
       <div class="form-group">

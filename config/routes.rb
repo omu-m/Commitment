@@ -13,9 +13,11 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :members, only: [:index, :show, :edit, :update]
     resources :tasks, only: [:index, :show, :update, :destroy] do
-      resources :subtasks, only: [:index, :show, :edit]
+      resources :subtasks, only: [:index, :show, :destroy] do
+        resources :comments, only: [:destroy]
+      end
+      get "index" => "comments#index"
     end
-    resources :comments, only: [:index, :destroy]
   end
 
   # 会員用

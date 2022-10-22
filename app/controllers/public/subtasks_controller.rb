@@ -7,6 +7,7 @@ class Public::SubtasksController < ApplicationController
     @task = Task.find(params[:task_id])
     @subtasks = @task.subtasks.all
     @subtask = Subtask.new
+    @subtasks = @subtasks.order(created_at: :desc)
   end
 
   def create
@@ -48,7 +49,7 @@ class Public::SubtasksController < ApplicationController
       redirect_to task_subtasks_path(@subtask.task_id)
     else
       flash[:notice] = "子タスクの編集に失敗しました。"
-      render "edit"
+      render "show"
     end
   end
 
