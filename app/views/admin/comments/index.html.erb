@@ -21,7 +21,7 @@
               <td><%= l comment.created_at %></td>
               <td style="display: block; overflow-y:scroll; height:100px;"><%= comment.comment %></td>
               <th>
-                <%= link_to "削除", admin_task_subtask_comment_path(comment.subtask.task, comment.subtask, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger" %>
+                <%= link_to "削除", admin_task_subtask_comment_path(comment.subtask.task, comment.subtask, comment, comment_index: true), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger" %>
               </th>
             </tr>
           </tbody>
