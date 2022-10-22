@@ -9,7 +9,9 @@
       <div class="col-6">
         <h5 class="font-weight-bold mb-3">
           登録情報
+          <% unless current_member.email == "guest@example.com" %>
           <%= link_to "編集する" , edit_information_path, class: "btn btn-success ml-5" %>
+          <% end %>
         </h5>
       </div>
       <table class="table table-bordered">
@@ -19,18 +21,22 @@
         <tr>
           <th class="table-active">表示名</th><td><%= @member.display_name %></td>
         </tr>
+        <% unless current_member.email == "guest@example.com" %>
         <tr>
           <th class="table-active">ユーザーネーム</th><td><%= @member.user_name %></td>
         </tr>
         <tr>
           <th class="table-active">メールアドレス</th><td><%= @member.email %></td>
         </tr>
+        <% end %>
       </table>
       <div class="col-9 px-0">
         <table class="table table-borderless">
           <tr>
             <th>親タスクお気に入り一覧</th>
+            <% unless current_member.email == "guest@example.com" %>
             <th><%= link_to "お気に入り",  task_favorites_path(@member), class: "btn btn-primary" %></th>
+            <% end %>
           </tr>
         </table>
       </div>
