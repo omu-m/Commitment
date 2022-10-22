@@ -11,6 +11,6 @@
       </div>
     <% end %>
   </div>
-  <div class="p-2 bd-highlight"><%= l comment.created_at %></div>
+  <div class="p-2 bd-highlight"><%=  I18n.l(comment.created_at, format: :custom) %></div>
   <div class="p-2 bd-highlight"><%= comment.member.display_name %></div>
 </div>

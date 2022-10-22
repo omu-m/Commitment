@@ -2,6 +2,7 @@ class Public::TasksController < ApplicationController
 
   # 親タスクをグループとして作成しています。
   before_action :authenticate_member!
+  before_action :authenticate_user, only: [:create, :update, :destroy, :all_destroy]
   before_action :ensure_correct_member, only: [:edit, :update]
 
   def index
@@ -11,6 +12,7 @@ class Public::TasksController < ApplicationController
   end
 
   def create
+
     @task = Task.new(task_params)
     @task.owner_id = current_member.id
     # @task.membersに、current_memberを追加しているという記述。

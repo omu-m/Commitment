@@ -28,9 +28,11 @@
         <!--会員側/ログイン後-->
         <% elsif member_signed_in? %>
           <li><%= current_member.display_name %>さん</li>
+          <% unless current_member.email == "guest@example.com" %>
           <li class="nav-item">
             <%= link_to "マイページ", mypage_path, class: "nav-link text-light" %>
           </li>
+          <% end %>
           <li class="nav-item">
             <%= link_to "親タスク一覧", tasks_path, class: "nav-link text-light" %>
           </li>
