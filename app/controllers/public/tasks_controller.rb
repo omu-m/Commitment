@@ -6,7 +6,7 @@ class Public::TasksController < ApplicationController
   before_action :ensure_correct_member, only: [:edit, :update]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.page(params[:page])
     @task = Task.new
     @tasks = @tasks.order(created_at: :desc)
   end
