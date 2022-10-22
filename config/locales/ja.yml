@@ -61,3 +61,10 @@ ja: #日本語の設定を行う
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
       custom: "%y-%m-%d %H:%M:%S"
+
+  activerecord:
+    attributes:
+      member:
+        display_name: "表示名"
+        user_name: "ユーザーネーム"
+
