@@ -24,10 +24,12 @@
   		    <td><%= @task.task_title %></td>
           <td><%= @task.task_content %></td>
           <td>
+            <% unless current_member.email == "guest@example.com" %>
             <!--タスク(グループ)に参加していると子タスク一覧が表示されるようになる仕様。-->
             <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
               メンバー
             </a>
+            <% end %>
             <% memberids = [] %>
             <% @task.members.each do |member| %>
             <div class="collapse" id="collapseExample">
@@ -44,6 +46,7 @@
             <%= link_to "子タスク一覧", task_subtasks_path(@task), class: "btn btn-sm btn-success" %>
             <% end %>
           </td>
+          <% unless current_member.email == "guest@example.com" %>
           <td>
             <% if @task.owner_id == current_member.id %>
               <%= link_to "編集", edit_task_path(@task), class: "btn btn-sm btn-danger" %>
@@ -53,6 +56,7 @@
               <%= link_to "参加", task_join_path(@task), class: "btn btn-sm btn-success" %>
             <% end %>
           </td>
+          <% end %>
         </tr>
       </table>
     </div>
