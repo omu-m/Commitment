@@ -1,4 +1,5 @@
 class Public::TaskFavoritesController < ApplicationController
+  before_action :authenticate_user
 
   def create
     @task = Task.find(params[:task_id])

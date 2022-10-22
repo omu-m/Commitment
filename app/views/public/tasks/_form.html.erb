@@ -7,7 +7,7 @@
   </ul>
 <% end %>
 <%= form_with model: task, local: true do |f| %>
- <div class="form-group">
+  <div class="form-group">
     <%= f.label :グループ画像 %>
     <img id="preview" src="/assets/no_image.jpeg" class="member-icon" style="width: 100px; height: 100px">
     <%= f.file_field :image, accept: "image/*" %>
