@@ -1,7 +1,7 @@
 <div class="form-group">
   <%= form_with url: task_subtask_search_path(task, 1), method: :get, local: true do |f| %>
     <%= f.text_field :keyword, value: keyword %>
-    <%= f.submit "検索", class: "btn btn-sm btn-danger" %>
+    <%= f.submit "検索", class: "btn btn-sm btn-warning" %>
   <% end %>
 </div>
 <!--URLの文字をスマートにする方法-->

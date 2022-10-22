@@ -20,7 +20,6 @@ class Subtask < ApplicationRecord
 
   # 検索キーワードが部分一致すれば、その記事を出力する。
   def self.search(keyword)
-    # where(["subtask_content like ?", "%#{keyword}%"])
-    where(["subtask_content like? OR display_name like?", "%#{keyword}%", "%#{keyword}%"])
+    joins(:member).merge(Member.display_name_like keyword).or(where("subtask_content like ? ", "%#{keyword}%"))
   end
 end

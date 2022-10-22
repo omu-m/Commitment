@@ -16,6 +16,11 @@ class Member < ApplicationRecord
   validates :user_name, presence: true, uniqueness: true, format: { with: /\A[a-z0-9]+\z/, message: "は半角英数字で入力してください。" }
   validates :email, presence: true, uniqueness: true
 
+  # 名称が部分一致する
+  scope :display_name_like, -> name {
+    where('display_name like ?', "%#{name}%")
+  }
+
   has_one_attached :profile_image
 
   # プロフィール画像表示
