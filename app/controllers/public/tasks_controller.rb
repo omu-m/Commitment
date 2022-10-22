@@ -50,6 +50,10 @@ class Public::TasksController < ApplicationController
   end
 
   def update
+    @task = Task.find(params[:id])
+    if nil != (params[:task][:owner_id] =~ /\A[0-9]+\z/)
+      @task.owner_id = params[:task][:owner_id]
+    end
     if @task.update(task_params)
       flash[:notice] = "親タスクが正常に編集されました。"
       redirect_to tasks_path
