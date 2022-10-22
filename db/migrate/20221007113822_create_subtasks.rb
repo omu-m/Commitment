@@ -6,8 +6,6 @@ class CreateSubtasks < ActiveRecord::Migration[6.1]
       t.integer :task_id, null: false
       # 会員IDを保存するカラム
       t.integer :member_id, null: false
-      # 表示名を保存するカラム
-      t.string :display_name
       # 子タスクの内容を保存するカラム
       t.text :subtask_content, null: false
       # enumで管理　integer型の進捗ステータスカラム
