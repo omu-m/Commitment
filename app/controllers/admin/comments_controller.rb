@@ -8,8 +8,10 @@ class Admin::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to admin_comments_path
+    @subtask = Subtask.find(params[:subtask_id])
+    @comments = @subtask.comments.order(created_at: :desc)
+    comment = Comment.find(params[:id])
+    comment.destroy
+    render "index"
   end
 end
