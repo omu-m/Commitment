@@ -17,7 +17,10 @@
           <tbody>
             <tr>
               <td><%= comment.member.id %></td>
-              <td style="display: block; overflow-y:scroll; height:100px;"><%= link_to comment.subtask.member.display_name, admin_member_path(comment.member.id) %></td>
+              <td style="display: block; overflow-y:scroll; height:100px;">
+                <%= image_tag comment.member.get_profile_image, size: "50x50" %>
+                <%= link_to comment.subtask.member.display_name, admin_member_path(comment.member.id) %>
+              </td>
               <td><%= l comment.created_at %></td>
               <td style="display: block; overflow-y:scroll; height:100px;"><%= comment.comment %></td>
               <th>
