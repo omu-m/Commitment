@@ -13,6 +13,7 @@
   </div>
   <div class="p-2 bd-highlight"><%= I18n.l(comment.created_at, format: :custom) %></div>
   <div class="p-2 bd-highlight"><%= comment.member.display_name %></div>
+  <div class="p-2 bd-highlight"><%= image_tag comment.member.get_profile_image, size: "30x30" %></div>
 </div>
 <% comment.replies.each do |reply| %>
   <div class="card">
@@ -30,6 +31,7 @@
     </div>
     <div class="p-2 bd-highlight"><%= I18n.l(reply.created_at, format: :custom) %></div>
     <div class="p-2 bd-highlight"><%= reply.member.display_name %></div>
+    <div class="p-2 bd-highlight"><%= image_tag reply.member.get_profile_image, size: "30x30" %></div>
   </div>
 <% end %>
 <div class="form-group">

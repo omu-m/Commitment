@@ -13,11 +13,7 @@
     <% subtasks.each do |subtask| %>
       <tr>
         <td>
-          <!--< if subtask.image.attached? %>-->
-          <!--  <= image_tag subtask.image, size: "50x50" %>-->
-          <!--< else %>-->
-          <!--  <= image_tag 'no_image', size: "50x50" %>-->
-          <!--< end %>-->
+          <%= image_tag subtask.member.get_profile_image, size: "50x50" %>
           <%= subtask.member.display_name %>
         </td>
         <td><%= subtask.subtask_content %></td>
