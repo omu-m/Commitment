@@ -16,7 +16,10 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= link_to @subtask.member.display_name, admin_member_path(@subtask.member.id) %></td>
+          <td>
+            <%= image_tag @subtask.member.get_profile_image, size: "50x50" %>
+            <%= link_to @subtask.member.display_name, admin_member_path(@subtask.member.id) %>
+          </td>
           <td><%= @subtask.subtask_content %></td>
           <td></td>
           <td><%= @subtask.progress_status %></td>

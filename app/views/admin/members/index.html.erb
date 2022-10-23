@@ -16,7 +16,10 @@
           <tbody>
             <tr>
               <td><%= member.id %></td>
-              <td><%= link_to member.display_name, admin_member_path(member.id) %></td>
+              <td>
+                <%= image_tag member.get_profile_image, size: "50x50" %>
+                <%= link_to member.display_name, admin_member_path(member.id) %>
+              </td>
               <td><%= member.user_name %></td>
   　　　    　　<% if member.is_deleted == true %>
               <td class="text-secondary font-weight-bold">退会</td>
