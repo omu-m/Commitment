@@ -18,10 +18,17 @@ class Public::CommentsController < ApplicationController
     @comment_reply = @subtask.comments.new
     @comment = current_member.comments.find_by(id: params[:id])
     if @comment.present?
-      @comment.destroy
-      flash.now[:notice] = "コメントを削除しました。"
+      if params[:reply_id].present?
+        #replyの削除
+        Comment.find(params[:reply_id]).destroy
+        flash.now[:notice] = "リプライを削除しました。"
+      else
+        #コメントの削除
+        @comment.destroy
+        flash.now[:notice] = "コメントを削除しました。"
+      end
     else
-      flash.now[:notice] = "コメントを削除出来ませんでした。"
+      flash.now[:notice] = "削除出来ませんでした。"
     end
     @subtask = Subtask.find(params[:subtask_id])
     @comments = @subtask.comments.order(created_at: :desc)
