@@ -8,8 +8,14 @@ class CreateComments < ActiveRecord::Migration[6.1]
       t.integer :member_id, null: false
       # コメントを保存するカラム
       t.text :comment, null: false
+      # 親(コメント)IDを保存するカラム
+      t.integer :parent_id
 
       t.timestamps null: false
     end
+
+    # 自身のIDを外部キーとするカラム
+    add_index :comments, :parent_id
+
   end
 end

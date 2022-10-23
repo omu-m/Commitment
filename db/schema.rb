@@ -58,8 +58,10 @@ ActiveRecord::Schema.define(version: 2022_10_19_055925) do
     t.integer "subtask_id", null: false
     t.integer "member_id", null: false
     t.text "comment", null: false
+    t.integer "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
   end
 
   create_table "favorites", force: :cascade do |t|

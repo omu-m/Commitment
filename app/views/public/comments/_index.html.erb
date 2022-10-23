@@ -2,7 +2,7 @@
 <hr>
 <!--コメントが3件以上の場合、残りのコメントをプルダウンで表示するボタンの作成-->
 <% if comments.length  > 3 %>
-  <% comments.each_with_index  do |comment, index| %>
+  <% comments.where(parent_id: nil).each_with_index  do |comment, index| %>
     <%if index + 1 < 4 %>
       <%= render "public/comments/hide_comments", comment: comment %>
     <%else %>
@@ -19,7 +19,7 @@
       </button>
     </div>
   <%else%>
-  <% comments.each do |comment| %>
+  <% comments.where(parent_id: nil).each do |comment| %>
     <%= render "public/comments/hide_comments", comment: comment %>
   <% end %>
 <%end%>

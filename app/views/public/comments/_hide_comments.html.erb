@@ -11,6 +11,29 @@
       </div>
     <% end %>
   </div>
-  <div class="p-2 bd-highlight"><%=  I18n.l(comment.created_at, format: :custom) %></div>
+  <div class="p-2 bd-highlight"><%= I18n.l(comment.created_at, format: :custom) %></div>
   <div class="p-2 bd-highlight"><%= comment.member.display_name %></div>
 </div>
+<% comment.replies.each do |reply| %>
+  <div class="card">
+    <div class="card-body">
+      <%= reply.comment %>
+    </div>
+  </div>
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <div class="p-2 bd-highlight"><%= I18n.l(reply.created_at, format: :custom) %></div>
+    <div class="p-2 bd-highlight"><%= reply.member.display_name %></div>
+    <div class="p-2 bd-highlight">
+      <% if reply.member == current_member %>
+        <div class="form-group">
+          <%= link_to "削除", task_subtask_comment_path(comment.subtask.task, comment.subtask, comment, reply.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger", remote: true %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<div class="form-group">
+  <%= render "public/comments/reply_form", subtask: @subtask, comment: comment %>
+</div>
+
+

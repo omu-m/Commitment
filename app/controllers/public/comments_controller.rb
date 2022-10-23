@@ -4,6 +4,7 @@ class Public::CommentsController < ApplicationController
     @subtask = Subtask.find(params[:subtask_id])
     @comment = @subtask.comments.new(comment_params)
     @comment.member_id = current_member.id
+    @comment_reply = @subtask.comments.new
     @comments = @subtask.comments.order(created_at: :desc)
     if @comment.save
       flash.now[:notice] = "コメントの投稿に成功しました。"
@@ -13,6 +14,8 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
+    @subtask = Subtask.find(params[:subtask_id])
+    @comment_reply = @subtask.comments.new
     @comment = current_member.comments.find_by(id: params[:id])
     if @comment.present?
       @comment.destroy
@@ -27,6 +30,6 @@ class Public::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.permit(:comment, :subtask_id)
+    params.permit(:comment, :subtask_id, :parent_id)
   end
 end
