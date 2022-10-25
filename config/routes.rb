@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'comments/index'
+  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -8,9 +11,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :members, only: [:index, :show]
-    resources :tasks, only: [:index, :show, :edit]
-    resources :subtasks, only: [:index, :show, :edit]
+    resources :members, only: [:index, :show, :edit, :update]
+    resources :tasks, only: [:index, :show, :update, :destroy] do
+      resources :subtasks, only: [:index, :show, :destroy] do
+        resources :comments, only: [:destroy]
+      end
+      get "index" => "comments#index"
+    end
   end
 
   # 会員用
@@ -31,12 +38,21 @@ Rails.application.routes.draw do
     get "/members/unsubscribe" => "members#unsubscribe", as: "confirm_unsubscribe"
     put "/members/information" => "members#update"
     patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
+    get "members/:id/task_favorites" => "members#task_favorites", as: "task_favorites"
 
     resources :tasks, only: [:index, :show, :create, :edit, :update, :destroy] do
       # 親タスク(グループ)
       get "join" => "tasks#join"
+      delete "out" => "tasks#out"
       delete "all_destroy" => "tasks#all_destroy"
-      resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy]
+      resource :task_favorites, only: [:create, :destroy]
+      resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy] do
+        get "search" => "subtasks#search"
+        # リロードをするとルーティングエラーになる。
+        # post "search" => "subtasks#search"
+        resource :favorites, only: [:create, :destroy]
+        resources :comments, only: [:create, :destroy]
+      end
     end
   end
 

@@ -1,6 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
+      <%= render "search", keyword: @keyword, task: @task %>
       <h2 class="mt-4">子タスク投稿</h2>
       <%= render "form", subtask: @subtask %>
     </div>

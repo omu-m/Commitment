@@ -1,11 +1,6 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-3'>
-      <h2 class="mt-3">親タスク投稿</h2>
-      <%= render 'form', task: @tasknew %>
-    </div>
-
-    <div class='col-md-8 offset-md-1'>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
   		<h2>親タスク詳細</h2>
   		<table class="table table-hover table-inverse">
         <thead>
@@ -29,12 +24,21 @@
   		    <td><%= @task.task_title %></td>
           <td><%= @task.task_content %></td>
           <td>
+            <% unless current_member.email == "guest@example.com" %>
             <!--タスク(グループ)に参加していると子タスク一覧が表示されるようになる仕様。-->
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              メンバー
+            </a>
+            <% end %>
             <% memberids = [] %>
             <% @task.members.each do |member| %>
-            <% memberids.push(member.id) %>
-            <%= image_tag member.get_profile_image, size: "50x50" %>
-            <%= member.display_name %>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <% memberids.push(member.id) %>
+                <%= image_tag member.get_profile_image, size: "50x50" %>
+                <%= member.display_name %>
+              </div>
+            </div>
             <% end %>
           </td>
           <td>
@@ -42,15 +46,17 @@
             <%= link_to "子タスク一覧", task_subtasks_path(@task), class: "btn btn-sm btn-success" %>
             <% end %>
           </td>
+          <% unless current_member.email == "guest@example.com" %>
           <td>
             <% if @task.owner_id == current_member.id %>
               <%= link_to "編集", edit_task_path(@task), class: "btn btn-sm btn-danger" %>
             <% elsif @task.members.include?(current_member) %>
-              <%= link_to "退出", task_path(@task), method: :delete, class: "btn btn-sm btn-danger" %>
+              <%= link_to "退出", task_out_path(@task), method: :delete, class: "btn btn-sm btn-danger" %>
             <% else %>
               <%= link_to "参加", task_join_path(@task), class: "btn btn-sm btn-success" %>
             <% end %>
           </td>
+          <% end %>
         </tr>
       </table>
     </div>

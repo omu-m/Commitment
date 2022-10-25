@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_17_024418) do
+ActiveRecord::Schema.define(version: 2022_10_19_055925) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2022_10_17_024418) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "display_name", null: false
+    t.string "user_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -57,6 +58,15 @@ ActiveRecord::Schema.define(version: 2022_10_17_024418) do
     t.integer "subtask_id", null: false
     t.integer "member_id", null: false
     t.text "comment", null: false
+    t.integer "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "subtask_id", null: false
+    t.integer "member_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -81,6 +91,13 @@ ActiveRecord::Schema.define(version: 2022_10_17_024418) do
     t.integer "member_id", null: false
     t.text "subtask_content", null: false
     t.integer "progress_status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "task_favorites", force: :cascade do |t|
+    t.integer "task_id", null: false
+    t.integer "member_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

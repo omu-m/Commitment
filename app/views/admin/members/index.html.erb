@@ -1,2 +1,35 @@
-<h1>Admin::Members#index</h1>
-<p>Find me in app/views/admin/members/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h2 class="mt-4">会員一覧</h2>
+
+      <table class="table table-hover">
+        <thead class="table-active">
+          <tr>
+            <th>会員ID</th>
+            <th>表示名</th>
+            <th>ユーザーネーム</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <% @members.each do |member| %>
+          <tbody>
+            <tr>
+              <td><%= member.id %></td>
+              <td>
+                <%= image_tag member.get_profile_image, size: "50x50" %>
+                <%= link_to member.display_name, admin_member_path(member.id) %>
+              </td>
+              <td><%= member.user_name %></td>
+  　　　    　　<% if member.is_deleted == true %>
+              <td class="text-secondary font-weight-bold">退会</td>
+            <% else %>
+              <td class="text-success font-weight-bold">有効</td>
+            <% end %>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

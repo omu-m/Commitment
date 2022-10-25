@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-body">
+    <%= comment.comment %>
+  </div>
+</div>
+<div class="d-flex flex-row-reverse bd-highlight">
+  <div class="p-2 bd-highlight">
+    <div class="form-group">
+      <%= link_to "削除", admin_task_subtask_comment_path(comment.subtask.task, comment.subtask, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger" %>
+    </div>
+  </div>
+  <div class="p-2 bd-highlight"><%= l comment.created_at %></div>
+  <div class="p-2 bd-highlight"><%= comment.member.display_name %></div>
+  <div class="p-2 bd-highlight"><%= image_tag comment.member.get_profile_image, size: "30x30" %></div>
+</div>

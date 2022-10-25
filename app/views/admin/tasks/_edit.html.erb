@@ -1,0 +1,29 @@
+<div class='row'>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h1>Editing</h1>
+  	<%= form_with model: @task, url: admin_task_path, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :task_title, autofocus: true, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :Content %>
+        <%= f.text_area :task_content, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :グループ画像 %>
+        <img id="preview" src="/assets/no_image.jpeg" class="member-icon" style="width: 100px; height: 100px">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+      <div class="form-group">
+          <%= f.label :owner_id %>
+          <%= f.select :owner_id, options_from_collection_for_select( @task.members.where.not(id: @task.owner_id), :id, :display_name), { include_blank: "オーナーを変更したい場合は選択"}
+ %>
+        </div>
+      <div class="form-group">
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+        <%= link_to "削除", admin_task_path(@task), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
+</div>

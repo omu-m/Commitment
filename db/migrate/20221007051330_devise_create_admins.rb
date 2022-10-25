@@ -34,6 +34,8 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
 
       # 表示名を保存するカラム
       t.string :display_name, null: false
+      # ユーザーネームを保存するカラム
+      t.string :user_name, null: false
 
       t.timestamps null: false
     end

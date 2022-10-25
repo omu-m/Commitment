@@ -6,12 +6,20 @@ class Member < ApplicationRecord
 
   has_many :task_members, dependent: :destroy
   has_many :tasks, through: :task_members
+  has_many :tasks, dependent: :destroy
+  has_many :task_favorites, dependent: :destroy
   has_many :subtasks, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   validates :display_name, presence: true
   validates :user_name, presence: true, uniqueness: true, format: { with: /\A[a-z0-9]+\z/, message: "は半角英数字で入力してください。" }
   validates :email, presence: true, uniqueness: true
+
+  # 名称が部分一致する
+  scope :display_name_like, -> name {
+    where('display_name like ?', "%#{name}%")
+  }
 
   has_one_attached :profile_image
 

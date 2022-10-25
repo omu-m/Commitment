@@ -2,14 +2,17 @@ class Public::TasksController < ApplicationController
 
   # 親タスクをグループとして作成しています。
   before_action :authenticate_member!
+  before_action :authenticate_user, only: [:create, :update, :destroy, :all_destroy]
   before_action :ensure_correct_member, only: [:edit, :update]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.page(params[:page])
     @task = Task.new
+    @tasks = @tasks.order(created_at: :desc)
   end
 
   def create
+
     @task = Task.new(task_params)
     @task.owner_id = current_member.id
     # @task.membersに、current_memberを追加しているという記述。
@@ -29,10 +32,17 @@ class Public::TasksController < ApplicationController
     @tasknew = Task.new
   end
 
-  # 参加／退出
+  # 参加
   def join
     @task = Task.find(params[:task_id])
     @task.members << current_member
+    redirect_to  task_subtasks_path(@task)
+  end
+
+  # 退出
+  def out
+    @task = Task.find(params[:task_id])
+    @task.members.delete(current_member)
     redirect_to  tasks_path
   end
 
@@ -40,6 +50,10 @@ class Public::TasksController < ApplicationController
   end
 
   def update
+    @task = Task.find(params[:id])
+    if nil != (params[:task][:owner_id] =~ /\A[0-9]+\z/)
+      @task.owner_id = params[:task][:owner_id]
+    end
     if @task.update(task_params)
       flash[:notice] = "親タスクが正常に編集されました。"
       redirect_to tasks_path

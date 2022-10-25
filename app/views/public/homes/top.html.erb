@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-      <h1>welcome to <strong>Commitment.</strong>  !!</h1>
+      <h1 class="text-center"><strong>Commitment.</strong></h1>
       <div class="text-center">
+        <br>
         <p>Commitment.は、コミュニティ×タスク管理のWEBサービスです。</p>
         <br>
         <p>チーム内のタスク進捗を見える化し共有し、お互いの作業内容を把握して協力しながら進めることができます。</p>
@@ -11,16 +12,16 @@
       </div>
       <div class="btn-wrapper col-10 mx-auto">
         <div class="row">
-          <%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+          <%= link_to "もっと詳しく", about_path, class: "btn btn-outline-dark btn-sm btn-block mb-3 About" %>
         </div>
         <div class="row">
-          <%= link_to "ログイン", new_member_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+          <%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
         </div>
         <div class="row">
-          <%= link_to "新規登録", new_member_registration_path, class: "btn btn-success btn-sm btn-block mb-3 sign_up" %>
+          <%= link_to "ログイン", new_member_session_path, class: "btn btn-outline-primary btn-sm btn-block mb-3 sign_in" %>
         </div>
         <div class="row">
-          <%= link_to "About", about_path, class: "btn btn-dark btn-sm btn-block" %>
+          <%= link_to "新規登録", new_member_registration_path, class: "btn btn-outline-success btn-sm btn-block sign_up" %>
         </div>
       </div>
     </div>

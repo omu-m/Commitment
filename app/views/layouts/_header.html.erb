@@ -1,64 +1,77 @@
-<header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
-    <div class="container">
-      <a class="navbar-brand p-3" href="/">Commitment.</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-        <!--管理者側/ログイン後-->
-        <% if admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "親タスク一覧", admin_tasks_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "子タスク一覧", admin_subtasks_path, class: "nav-link text-dark" %>
-          </li>
-          <li class="nav-item">
-            <!--<= link_to "コメント一覧", , class: "nav-link text-light" >-->
-          </li>
-          <li class="nav-item">
-            <%= link_to "会員一覧", admin_members_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light" %>
-          </li>
+<nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
+  <div class="container">
+    <a class="navbar-brand p-3" href="/">Commitment.</a>
+    <script src="https://kit.fontawesome.com/801a1ac1e5.js" crossorigin="anonymous"></script>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+      <!--管理者側/ログイン後-->
+      <% if admin_signed_in? %>
+        <li class="navbar-brand p-3"><%= current_admin.display_name %></li>
+        <li class="nav-item text-center">
+          <%= link_to admin_tasks_path, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-list-check"></i><br>タスク一覧
+          <% end %>
+        </li>
+        <li class="nav-item text-center">
+          <%= link_to admin_comments_index_path, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-comment-dots"></i><br>コメント一覧
+          <% end %>
+        </li>
+        <li class="nav-item text-center">
+          <%= link_to admin_members_path, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-user"></i><br>会員一覧
+          <% end %>
+        </li>
+        <li class="nav-item text-center">
+          <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-right-from-bracket"></i><br>ログアウト
+          <% end %>
+        </li>
 
-        <!--会員側/ログイン後-->
-        <% elsif member_signed_in? %>
-          <li><%= current_member.display_name %>さん</li>
-          <li class="nav-item">
-            <%= link_to "マイページ", mypage_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "親タスク一覧", tasks_path, class: "nav-link text-light" %>
-          </li>
-          <!--<li class="nav-item">-->
-          <!--  <= link_to "子タスク一覧", task_subtasks_path, class: "nav-link text-light" %>-->
-          <!--</li>-->
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "nav-link text-light" %>
-          </li>
-
-  　　　　　<!--共通/ログイン前-->
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "About", about_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "親タスク", tasks_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "新規登録", new_member_registration_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-          <%= link_to "ログイン", new_member_session_path, class: "nav-link text-light" %>
-          </li>
+      <!--会員側/ログイン後-->
+      <% elsif member_signed_in? %>
+        <li class="navbar-brand p-3"><%= current_member.display_name %>さん</li>
+        <% unless current_member.email == "guest@example.com" %>
+        <li class="nav-item text-center">
+          <%= link_to mypage_path, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-user"></i><br>マイページ
+          <% end %>
+        </li>
         <% end %>
-        </ul>
-      </div>
+        <li class="nav-item text-center">
+          <%= link_to tasks_path, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-list-check"></i><br>タスク一覧
+          <% end %>
+        </li>
+        <li class="nav-item text-center">
+          <%= link_to destroy_member_session_path, method: :delete, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-right-from-bracket"></i><br>ログアウト
+          <% end %>
+        </li>
+
+　　　　　<!--共通/ログイン前-->
+      <% else %>
+        <li class="nav-item text-center">
+          <%= link_to members_guest_sign_in_path, method: :post, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-user"></i><br>ゲストログイン
+          <% end %>
+        </li>
+        <li class="nav-item text-center">
+          <%= link_to new_member_registration_path, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-user-plus"></i><br>新規登録
+          <% end %>
+        </li>
+        <li class="nav-item text-center">
+          <%= link_to new_member_session_path, class: "nav-link text-light" do %>
+            <i class="fa-solid fa-right-to-bracket"></i><br>ログイン
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
