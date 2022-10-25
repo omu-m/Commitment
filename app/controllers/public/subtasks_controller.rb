@@ -7,7 +7,7 @@ class Public::SubtasksController < ApplicationController
     @task = Task.find(params[:task_id])
     @subtasks = @task.subtasks.all
     @subtask = Subtask.new
-    @subtasks = @subtasks.order(created_at: :desc)
+    @subtasks = @subtasks.order(updated_at: :desc)
   end
 
   def create
