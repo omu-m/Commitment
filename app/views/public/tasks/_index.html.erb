@@ -2,8 +2,7 @@
   <thead>
     <tr>
       <th></th>
-      <th>親タスク</th>
-      <th>内容</th>
+      <th>タスク</th>
       <th>メンバー</th>
       <th>お気に入り</th>
       <th>達成率</th>
@@ -19,8 +18,7 @@
             <%= image_tag 'no_image', size: "50x50" %>
           <% end %>
         </td>
-        <td><%= link_to task.task_title, task_path(task) %></td>
-        <td><%= task.task_content %></td>
+        <td><%= link_to task.task_title.truncate(10), task_path(task) %></td>
         <td><%= task.members.count %></td>
         <!--task_favorites非同期-->
         <td id="task_favorite_<%= task.id %>">
