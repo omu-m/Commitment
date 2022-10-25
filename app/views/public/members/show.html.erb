@@ -38,6 +38,12 @@
             <th><%= link_to "お気に入り",  task_favorites_path(@member), class: "btn btn-primary" %></th>
             <% end %>
           </tr>
+          <tr>
+            <th>タスクグループ</th>
+            <% unless current_member.email == "guest@example.com" %>
+            <th><%= link_to "一覧",  tasks_path(member_id: @member.id), class: "btn btn-primary" %></th>
+            <% end %>
+          </tr>
         </table>
       </div>
     </div>

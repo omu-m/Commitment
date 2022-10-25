@@ -63,6 +63,8 @@ gem 'rails-i18n'
 
 gem 'kaminari','~> 1.2.1'
 
+gem 'order_as_specified'
+
 # デプロイ
 gem 'dotenv-rails'
 group :production do
