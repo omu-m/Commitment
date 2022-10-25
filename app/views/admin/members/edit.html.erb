@@ -29,7 +29,7 @@
           <%= f.label :email, "メールアドレス" %>
           <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
         </div>
-        <div class="field mb-4">
+        <div class="field text-white mb-4">
           <pre>
           <%= f.radio_button :is_deleted, false, checked: true %>有効　　　　　　　　　　　　　　　<%= f.radio_button :is_deleted, true%>退会
           </pre>
