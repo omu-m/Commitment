@@ -6,13 +6,19 @@ class Public::TasksController < ApplicationController
   before_action :ensure_correct_member, only: [:edit, :update]
 
   def index
-    @tasks = Task.page(params[:page])
+    subtask_id = Subtask.order(updated_at: :desc).pluck(:task_id).uniq
+    if params[:member_id].present?
+      @tasks_id = TaskMember.where(member_id: params[:member_id]).pluck(:task_id)
+      @tasks = Task.where(id: @tasks_id).page(params[:page])
+    else
+      @tasks = Task.page(params[:page])
+    end
     @task = Task.new
-    @tasks = @tasks.order(created_at: :desc)
+    @tasks = @tasks.order_as_specified(id: subtask_id)
+
   end
 
   def create
-
     @task = Task.new(task_params)
     @task.owner_id = current_member.id
     # @task.membersに、current_memberを追加しているという記述。
@@ -22,7 +28,7 @@ class Public::TasksController < ApplicationController
       redirect_to tasks_path
     else
       flash[:notice] = "親タスクの作成に失敗しました。"
-      @tasks = Task.all
+      @tasks = Task.page(params[:page])
       render "index"
     end
   end
