@@ -7,6 +7,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +17,7 @@
           <%= image_tag subtask.member.get_profile_image, size: "50x50" %>
           <%= subtask.member.display_name %>
         </td>
-        <td><%= subtask.subtask_content %></td>
+        <td><%= subtask.subtask_content.truncate(8) %></td>
         <td><%= link_to subtask.progress_status, task_subtask_path(@task, subtask) %></td>
         <!--favorites非同期-->
         <td id="favorite_">
@@ -28,10 +29,13 @@
           <%= render "public/comments/count", subtask: subtask %>
         <td>
           <% if subtask.member_id == current_member.id %>
-            <%= link_to "編集", edit_task_subtask_path(@task, subtask.id), class: "btn btn-sm btn-danger" %>
+            <%= link_to "編集", edit_task_subtask_path(@task, subtask.id), class: "btn btn-sm btn-outline-danger" %>
           <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<div class="text-center">
+  <%= paginate subtasks %>
+</div>

@@ -1,5 +1,5 @@
 <% if @task.errors.any? %>
-<%= @task.errors.count %>errors prohibited this obj from being saved:
+<%= @task.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
   <ul>
     <% @task.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -8,21 +8,21 @@
 <% end %>
 <%= form_with model: task, local: true do |f| %>
   <div class="form-group">
-    <%= f.label :タスク画像 %>
-    <img id="preview" src="/assets/no_image.jpeg" class="member-icon" style="width: 100px; height: 100px">
-    <%= f.file_field :image, accept: "image/*" %>
-  </div>
-  <div class="form-group">
     <%= f.label :タスク %>
-    <%= f.text_field :task_title, class: "form-control" %>
+    <%= f.text_field :task_title, autofocus: true, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :内容 %>
     <%= f.text_area :task_content, class: "form-control" %>
   </div>
+  <div class="form-group">
+    <%= f.label :タスク画像 %>
+    <img id="preview" src="/assets/no_image.jpeg" class="member-icon" style="width: 100px; height: 100px">
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
   <% unless current_member.email == "guest@example.com" %>
   <div class="form-group">
-    <%= f.submit "作成", class: "btn btn-secondary btn-block" %>
+    <%= f.submit "作成", class: "btn btn-outline-secondary btn-block" %>
   </div>
   <% end %>
 <% end %>
