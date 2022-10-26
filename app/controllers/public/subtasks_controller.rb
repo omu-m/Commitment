@@ -5,7 +5,7 @@ class Public::SubtasksController < ApplicationController
 
   def index
     @task = Task.find(params[:task_id])
-    @subtasks = @task.subtasks.all
+    @subtasks = @task.subtasks.page(params[:page])
     @subtask = Subtask.new
     @subtasks = @subtasks.order(updated_at: :desc)
   end
@@ -20,7 +20,7 @@ class Public::SubtasksController < ApplicationController
     else
       flash[:notice] = "子タスクの投稿に失敗しました。"
       @task = Task.find(params[:task_id])
-      @subtasks = Subtask.all
+      @subtasks = Subtask.page(params[:page])
       render "index"
     end
   end
