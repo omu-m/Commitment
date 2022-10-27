@@ -2,10 +2,9 @@
   <!--エラーメッセージ-->
   <!--<= render 'layouts/error_messages', model: f.object %>-->
   <div class="form-group">
-    <%= f.label :コメントを投稿する %>
-    <%= f.text_area :comment, :size => "3x3", placeholder: "コメントを入力してください", class: "form-control" %>
+    <%= f.text_area :comment, :size => "3x3", placeholder: "コメントを入力してください", autofocus: true, class: "form-control" %>
   </div>
-  <div class="text-right">
-    <%= f.submit "コメントする", class: "btn btn-warning text-white" %>
+  <div class="text-center my-4">
+    <%= f.submit "投稿する", class: "btn btn-outline-secondary px-5" %>
   </div>
 <% end %>

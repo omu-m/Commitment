@@ -12,6 +12,12 @@
     <% end %>
 
     <%= form_with model: @subtask, url: task_subtask_path(@task.id, @subtask.id), local: true do |f| %>
+      <div class="form-group text-center">
+        <%= f.label :進捗 %><br>
+        <%= f.select :progress_status, Subtask.progress_statuses.keys %>
+        <%= f.submit "更新", class: "btn btn-outline-primary ml-5" %>
+      </div>
+      <hr>
       <div class="form-group">
         <%= f.label :サブタスク %>
         <%= f.text_area :subtask_content, autofocus: true, class: "form-control" %>
