@@ -15,7 +15,7 @@
           <% if task.image.attached? %>
             <%= image_tag task.image, size: "50x50" %>
           <% else %>
-            <%= image_tag 'no_image', size: "50x50" %>
+            <%= image_tag 'no_image.jpg', size: "50x50" %>
           <% end %>
         </td>
         <td><%= link_to task.task_title.truncate(10), task_path(task) %></td>
