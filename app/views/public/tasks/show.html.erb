@@ -48,14 +48,14 @@
           </tr>
         </thead>
       </table>
-      <table class="mt-5", align="center" border="1" width="750" height="400">
+      <table class="mt-5", align="center" border="1" width="750" height="500">
         <tr>
-          <th class="table-active text-center", width="20%" height="15%">タスク</th>
+          <th class="table-active text-center", width="20%" height="10%">タスク</th>
           <td class="text-center" style="word-break: break-all;"><%= @task.task_title %></td>
         </tr>
         <tr>
-          <th class="table-active text-center", width="20%" height="85%">詳細</th>
-          <td class="text-left", valign="top", style="word-break: break-all;"><%= @task.task_content %></td>
+          <th class="table-active text-center", width="20%" height="90%">詳細</th>
+          <td class="text-left", valign="top", style="display: block; overflow-y:scroll; height:450px; word-break: break-all;"><%= @task.task_content %></td>
         </tr>
         </tr>
       </table>

@@ -16,7 +16,7 @@ ja: #日本語の設定を行う
     attributes:
       task:
         task_title: "タスク"
-        task_content: "内容"
+        task_content: "詳細"
       subtask:
-        subtask_content: "内容"
+        subtask_content: "サブタスク"
 
