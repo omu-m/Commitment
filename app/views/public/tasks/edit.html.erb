@@ -1,40 +1,50 @@
-<div class='container'>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 my-4 mt-5">
 
-  <% if @task.errors.any? %>
-  <%= @task.errors.count %>errors prohibited this obj from being saved:
-    <ul>
-      <% @task.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+    <% if @task.errors.any? %>
+    <%= @task.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<%= form_with model: @task, local: true do |f| %>
-  		  <div class="form-group">
-          <%= f.label :タスク画像 %>
-          <img id="preview" src="/assets/no_image.jpeg" class="member-icon" style="width: 100px; height: 100px">
-          <%= f.file_field :image, accept: "image/*" %>
-        </div>
         <div class="form-group">
           <%= f.label :タスク %>
           <%= f.text_field :task_title, autofocus: true, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :内容 %>
+          <%= f.label :詳細 %>
           <%= f.text_area :task_content, class: "form-control" %>
         </div>
         <div class="form-group">
+          <%= f.label :タスク画像（変更する場合は選択してください） %><br>
+          <img id="preview" src="/assets/no_image.jpeg" class="member-icon" style="width: 100px; height: 100px">
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+        <div class="form-group">
           <%= f.label :オーナー %><br>
-          <%= f.select :owner_id, options_from_collection_for_select( @task.members.where.not(id: @task.owner_id), :id, :display_name), { include_blank: "変更したい場合は選択してください"}
+          <%= f.select :owner_id, options_from_collection_for_select( @task.members.where.not(id: @task.owner_id), :id, :display_name), { include_blank: "変更する場合は選択してください"}
  %>
         </div>
         <div class="form-group text-center">
-          <%= f.submit "変更を保存", class: "btn btn-secondary" %>
-          <%= link_to "削除", task_all_destroy_path(@task), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+          <%= f.submit "変更を保存", class: "btn btn-outline-secondary mr-5" %>
+          <%= link_to "削除", task_all_destroy_path(@task), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-5 px-4" %>
         </div>
       <% end %>
   	</div>
   </div>
 </div>
+
+<script>
+  $('#task_image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+</script>

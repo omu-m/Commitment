@@ -8,7 +8,7 @@
 <% end %>
 <%= form_with model: @subtask, url: task_subtasks_path(@task.id), local: true do |f| %>
   <div class="form-group">
-    <%= f.label :内容 %>
+    <%= f.label :サブタスク %>
     <%= f.text_area :subtask_content, autofocus: true, class: "form-control" %>
   </div>
   <div class="form-group">
