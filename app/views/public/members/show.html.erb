@@ -33,13 +33,19 @@
           <tr>
             <th>
               <% unless current_member.email == "guest@example.com" %>
-                <%= link_to "タスクグループ一覧",  tasks_path(member_id: @member.id), class: "btn btn-primary" %>
+                <%= link_to "参加タスク",  tasks_path(member_id: @member.id), class: "btn btn-primary" %>
               <% end %>
             </th>
             <th>
               <% unless current_member.email == "guest@example.com" %>
-                <%= link_to "タスクお気に入り一覧",  task_favorites_path(@member), class: "btn btn-primary" %>
+                <%= link_to "お気に入りタスク",  task_favorites_path(@member), class: "btn btn-primary" %>
               <% end %>
+            </th>
+            <th>
+              <% unless current_member.email == "guest@example.com" %>
+                <%#= link_to "いいねサブタスク",  subtask_favorites_path(@member), class: "btn btn-primary" %>
+              <% end %>
+            </th>
           </tr>
         </thead>
       </table>
