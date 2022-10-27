@@ -34,10 +34,10 @@ class Public::SubtasksController < ApplicationController
   end
 
   def show
+    @task = Task.find(params[:task_id])
     @subtask = Subtask.find(params[:id])
     # order(created_at: :desc)を付与することで、コメントを新着順（降順）で表示することができる。
     @comments = @subtask.comments.order(created_at: :desc)
-
   end
 
   def edit
@@ -49,7 +49,7 @@ class Public::SubtasksController < ApplicationController
       redirect_to task_subtasks_path(@subtask.task_id)
     else
       flash[:notice] = "子タスクの編集に失敗しました。"
-      render "show"
+      render "edit"
     end
   end
 

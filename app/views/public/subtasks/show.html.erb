@@ -4,30 +4,31 @@
   		<table class="table table-hover table-inverse">
         <thead>
           <tr>
+            <th></th>
             <th>
-              <%= image_tag @subtask.member.get_profile_image, size: "50x50" %>
+              <%= image_tag @subtask.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
               <%= @subtask.member.display_name %>
             </th>
-            <th></th>
-            <th></th>
-            <th>進捗
-              <%= form_with model: [@subtask.task, @subtask], local: true do |f| %>
-              	<%= f.select :progress_status, Subtask.progress_statuses.keys %>
-                  <% if @subtask.member_id == current_member.id %>
-              	    <%= f.submit "更新", class: "btn btn-outline-danger" %>
-              	  <% end %>
-          	  <% end %>
+            <th>
+              <%= @subtask.progress_status %>
+              <% if @subtask.member_id == current_member.id %>
+                <%= link_to "更新/編集", edit_task_subtask_path(@task, @subtask), class: "btn btn-outline-primary ml-3" %>
+              <% end %>
             </th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td><%= @subtask.subtask_content %></td>
-            <td></td>
-          </tr>
+         <table class="mt-5", align="center" border="1" width="750">
+        <tr>
+          <th class="table-active text-center", width="20%">サブタスク</th>
+          <td class="text-left", valign="top", style="display: block; overflow-y:scroll; height:200px; word-break: break-all;">
+            <%= safe_join(@subtask.subtask_content.split("\n"),tag(:br)) %>
+          </td>
+        </tr>
+        </tr>
       </table>
       <!--comments非同期-->
-      <div class="form-group">
+      <div class="form-group　my-4 mt-5">
+        <hr>
         <%= render "public/comments/form", subtask: @subtask, comment: @comment %>
       </div>
       <div id="comments-area">
