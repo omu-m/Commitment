@@ -7,7 +7,7 @@ class Task < ApplicationRecord
   has_many :members, through: :task_members
   has_many :task_favorites, dependent: :destroy
 
-  validates :task_title, presence: true
+  validates :task_title, presence: true, length: { maximum: 30 }
   validates :task_content, presence: true
 
   has_one_attached :image
