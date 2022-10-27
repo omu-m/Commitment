@@ -1,33 +1,29 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-10 offset-md-1">
-  		<h2>子タスク詳細</h2>
+    <div class="col-md-10 offset-md-1 my-4 mt-5">
   		<table class="table table-hover table-inverse">
         <thead>
           <tr>
-            <th>メンバー</th>
-            <th>内容</th>
+            <th>
+              <%= image_tag @subtask.member.get_profile_image, size: "50x50" %>
+              <%= @subtask.member.display_name %>
+            </th>
             <th></th>
-            <th>進捗</th>
-            <th colspan="3"></th>
+            <th></th>
+            <th>進捗
+              <%= form_with model: [@subtask.task, @subtask], local: true do |f| %>
+              	<%= f.select :progress_status, Subtask.progress_statuses.keys %>
+                  <% if @subtask.member_id == current_member.id %>
+              	    <%= f.submit "更新", class: "btn btn-outline-danger" %>
+              	  <% end %>
+          	  <% end %>
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
-              <%= image_tag @subtask.member.get_profile_image, size: "50x50" %>
-              <%= @subtask.member.display_name %>
-            </td>
             <td><%= @subtask.subtask_content %></td>
             <td></td>
-            <td>
-    	      	<%= form_with model: [@subtask.task, @subtask], local: true do |f| %>
-              	<%= f.select :progress_status, Subtask.progress_statuses.keys %>
-                  <% if @subtask.member_id == current_member.id %>
-              	    <%= f.submit "更新", class: "btn btn-success" %>
-              	  <% end %>
-          	  <% end %>
-            </td>
           </tr>
       </table>
       <!--comments非同期-->
