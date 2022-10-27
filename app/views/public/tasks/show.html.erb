@@ -48,12 +48,14 @@
           </tr>
         </thead>
       </table>
-      <table class="table table-bordered">
+      <table class="mt-5", align="center" border="1" width="750" height="400">
         <tr>
-          <th class="table-active">タスク</th><td><%= @task.task_title %></td>
+          <th class="table-active text-center", width="20%" height="15%">タスク</th>
+          <td class="text-center" style="word-break: break-all;"><%= @task.task_title %></td>
         </tr>
         <tr>
-          <th class="table-active">内容</th><td><%= @task.task_content %></td>
+          <th class="table-active text-center", width="20%" height="85%">詳細</th>
+          <td class="text-left", valign="top", style="word-break: break-all;"><%= @task.task_content %></td>
         </tr>
         </tr>
       </table>
