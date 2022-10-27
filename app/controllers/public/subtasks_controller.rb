@@ -27,7 +27,7 @@ class Public::SubtasksController < ApplicationController
 
   def search
     @task = Task.find(params[:task_id])
-    @subtasks = @task.subtasks.search(params[:keyword])
+    @subtasks = @task.subtasks.search(params[:keyword]).page(params[:page])
     @keyword = params[:keyword]
     @subtask = Subtask.new
     render "index"

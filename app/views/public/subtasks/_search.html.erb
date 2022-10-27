@@ -1,8 +1,9 @@
 <%= form_with url: task_subtask_search_path(task, 1), method: :get, local: true do |f| %>
   <div class="form-group">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <%= f.text_field :keyword, value: keyword, placeholder: "キーワード" %>
-    <%= f.submit "検索", class: "btn btn-warning text-white" %>
+    <%= f.text_field :keyword, value: keyword, placeholder: "キーワード", :size=>"30" %>
+    <button type="submit" class="btn btn-warning text-white">
+      <i class="fas fa-search"></i> 検索
+    </button>
   </div>
 <% end %>
 <!--URLの文字をスマートにする方法-->
