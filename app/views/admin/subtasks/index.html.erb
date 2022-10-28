@@ -1,30 +1,36 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-8 mx-auto">
-      <h2 class="mt-4">子タスク一覧</h2>
-
+    <div class="col-md-2 offset-md-1 mt-4">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>サブタスク一覧</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-md-10 offset-md-1">
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th>メンバー</th>
-            <th>内容</th>
+            <th>サブタスク</th>
+            <th></th>
+            <th></th>
             <th>進捗</th>
-            <th></th>
-            <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
           <% @subtasks.each do |subtask| %>
             <tr>
               <td>
-                <%= image_tag subtask.member.get_profile_image, size: "50x50" %>
+                <%= image_tag subtask.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
                 <%= subtask.member.display_name.truncate(10) %>
               </td>
-              <td><%= subtask.subtask_content.truncate(10) %></td>
-              <td><%= link_to subtask.progress_status, admin_task_subtask_path(@task, subtask) %></td>
+              <td><%= link_to subtask.subtask_content.truncate(15), admin_task_subtask_path(@task, subtask) %></td>
               <td><i class="fa-solid fa-face-smile"></i> <%= subtask.favorites.count %></td>
               <td><i class="fa-regular fa-comment-dots"></i> <%= subtask.comments.count %></td>
+              <td><%= subtask.progress_status %></td>
             </tr>
           <% end %>
         </tbody>

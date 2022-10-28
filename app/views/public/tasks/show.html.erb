@@ -43,6 +43,14 @@
                 <%= link_to "子タスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
               <% end %>
             </th>
+            <th>
+              達成率
+              <% if @task.subtasks.size.zero? %>
+                0 %
+              <% else %>
+                <%= ((@task.subtasks.where(progress_status: 3).size / @task.subtasks.size.to_f) * 100).round(2)%> %
+              <% end %>
+            </th>
             <% unless current_member.email == "guest@example.com" %>
             <th>
               <% if @task.owner_id == current_member.id %>
