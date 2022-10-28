@@ -39,7 +39,7 @@
             <th>
               <%= link_to "子タスク一覧", admin_task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
             </th>
-            <th>
+            <th class="text-danger font-weight-bold">
               達成率
               <% if @task.subtasks.size.zero? %>
                 0 %

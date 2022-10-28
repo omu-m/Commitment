@@ -18,7 +18,7 @@
               <%= image_tag @subtask.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
               <%= @subtask.member.display_name %>
             </th>
-            <th>
+            <th class="text-danger font-weight-bold">
               <%= @subtask.progress_status %>
             </th>
           </tr>

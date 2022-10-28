@@ -21,6 +21,6 @@ class Admin::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:display_name, :user_name, :email, :is_deleted)
+    params.require(:member).permit(:display_name, :user_name, :email, :is_deleted, :profile_image)
   end
 end

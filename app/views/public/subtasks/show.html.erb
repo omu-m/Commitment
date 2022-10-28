@@ -18,7 +18,7 @@
               <%= image_tag @subtask.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
               <%= @subtask.member.display_name %>
             </th>
-            <th>
+            <th class="text-danger font-weight-bold">
               <%= @subtask.progress_status %>
               <% if @subtask.member_id == current_member.id %>
                 <%= link_to "更新/編集", edit_task_subtask_path(@task, @subtask), class: "btn btn-outline-primary ml-3" %>
