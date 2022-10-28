@@ -1,16 +1,20 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-9 mx-auto">
-      <div class="mb-4　mt-5">
-        <h4><strong>お気に入り一覧</strong></h4>
-      </div>
-
-      <table class='table table-hover table-inverse'>
+    <div class="col-md-2 offset-md-1 mt-5">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>お気に入りタスク</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-md-10 offset-md-1">
+      <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th></th>
-            <th>親タスク</th>
-            <th>内容</th>
+            <th>タスク</th>
             <th>メンバー</th>
             <th>お気に入り</th>
             <th>達成率</th>
@@ -21,13 +25,12 @@
             <tr>
               <td>
                 <% if task.image.attached? %>
-                  <%= image_tag task.image, size: "50x50" %>
+                  <%= image_tag task.image, size: "50x50", style: "border-radius: 50px;" %>
                 <% else %>
-                  <%= image_tag 'no_image', size: "50x50" %>
+                  <%= image_tag "no_image.jpg", size: "50x50", style: "border-radius: 50px;" %>
                 <% end %>
               </td>
-              <td><%= link_to task.task_title, task_path(task) %></td>
-              <td><%= task.task_content %></td>
+              <td><%= link_to task.task_title.truncate(10), task_path(task) %></td>
               <td><%= task.members.count %></td>
               <!--task_favorites非同期-->
               <td id="task_favorite_<%= task.id %>">
@@ -44,6 +47,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="text-center">
+        <%= paginate @task_favorites %>
+      </div>
     </div>
   </div>
 </div>

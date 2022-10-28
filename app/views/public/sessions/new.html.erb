@@ -1,13 +1,29 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-5 px-0 mx-auto">
-      <div class="mb-4 mt-5">
-        <h4><strong>ログイン</strong></h4>
+    <div class="col-md-6 offset-md-3 my-4 mt-5">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>ログイン</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="col-md-8 offset-md-2 mt-5">
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>
+                会員登録がお済みでない方<br>
+                <%= link_to "こちら", new_member_registration_path %>から新規登録を行ってください。
+              </th>
+            </tr>
+          </thead>
+        </table>
       </div>
 
       <%= form_with model: @member, url: member_session_path, local: true do |f| %>
 
-        <div class="field mb-4">
+        <div class="field mb-4 mt-5">
           <%= f.label :user_name, "ユーザーネーム" %>
           <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
         </div>
@@ -17,14 +33,9 @@
         </div>
 
         <div class="actions text-center mb-4 mt-5">
-          <%= f.submit "ログイン", class: "btn btn-secondary" %>
+          <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
         </div>
       <% end %>
-
-      <div class="row mt-5 mb-2">
-       <h6 style="background-color:#EEEEEE">会員登録がお済みでない方</h6>
-      </div>
-     <p class="ml-4"><%= link_to "こちら", new_member_registration_path %>から新規登録を行ってください。</p>
     </div>
   </div>
 </div>

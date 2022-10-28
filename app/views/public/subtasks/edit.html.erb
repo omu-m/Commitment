@@ -22,10 +22,10 @@
         <%= f.label :サブタスク %>
         <%= f.text_area :subtask_content, autofocus: true, class: "form-control" %>
       </div>
-      <div class="form-group text-center">
+      <div class="form-group text-center my-4 mt-5">
         <%= f.submit "変更を保存", class: "btn btn-outline-secondary mr-5" %>
         <% if @subtask.member_id == current_member.id %>
-        <%= link_to "削除", task_subtask_path(@task.id, @subtask.id),method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-5 px-4" %>
+        <%= link_to "削除", task_subtask_path(@task.id, @subtask.id),method: :delete, data: { confirm: "OKを押すと削除されます。本当によろしいですか？" }, class: "btn btn-outline-danger ml-5 px-4" %>
         <% end %>
       </div>
     <% end %>
