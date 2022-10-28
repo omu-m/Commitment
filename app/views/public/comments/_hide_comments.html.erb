@@ -7,7 +7,7 @@
   <div class="p-2 bd-highlight">
     <% if comment.member == current_member %>
       <div class="form-group">
-        <%= link_to "削除", task_subtask_comment_path(comment.subtask.task, comment.subtask, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-outline-danger", remote: true %>
+        <%= link_to "削除", task_subtask_comment_path(comment.subtask.task, comment.subtask, comment), method: :delete, data: {confirm: "OKを押すと削除されます。本当によろしいですか？"}, class: "btn btn-sm btn-outline-danger", remote: true %>
       </div>
     <% end %>
   </div>
@@ -15,6 +15,7 @@
   <div class="p-2 bd-highlight"><%= comment.member.display_name %></div>
   <div class="p-2 bd-highlight"><%= image_tag comment.member.get_profile_image, size: "30x30", style: "border-radius: 50px;" %></div>
 </div>
+
 <% comment.replies.each do |reply| %>
   <div class="card">
     <div class="card-body">
@@ -25,7 +26,7 @@
     <div class="p-2 bd-highlight">
       <% if reply.member == current_member %>
         <div class="form-group">
-          <%= link_to "削除", task_subtask_comment_path(comment.subtask.task, comment.subtask, comment, reply_id: reply.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-outline-danger", remote: true %>
+          <%= link_to "削除", task_subtask_comment_path(comment.subtask.task, comment.subtask, comment, reply_id: reply.id), method: :delete, data: {confirm: "OKを押すと削除されます。本当によろしいですか？"}, class: "btn btn-sm btn-outline-danger", remote: true %>
         </div>
       <% end %>
     </div>
