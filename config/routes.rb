@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     put "/members/information" => "members#update"
     patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
     get "members/:id/task_favorites" => "members#task_favorites", as: "task_favorites"
+    get "members/:id/favorites" => "members#favorites", as: "favorites"
 
     resources :tasks, only: [:index, :show, :create, :edit, :update, :destroy] do
       # 親タスク(グループ)

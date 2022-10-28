@@ -1,13 +1,20 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-10 offset-md-1 my-4 mt-5">
+    <div class="col-md-2 offset-md-1 mt-4">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>マイページ</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-md-10 offset-md-1">
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th style="text-align:right;">
-              <% unless current_member.email == "guest@example.com" %>
               <%= link_to "編集する" , edit_information_path, class: "btn btn-outline-primary" %>
-              <% end %>
             </th>
           </tr>
         </thead>
@@ -28,23 +35,17 @@
         </tr>
         <% end %>
       </table>
-      <table class="table table-hover table-inverse">
+      <table class="table table-hover table-inverse" style="text-align:center;">
         <thead>
           <tr>
             <th>
-              <% unless current_member.email == "guest@example.com" %>
-                <%= link_to "参加タスク",  tasks_path(member_id: @member.id), class: "btn btn-primary" %>
-              <% end %>
+              <%= link_to "お気に入りタスク",  task_favorites_path(@member), class: "btn btn-outline-secondary" %>
             </th>
             <th>
-              <% unless current_member.email == "guest@example.com" %>
-                <%= link_to "お気に入りタスク",  task_favorites_path(@member), class: "btn btn-primary" %>
-              <% end %>
+              <%= link_to "参加タスク",  tasks_path(member_id: @member.id), class: "btn btn-outline-secondary" %>
             </th>
             <th>
-              <% unless current_member.email == "guest@example.com" %>
-                <%#= link_to "いいねサブタスク",  subtask_favorites_path(@member), class: "btn btn-primary" %>
-              <% end %>
+              <%= link_to "いいねサブタスク",  favorites_path(@member), class: "btn btn-outline-secondary" %>
             </th>
           </tr>
         </thead>

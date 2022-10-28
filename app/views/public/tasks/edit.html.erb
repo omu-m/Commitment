@@ -1,6 +1,13 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-6 offset-md-3 my-4 mt-5">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>タスク編集</th>
+          </tr>
+        </thead>
+      </table>
 
     <% if @task.errors.any? %>
     <%= @task.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
@@ -30,9 +37,9 @@
           <%= f.select :owner_id, options_from_collection_for_select( @task.members.where.not(id: @task.owner_id), :id, :display_name), { include_blank: "変更する場合は選択してください"}
  %>
         </div>
-        <div class="form-group text-center">
+        <div class="form-group text-center my-4 mt-5">
           <%= f.submit "変更を保存", class: "btn btn-outline-secondary mr-5" %>
-          <%= link_to "削除", task_all_destroy_path(@task), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger ml-5 px-4" %>
+          <%= link_to "削除", task_all_destroy_path(@task), method: :delete, data: { confirm: "OKを押すと削除されます。本当によろしいですか？" }, class: "btn btn-outline-danger ml-5 px-4" %>
         </div>
       <% end %>
   	</div>
