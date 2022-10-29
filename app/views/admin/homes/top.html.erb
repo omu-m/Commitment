@@ -1,2 +1,49 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-2 offset-md-1 mt-4">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>管理者</th>
+          </tr>
+        </thead>
+      </table>
+      </div>
+   <div class="col-md-9 offset-md-1">
+     <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>ユーザー数</th>
+            <th>有効</th>
+            <th>退会</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @members.count %> 名</td>
+            <td><%= @members.where(is_deleted: false).count %> 名</td>
+           <td><%= @members.where(is_deleted: true).count %> 名</td>
+ </tr>
+        </tbody>
+     </table>
+      <div class="col-md-10 offset-md-1">
+        <table class="table table-hover table-inverse" style="text-align:center;">
+          <thead>
+            <tr>
+              <th>タスク数</th>
+              <th>サブタスク数</th>
+              <th>コメント数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @tasks.count %> 件</td>
+              <td><%= @subtasks.count %> 件</td>
+              <td><%= @comments.count %> 件</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+    </div>
+  </div>
