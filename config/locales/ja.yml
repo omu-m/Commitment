@@ -19,4 +19,11 @@ ja: #日本語の設定を行う
         task_content: "詳細"
       subtask:
         subtask_content: "サブタスク"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
 
