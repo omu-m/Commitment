@@ -1,0 +1,391 @@
+[33mc8dd0c7[m[33m ([m[1;36mHEAD -> [m[1;32mall[m[33m, [m[1;31morigin/all[m[33m)[m HEAD@{0}: rebase (continue) (finish): returning to refs/heads/all
+[33mc8dd0c7[m[33m ([m[1;36mHEAD -> [m[1;32mall[m[33m, [m[1;31morigin/all[m[33m)[m HEAD@{1}: rebase (continue): all
+[33mcdacfb3[m HEAD@{2}: rebase (continue): Revert "all"
+[33mccacab5[m HEAD@{3}: rebase (continue): all
+[33m14b003d[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{4}: rebase (start): checkout develop
+[33m864e3c3[m HEAD@{5}: commit: all
+[33m3dbc5f5[m HEAD@{6}: revert: Revert "all"
+[33m64a3438[m HEAD@{7}: commit (amend): all
+[33mad87c4c[m HEAD@{8}: commit (amend): all
+[33m21ddbc8[m HEAD@{9}: commit (amend): all
+[33m1c6db30[m HEAD@{10}: commit (amend): all
+[33mcc807ec[m HEAD@{11}: checkout: moving from develop to all
+[33m14b003d[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{12}: pull origin develop: Fast-forward
+[33mc90fbc2[m HEAD@{13}: checkout: moving from develop to develop
+[33mc90fbc2[m HEAD@{14}: checkout: moving from all to develop
+[33mcc807ec[m HEAD@{15}: commit: all
+[33m559c5a9[m HEAD@{16}: checkout: moving from develop to all
+[33mc90fbc2[m HEAD@{17}: pull origin develop: Fast-forward
+[33m6a408b9[m HEAD@{18}: checkout: moving from all to develop
+[33m559c5a9[m HEAD@{19}: commit: all
+[33m5dc210b[m HEAD@{20}: checkout: moving from develop to all
+[33m6a408b9[m HEAD@{21}: pull origin develop: Fast-forward
+[33m887fe39[m HEAD@{22}: checkout: moving from all to develop
+[33m5dc210b[m HEAD@{23}: commit: all
+[33m0ae5ea0[m HEAD@{24}: checkout: moving from develop to all
+[33m887fe39[m HEAD@{25}: pull origin develop: Fast-forward
+[33md192328[m HEAD@{26}: checkout: moving from all to develop
+[33m0ae5ea0[m HEAD@{27}: commit: all
+[33m728e0f2[m HEAD@{28}: checkout: moving from develop to all
+[33md192328[m HEAD@{29}: pull origin develop: Fast-forward
+[33m71066a0[m HEAD@{30}: checkout: moving from all to develop
+[33m728e0f2[m HEAD@{31}: commit: all
+[33m594b1dc[m HEAD@{32}: checkout: moving from develop to all
+[33m71066a0[m HEAD@{33}: checkout: moving from all to develop
+[33m594b1dc[m HEAD@{34}: commit: all
+[33m1225c36[m HEAD@{35}: checkout: moving from develop to all
+[33m71066a0[m HEAD@{36}: pull origin develop: Fast-forward
+[33m919853d[m HEAD@{37}: checkout: moving from all to develop
+[33m1225c36[m HEAD@{38}: commit: all
+[33m24a54c3[m HEAD@{39}: checkout: moving from develop to all
+[33m919853d[m HEAD@{40}: pull origin develop: Fast-forward
+[33m5fdd2d0[m HEAD@{41}: checkout: moving from all to develop
+[33m24a54c3[m HEAD@{42}: commit: all
+[33m8d4a3c8[m HEAD@{43}: commit: all
+[33mea17292[m HEAD@{44}: commit: all
+[33mb479780[m HEAD@{45}: commit: all
+[33me83ddc6[m HEAD@{46}: commit: all
+[33ma1a4c3e[m HEAD@{47}: commit: all
+[33m71cb5e5[m HEAD@{48}: commit: all
+[33mfc9c5fb[m HEAD@{49}: commit: all
+[33mbcb9265[m HEAD@{50}: commit: all
+[33m7400a5e[m HEAD@{51}: commit: all
+[33m3fdf3b0[m HEAD@{52}: checkout: moving from develop to all
+[33m5fdd2d0[m HEAD@{53}: pull origin develop: Fast-forward
+[33mbb0306a[m HEAD@{54}: checkout: moving from all to develop
+[33m3fdf3b0[m HEAD@{55}: commit: all
+[33mbb0306a[m HEAD@{56}: checkout: moving from develop to all
+[33mbb0306a[m HEAD@{57}: checkout: moving from admin/all to develop
+[33m9380d2d[m[33m ([m[1;31morigin/admin/all[m[33m, [m[1;32madmin/all[m[33m)[m HEAD@{58}: checkout: moving from develop to admin/all
+[33mbb0306a[m HEAD@{59}: pull origin develop: Fast-forward
+[33m1ed28b6[m HEAD@{60}: checkout: moving from admin/all to develop
+[33m9380d2d[m[33m ([m[1;31morigin/admin/all[m[33m, [m[1;32madmin/all[m[33m)[m HEAD@{61}: commit: admin/all
+[33m1ed28b6[m HEAD@{62}: checkout: moving from develop to admin/all
+[33m1ed28b6[m HEAD@{63}: pull origin develop: Fast-forward
+[33m645e8d8[m HEAD@{64}: checkout: moving from public/all to develop
+[33m3676937[m[33m ([m[1;31morigin/public/all[m[33m, [m[1;32mpublic/all[m[33m)[m HEAD@{65}: commit: public/all
+[33m645e8d8[m HEAD@{66}: merge origin/develop: Fast-forward
+[33m526afbd[m HEAD@{67}: checkout: moving from develop to public/all
+[33m645e8d8[m HEAD@{68}: pull origin develop: Fast-forward
+[33mabf23c7[m HEAD@{69}: checkout: moving from public/comments to develop
+[33m6cfa870[m[33m ([m[1;31morigin/public/comments[m[33m, [m[1;32mpublic/comments[m[33m)[m HEAD@{70}: commit: public/comments
+[33mc8737aa[m HEAD@{71}: commit: public/comments
+[33mabf23c7[m HEAD@{72}: checkout: moving from develop to public/comments
+[33mabf23c7[m HEAD@{73}: pull origin develop: Fast-forward
+[33m29a1fe1[m HEAD@{74}: checkout: moving from public/all to develop
+[33m526afbd[m HEAD@{75}: commit: public/all
+[33m29a1fe1[m HEAD@{76}: pull origin develop: Fast-forward
+[33mb5e7f13[m HEAD@{77}: checkout: moving from develop to public/all
+[33m29a1fe1[m HEAD@{78}: pull origin develop: Fast-forward
+[33m09a5869[m HEAD@{79}: checkout: moving from public/all to develop
+[33mb5e7f13[m HEAD@{80}: commit: public/all
+[33m09a5869[m HEAD@{81}: merge origin/develop: Fast-forward
+[33m2233193[m HEAD@{82}: checkout: moving from develop to public/all
+[33m09a5869[m HEAD@{83}: pull origin develop: Fast-forward
+[33mfe142b9[m HEAD@{84}: checkout: moving from admin/comments to develop
+[33m67d98a9[m[33m ([m[1;31morigin/admin/comments[m[33m, [m[1;32madmin/comments[m[33m)[m HEAD@{85}: commit: admin/comments
+[33mfe142b9[m HEAD@{86}: merge origin/develop: Fast-forward
+[33m43143f1[m HEAD@{87}: checkout: moving from develop to admin/comments
+[33mfe142b9[m HEAD@{88}: pull origin develop: Fast-forward
+[33m0afb651[m HEAD@{89}: checkout: moving from public/all to develop
+[33m2233193[m HEAD@{90}: commit: public/all
+[33m0afb651[m HEAD@{91}: merge origin/develop: Fast-forward
+[33mfb63863[m HEAD@{92}: checkout: moving from develop to public/all
+[33m0afb651[m HEAD@{93}: pull origin develop: Fast-forward
+[33ma48b495[m HEAD@{94}: checkout: moving from public/all to develop
+[33mfb63863[m HEAD@{95}: commit: public/all
+[33ma48b495[m HEAD@{96}: merge origin/develop: Fast-forward
+[33maeaed0b[m HEAD@{97}: checkout: moving from develop to public/all
+[33ma48b495[m HEAD@{98}: pull origin develop: Fast-forward
+[33ma0f45c2[m HEAD@{99}: checkout: moving from public/all to develop
+[33maeaed0b[m HEAD@{100}: commit: public/all
+[33ma0f45c2[m HEAD@{101}: merge origin/develop: Fast-forward
+[33m64baa3f[m HEAD@{102}: checkout: moving from develop to public/all
+[33ma0f45c2[m HEAD@{103}: pull origin develop: Fast-forward
+[33m5f46c00[m HEAD@{104}: checkout: moving from admin/subtasks to develop
+[33m9af8c6a[m[33m ([m[1;31morigin/admin/subtasks[m[33m, [m[1;32madmin/subtasks[m[33m)[m HEAD@{105}: commit: admin/subtasks
+[33m5f46c00[m HEAD@{106}: checkout: moving from develop to admin/subtasks
+[33m5f46c00[m HEAD@{107}: pull origin develop: Fast-forward
+[33mfdacd1e[m HEAD@{108}: checkout: moving from admin/tasks to develop
+[33m35f0d75[m[33m ([m[1;31morigin/admin/tasks[m[33m, [m[1;32madmin/tasks[m[33m)[m HEAD@{109}: commit: admin/tasks
+[33mfdacd1e[m HEAD@{110}: checkout: moving from develop to admin/tasks
+[33mfdacd1e[m HEAD@{111}: pull origin develop: Fast-forward
+[33mf2dc6b4[m HEAD@{112}: checkout: moving from public/all to develop
+[33m64baa3f[m HEAD@{113}: checkout: moving from develop to public/all
+[33mf2dc6b4[m HEAD@{114}: checkout: moving from public/all to develop
+[33m64baa3f[m HEAD@{115}: commit: public/all
+[33mf2dc6b4[m HEAD@{116}: merge origin/develop: Fast-forward
+[33m0f45e66[m HEAD@{117}: checkout: moving from develop to public/all
+[33mf2dc6b4[m HEAD@{118}: pull origin develop: Fast-forward
+[33m24885e7[m HEAD@{119}: checkout: moving from public/all to develop
+[33m0f45e66[m HEAD@{120}: commit: public/all
+[33m24885e7[m HEAD@{121}: checkout: moving from develop to public/all
+[33m24885e7[m HEAD@{122}: pull origin develop: Fast-forward
+[33mac41500[m HEAD@{123}: checkout: moving from task_favorites/search to develop
+[33m7c4406c[m[33m ([m[1;31morigin/task_favorites/search[m[33m, [m[1;32mtask_favorites/search[m[33m)[m HEAD@{124}: commit: task_favorites/search
+[33me7e803d[m HEAD@{125}: merge origin/develop: Merge made by the 'ort' strategy.
+[33mbc3e4ba[m HEAD@{126}: checkout: moving from develop to task_favorites/search
+[33mac41500[m HEAD@{127}: pull origin develop: Fast-forward
+[33m9c864ae[m HEAD@{128}: checkout: moving from admin/comments to develop
+[33m43143f1[m HEAD@{129}: commit: admin/comments
+[33m9c864ae[m HEAD@{130}: checkout: moving from develop to admin/comments
+[33m9c864ae[m HEAD@{131}: pull origin develop: Fast-forward
+[33mfcfe6b0[m HEAD@{132}: checkout: moving from admin/members to develop
+[33mbd63b59[m[33m ([m[1;31morigin/admin/members[m[33m, [m[1;32madmin/members[m[33m)[m HEAD@{133}: commit: admin/members
+[33mfcfe6b0[m HEAD@{134}: merge origin/develop: Fast-forward
+[33m7f57a59[m HEAD@{135}: checkout: moving from develop to admin/members
+[33mfcfe6b0[m HEAD@{136}: pull origin develop: Fast-forward
+[33m7f57a59[m HEAD@{137}: checkout: moving from admin/members to develop
+[33m7f57a59[m HEAD@{138}: merge origin/develop: Fast-forward
+[33m315a844[m HEAD@{139}: checkout: moving from admin/members to admin/members
+[33m315a844[m HEAD@{140}: checkout: moving from task_favorites/search to admin/members
+[33mbc3e4ba[m HEAD@{141}: checkout: moving from admin/members to task_favorites/search
+[33m315a844[m HEAD@{142}: checkout: moving from develop to admin/members
+[33m7f57a59[m HEAD@{143}: pull origin develop: Fast-forward
+[33mc4e9d73[m HEAD@{144}: checkout: moving from admin/members to develop
+[33m315a844[m HEAD@{145}: commit: admin/members
+[33mc4e9d73[m HEAD@{146}: checkout: moving from develop to admin/members
+[33mc4e9d73[m HEAD@{147}: checkout: moving from task_favorites/search to develop
+[33mbc3e4ba[m HEAD@{148}: merge origin/develop: Merge made by the 'ort' strategy.
+[33mbbcc780[m HEAD@{149}: commit: task_favorites/search
+[33mca62925[m HEAD@{150}: checkout: moving from develop to task_favorites/search
+[33mc4e9d73[m HEAD@{151}: pull origin develop: Fast-forward
+[33m7e8d032[m HEAD@{152}: checkout: moving from task_favorites/search to develop
+[33mca62925[m HEAD@{153}: commit: task_favorites/search
+[33m7e8d032[m HEAD@{154}: checkout: moving from develop to task_favorites/search
+[33m7e8d032[m HEAD@{155}: pull origin develop: Fast-forward
+[33m59c1392[m HEAD@{156}: checkout: moving from search/all to develop
+[33mc3a7502[m[33m ([m[1;31morigin/search/all[m[33m, [m[1;32msearch/all[m[33m)[m HEAD@{157}: commit: search/all
+[33m59c1392[m HEAD@{158}: merge origin/develop: Fast-forward
+[33m0a92f9b[m HEAD@{159}: checkout: moving from develop to search/all
+[33m59c1392[m HEAD@{160}: pull origin develop: Fast-forward
+[33m0a92f9b[m HEAD@{161}: checkout: moving from search/all to develop
+[33m0a92f9b[m HEAD@{162}: checkout: moving from develop to search/all
+[33m0a92f9b[m HEAD@{163}: checkout: moving from task_favourites to develop
+[33mbd80309[m[33m ([m[1;31morigin/task_favourites[m[33m, [m[1;32mtask_favourites[m[33m)[m HEAD@{164}: commit: task_favorites
+[33m0a92f9b[m HEAD@{165}: checkout: moving from develop to task_favourites
+[33m0a92f9b[m HEAD@{166}: pull origin develop: Fast-forward
+[33m771e1eb[m HEAD@{167}: checkout: moving from favourites/all to develop
+[33m00ed3c9[m[33m ([m[1;31morigin/favourites/all[m[33m, [m[1;32mfavourites/all[m[33m)[m HEAD@{168}: commit: favourites/all
+[33m771e1eb[m HEAD@{169}: merge origin/develop: Fast-forward
+[33m5cf2b2a[m HEAD@{170}: checkout: moving from develop to favourites/all
+[33m771e1eb[m HEAD@{171}: pull origin develop: Fast-forward
+[33m5bacbea[m HEAD@{172}: checkout: moving from comments/favourites to develop
+[33m2d5bf88[m[33m ([m[1;31morigin/comments/favourites[m[33m, [m[1;32mcomments/favourites[m[33m)[m HEAD@{173}: commit: comments/favourites
+[33m5bacbea[m HEAD@{174}: checkout: moving from develop to comments/favourites
+[33m5bacbea[m HEAD@{175}: pull origin develop: Fast-forward
+[33mb5311af[m HEAD@{176}: checkout: moving from comments/all to develop
+[33m2d07b6f[m[33m ([m[1;31morigin/comments/all[m[33m, [m[1;32mcomments/all[m[33m)[m HEAD@{177}: commit: comments/all
+[33mb5311af[m HEAD@{178}: merge origin/develop: Fast-forward
+[33m457e63a[m HEAD@{179}: checkout: moving from develop to comments/all
+[33mb5311af[m HEAD@{180}: pull origin develop: Fast-forward
+[33m39e3036[m HEAD@{181}: checkout: moving from favourites/all to develop
+[33m5cf2b2a[m HEAD@{182}: commit: favourites/all
+[33m69e3855[m HEAD@{183}: checkout: moving from develop to favourites/all
+[33m39e3036[m HEAD@{184}: pull origin develop: Fast-forward
+[33m2291945[m HEAD@{185}: checkout: moving from favourites/all to develop
+[33m69e3855[m HEAD@{186}: commit: favourites/all
+[33mc3f47f1[m HEAD@{187}: commit: git add config/database.yml
+[33m2291945[m HEAD@{188}: reset: moving to favourites/all
+[33m2291945[m HEAD@{189}: checkout: moving from develop to favourites/all
+[33m2291945[m HEAD@{190}: checkout: moving from favourites/all to develop
+[33m2291945[m HEAD@{191}: checkout: moving from develop to favourites/all
+[33m2291945[m HEAD@{192}: pull origin develop: Fast-forward
+[33m5e0edf5[m HEAD@{193}: checkout: moving from comments/all to develop
+[33m457e63a[m HEAD@{194}: commit: comments/all
+[33m5e0edf5[m HEAD@{195}: checkout: moving from develop to comments/all
+[33m5e0edf5[m HEAD@{196}: checkout: moving from comments/all to develop
+[33m5e0edf5[m HEAD@{197}: checkout: moving from develop to comments/all
+[33m5e0edf5[m HEAD@{198}: checkout: moving from テストデプロイ to develop
+[33m3b81f54[m[33m ([m[1;31morigin/テストデプロイ[m[33m, [m[1;32mテストデプロイ[m[33m)[m HEAD@{199}: checkout: moving from develop to テストデプロイ
+[33m5e0edf5[m HEAD@{200}: pull origin develop: Fast-forward
+[33m44737aa[m HEAD@{201}: checkout: moving from テストデプロイ to develop
+[33m3b81f54[m[33m ([m[1;31morigin/テストデプロイ[m[33m, [m[1;32mテストデプロイ[m[33m)[m HEAD@{202}: commit: deploy setting
+[33m44737aa[m HEAD@{203}: checkout: moving from develop to テストデプロイ
+[33m44737aa[m HEAD@{204}: pull origin develop: Fast-forward
+[33mac22de3[m HEAD@{205}: checkout: moving from subtasks/all to develop
+[33m14e03a3[m[33m ([m[1;31morigin/subtasks/all[m[33m, [m[1;32msubtasks/all[m[33m)[m HEAD@{206}: commit: subtasks/all
+[33mac22de3[m HEAD@{207}: checkout: moving from develop to subtasks/all
+[33mac22de3[m HEAD@{208}: pull origin develop: Fast-forward
+[33m0aff622[m HEAD@{209}: checkout: moving from subtasks/show to develop
+[33ma5572c7[m[33m ([m[1;31morigin/subtasks/show[m[33m, [m[1;32msubtasks/show[m[33m)[m HEAD@{210}: commit: subtasks/show
+[33m0aff622[m HEAD@{211}: checkout: moving from develop to subtasks/show
+[33m0aff622[m HEAD@{212}: pull origin develop: Fast-forward
+[33m34b70cd[m HEAD@{213}: checkout: moving from subtasks/edit to develop
+[33me8fb0c1[m[33m ([m[1;31morigin/subtasks/edit[m[33m, [m[1;32msubtasks/edit[m[33m)[m HEAD@{214}: commit: subtasks/edit
+[33m782b184[m HEAD@{215}: checkout: moving from develop to subtasks/edit
+[33m34b70cd[m HEAD@{216}: pull origin develop: Fast-forward
+[33mf061b92[m HEAD@{217}: checkout: moving from subtasks/edit to develop
+[33m782b184[m HEAD@{218}: commit: subtasks/edit
+[33mf061b92[m HEAD@{219}: merge origin/develop: Fast-forward
+[33mb4b4c93[m HEAD@{220}: checkout: moving from develop to subtasks/edit
+[33mf061b92[m HEAD@{221}: pull origin develop: Fast-forward
+[33mcedd490[m HEAD@{222}: checkout: moving from subtasks/index to develop
+[33md6597c5[m[33m ([m[1;31morigin/subtasks/index[m[33m, [m[1;32msubtasks/index[m[33m)[m HEAD@{223}: commit: subtasks/index
+[33m44bca9f[m HEAD@{224}: commit: subtasks/index
+[33m591ad26[m HEAD@{225}: commit: subtasks/index
+[33m9518447[m HEAD@{226}: commit: subtasks/index
+[33m823aa8e[m HEAD@{227}: commit: subtasks/index
+[33m29bd32d[m HEAD@{228}: checkout: moving from develop to subtasks/index
+[33mcedd490[m HEAD@{229}: checkout: moving from subtasks/edit to develop
+[33mb4b4c93[m HEAD@{230}: checkout: moving from develop to subtasks/edit
+[33mcedd490[m HEAD@{231}: checkout: moving from subtasks/edit to develop
+[33mb4b4c93[m HEAD@{232}: commit: subtasks/edit
+[33mcedd490[m HEAD@{233}: checkout: moving from develop to subtasks/edit
+[33mcedd490[m HEAD@{234}: pull origin develop: Fast-forward
+[33ma6b571a[m HEAD@{235}: checkout: moving from subtasks/index to develop
+[33m29bd32d[m HEAD@{236}: commit: subtasks/index
+[33ma6b571a[m HEAD@{237}: merge origin/develop: Fast-forward
+[33mbe4f039[m HEAD@{238}: checkout: moving from develop to subtasks/index
+[33ma6b571a[m HEAD@{239}: pull origin develop: Fast-forward
+[33mbe4f039[m HEAD@{240}: checkout: moving from tasks/all to develop
+[33m79a3046[m[33m ([m[1;31morigin/tasks/all[m[33m, [m[1;32mtasks/all[m[33m)[m HEAD@{241}: commit: tasks/all
+[33m7365246[m HEAD@{242}: checkout: moving from develop to tasks/all
+[33mbe4f039[m HEAD@{243}: checkout: moving from tasks/all to develop
+[33m7365246[m HEAD@{244}: commit: tasks/all
+[33mb40b6af[m HEAD@{245}: checkout: moving from develop to tasks/all
+[33mbe4f039[m HEAD@{246}: checkout: moving from subtasks/index to develop
+[33mbe4f039[m HEAD@{247}: checkout: moving from develop to subtasks/index
+[33mbe4f039[m HEAD@{248}: checkout: moving from tasks/all to develop
+[33mb40b6af[m HEAD@{249}: checkout: moving from develop to tasks/all
+[33mbe4f039[m HEAD@{250}: checkout: moving from subtasks/index to develop
+[33mbe4f039[m HEAD@{251}: checkout: moving from develop to subtasks/index
+[33mbe4f039[m HEAD@{252}: pull origin develop: Fast-forward
+[33m115c8ed[m HEAD@{253}: checkout: moving from tasks/all to develop
+[33mb40b6af[m HEAD@{254}: commit: tasks/all
+[33m115c8ed[m HEAD@{255}: checkout: moving from develop to tasks/all
+[33m115c8ed[m HEAD@{256}: pull origin develop: Fast-forward
+[33m3041365[m HEAD@{257}: checkout: moving from homes/top to develop
+[33m633bcc7[m[33m ([m[1;31morigin/homes/top[m[33m, [m[1;32mhomes/top[m[33m)[m HEAD@{258}: commit: homes/top
+[33m154f147[m HEAD@{259}: checkout: moving from develop to homes/top
+[33m3041365[m HEAD@{260}: pull origin develop: Fast-forward
+[33m154f147[m HEAD@{261}: checkout: moving from homes/about to develop
+[33mc57f07c[m[33m ([m[1;31morigin/homes/about[m[33m, [m[1;32mhomes/about[m[33m)[m HEAD@{262}: commit: homes/about
+[33m154f147[m HEAD@{263}: checkout: moving from develop to homes/about
+[33m154f147[m HEAD@{264}: checkout: moving from homes/top to develop
+[33m154f147[m HEAD@{265}: pull origin develop: Fast-forward
+[33mf62694b[m HEAD@{266}: checkout: moving from develop to homes/top
+[33m154f147[m HEAD@{267}: pull origin develop: Fast-forward
+[33mb0d208e[m HEAD@{268}: checkout: moving from homes/top to develop
+[33mf62694b[m HEAD@{269}: commit: homes/top
+[33mb0d208e[m HEAD@{270}: merge origin/develop: Fast-forward
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{271}: checkout: moving from develop to homes/top
+[33mb0d208e[m HEAD@{272}: pull origin develop: Fast-forward
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{273}: checkout: moving from homes/top to develop
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{274}: checkout: moving from develop to homes/top
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{275}: checkout: moving from members/unsubscribe to develop
+[33mf605a64[m[33m ([m[1;31morigin/members/unsubscribe[m[33m, [m[1;32mmembers/unsubscribe[m[33m)[m HEAD@{276}: commit: members/unsubscribe
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{277}: checkout: moving from develop to members/unsubscribe
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{278}: checkout: moving from members/show to develop
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{279}: checkout: moving from develop to members/show
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{280}: checkout: moving from members/show to develop
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{281}: checkout: moving from develop to members/show
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{282}: checkout: moving from members/show to develop
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{283}: merge origin/develop: Fast-forward
+[33m5efee2a[m[33m ([m[1;31morigin/members/show[m[33m)[m HEAD@{284}: checkout: moving from develop to members/show
+[33m62c8cf0[m[33m ([m[1;32mmembers/show[m[33m)[m HEAD@{285}: pull origin develop: Fast-forward
+[33m8e73d43[m HEAD@{286}: checkout: moving from members/edit to develop
+[33m003a2f8[m[33m ([m[1;31morigin/members/edit[m[33m, [m[1;32mmembers/edit[m[33m)[m HEAD@{287}: commit: members/edit
+[33m8e73d43[m HEAD@{288}: checkout: moving from develop to members/edit
+[33m8e73d43[m HEAD@{289}: pull origin develop: Fast-forward
+[33m582e73a[m HEAD@{290}: checkout: moving from members/show to develop
+[33m5efee2a[m[33m ([m[1;31morigin/members/show[m[33m)[m HEAD@{291}: commit: members/show
+[33m582e73a[m HEAD@{292}: merge origin/develop: Fast-forward
+[33mfc2dd18[m HEAD@{293}: checkout: moving from develop to members/show
+[33m582e73a[m HEAD@{294}: pull origin develop: Fast-forward
+[33m6e5ce96[m HEAD@{295}: checkout: moving from tasks/edit to develop
+[33ma44ad9b[m[33m ([m[1;31morigin/tasks/edit[m[33m, [m[1;32mtasks/edit[m[33m)[m HEAD@{296}: commit: tasks/edit
+[33m6e5ce96[m HEAD@{297}: checkout: moving from develop to tasks/edit
+[33m6e5ce96[m HEAD@{298}: pull origin develop: Fast-forward
+[33m9caa248[m HEAD@{299}: checkout: moving from tasks/show to develop
+[33m26dca48[m[33m ([m[1;31morigin/tasks/show[m[33m, [m[1;32mtasks/show[m[33m)[m HEAD@{300}: commit: tasks/index/show Active Storage導入
+[33m9caa248[m HEAD@{301}: checkout: moving from develop to tasks/show
+[33m9caa248[m HEAD@{302}: pull origin develop: Fast-forward
+[33m9025279[m HEAD@{303}: checkout: moving from tasks/index to develop
+[33mabdc82c[m[33m ([m[1;31morigin/tasks/index[m[33m, [m[1;32mtasks/index[m[33m)[m HEAD@{304}: commit: tasks/index
+[33m9025279[m HEAD@{305}: merge origin/develop: Fast-forward
+[33mf9bc150[m HEAD@{306}: checkout: moving from develop to tasks/index
+[33m9025279[m HEAD@{307}: pull origin develop: Fast-forward
+[33m449fd60[m HEAD@{308}: checkout: moving from tasks/index to develop
+[33mf9bc150[m HEAD@{309}: checkout: moving from members/show to tasks/index
+[33mfc2dd18[m HEAD@{310}: commit: public/sign up/sign in
+[33ma226916[m HEAD@{311}: checkout: moving from tasks/index to members/show
+[33mf9bc150[m HEAD@{312}: commit: tasks/index
+[33m449fd60[m HEAD@{313}: checkout: moving from develop to tasks/index
+[33m449fd60[m HEAD@{314}: checkout: moving from members/show to develop
+[33ma226916[m HEAD@{315}: commit: public/sign up/sign in
+[33m449fd60[m HEAD@{316}: checkout: moving from develop to members/show
+[33m449fd60[m HEAD@{317}: checkout: moving from members/show to develop
+[33m449fd60[m HEAD@{318}: merge origin/develop: Fast-forward
+[33mb7c78b0[m HEAD@{319}: checkout: moving from develop to members/show
+[33m449fd60[m HEAD@{320}: pull origin develop: Fast-forward
+[33mb7c78b0[m HEAD@{321}: checkout: moving from members/show to develop
+[33mb7c78b0[m HEAD@{322}: checkout: moving from admin/sign.in to members/show
+[33me5bbde7[m[33m ([m[1;31morigin/admin/sign.in[m[33m, [m[1;32madmin/sign.in[m[33m)[m HEAD@{323}: commit: バリデーション記入
+[33m1804fe8[m HEAD@{324}: checkout: moving from public/sign.up to admin/sign.in
+[33ma5755d8[m[33m ([m[1;31morigin/public/sign.up[m[33m, [m[1;32mpublic/sign.up[m[33m)[m HEAD@{325}: commit: バリデーション記入
+[33mb7c78b0[m HEAD@{326}: merge origin/develop: Fast-forward
+[33mf0a3f6f[m HEAD@{327}: checkout: moving from members/show to public/sign.up
+[33mb7c78b0[m HEAD@{328}: checkout: moving from develop to members/show
+[33mb7c78b0[m HEAD@{329}: checkout: moving from admin/sign.in to develop
+[33m1804fe8[m HEAD@{330}: commit: admin/sign in
+[33mb7c78b0[m HEAD@{331}: checkout: moving from develop to admin/sign.in
+[33mb7c78b0[m HEAD@{332}: pull origin develop: Fast-forward
+[33m97bc455[m HEAD@{333}: checkout: moving from public/sign.up to develop
+[33mf0a3f6f[m HEAD@{334}: commit: public/sign up
+[33md588b5f[m HEAD@{335}: checkout: moving from public/sign.in to public/sign.up
+[33mdfe30d8[m[33m ([m[1;31morigin/public/sign.in[m[33m, [m[1;32mpublic/sign.in[m[33m)[m HEAD@{336}: commit: public/sign in
+[33m97bc455[m HEAD@{337}: merge origin/develop: Fast-forward
+[33m3930ae7[m HEAD@{338}: checkout: moving from develop to public/sign.in
+[33m97bc455[m HEAD@{339}: pull origin develop: Fast-forward
+[33m3930ae7[m HEAD@{340}: checkout: moving from public/sign.up to develop
+[33md588b5f[m HEAD@{341}: commit: public/sign up
+[33mf8459b6[m HEAD@{342}: checkout: moving from public/sign.in to public/sign.up
+[33m3930ae7[m HEAD@{343}: checkout: moving from develop to public/sign.in
+[33m3930ae7[m HEAD@{344}: pull origin develop: Fast-forward
+[33m07e94b2[m HEAD@{345}: checkout: moving from public/sign.up to develop
+[33mf8459b6[m HEAD@{346}: commit: public/sign up
+[33m07e94b2[m HEAD@{347}: checkout: moving from develop to public/sign.up
+[33m07e94b2[m HEAD@{348}: pull origin develop: Fast-forward
+[33mcff9927[m HEAD@{349}: checkout: moving from header to develop
+[33mc231034[m[33m ([m[1;31morigin/header[m[33m, [m[1;32mheader[m[33m)[m HEAD@{350}: commit: header/footer
+[33mcff9927[m HEAD@{351}: merge origin/develop: Fast-forward
+[33m2ea7566[m HEAD@{352}: checkout: moving from develop to header
+[33mcff9927[m HEAD@{353}: pull origin develop: Fast-forward
+[33m000e49f[m HEAD@{354}: checkout: moving from header to develop
+[33m2ea7566[m HEAD@{355}: commit: header
+[33m0326281[m HEAD@{356}: checkout: moving from develop to header
+[33m000e49f[m HEAD@{357}: checkout: moving from header to develop
+[33m0326281[m HEAD@{358}: checkout: moving from develop to header
+[33m000e49f[m HEAD@{359}: checkout: moving from header to develop
+[33m0326281[m HEAD@{360}: merge origin/develop: Fast-forward
+[33m000e49f[m HEAD@{361}: checkout: moving from develop to header
+[33m000e49f[m HEAD@{362}: checkout: moving from header to develop
+[33m000e49f[m HEAD@{363}: checkout: moving from develop to header
+[33m000e49f[m HEAD@{364}: checkout: moving from routing to develop
+[33m121e4d2[m[33m ([m[1;31morigin/routing[m[33m, [m[1;32mrouting[m[33m)[m HEAD@{365}: commit: routing
+[33m0326281[m HEAD@{366}: pull origin develop: Fast-forward
+[33m000e49f[m HEAD@{367}: checkout: moving from develop to routing
+[33m000e49f[m HEAD@{368}: checkout: moving from model to develop
+[33m72ae670[m[33m ([m[1;31morigin/model[m[33m, [m[1;32mmodel[m[33m)[m HEAD@{369}: commit: model
+[33m000e49f[m HEAD@{370}: checkout: moving from develop to model
+[33m000e49f[m HEAD@{371}: checkout: moving from model to develop
+[33m000e49f[m HEAD@{372}: checkout: moving from develop to model
+[33m000e49f[m HEAD@{373}: pull origin develop: Fast-forward
+[33m7be7dbe[m HEAD@{374}: checkout: moving from controller to develop
+[33m135d89f[m[33m ([m[1;31morigin/controller[m[33m, [m[1;32mcontroller[m[33m)[m HEAD@{375}: commit: controller/views
+[33m7be7dbe[m HEAD@{376}: checkout: moving from develop to controller
+[33m7be7dbe[m HEAD@{377}: pull origin develop: Fast-forward
+[33m9af3b45[m HEAD@{378}: checkout: moving from Gem/devise to develop
+[33m4f45016[m[33m ([m[1;31morigin/Gem/devise[m[33m, [m[1;32mGem/devise[m[33m)[m HEAD@{379}: commit: Devise の導入
+[33m9af3b45[m HEAD@{380}: checkout: moving from develop to Gem/devise
+[33m9af3b45[m HEAD@{381}: checkout: moving from development.rb to develop
+[33m04c055c[m[33m ([m[1;31morigin/development.rb[m[33m, [m[1;32mdevelopment.rb[m[33m)[m HEAD@{382}: commit: ホストの許可
+[33m9af3b45[m HEAD@{383}: checkout: moving from develop to development.rb
+[33m9af3b45[m HEAD@{384}: checkout: moving from README.md to develop
+[33md2dcfd1[m[33m ([m[1;31morigin/README.md[m[33m, [m[1;32mREADME.md[m[33m)[m HEAD@{385}: commit: README編集
+[33m9af3b45[m HEAD@{386}: checkout: moving from develop to README.md
+[33m9af3b45[m HEAD@{387}: commit: first commit
+[33mfae719b[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{388}: checkout: moving from main to develop
+[33mfae719b[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{389}: Branch: renamed refs/heads/master to refs/heads/main
+[33mfae719b[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m HEAD@{391}: commit (initial): first commit

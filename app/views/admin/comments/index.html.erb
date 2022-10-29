@@ -38,7 +38,9 @@
         <% end %>
       </table>
       <div class="text-center">
-        <%= paginate @comments %>
+        <div class="mx-auto" style="width: 100px;">
+          <%= paginate @comments %>
+        </div>
       </div>
     </div>
   </div>

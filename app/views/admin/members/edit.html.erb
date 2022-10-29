@@ -47,7 +47,7 @@
           <td><%= f.radio_button :is_deleted, true %>退会</td>
         </div>
         <div class="actions text-center mb-4 mt-5">
-          <%= link_to "変更を保存", admin_member_path(@member.id), class: "btn btn-outline-secondary" %>
+          <%= f.submit "変更を保存", class: "btn btn-outline-secondary" %>
         </div>
       <% end %>
     </div>

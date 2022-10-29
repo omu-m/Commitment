@@ -50,7 +50,9 @@
         </tbody>
       </table>
       <div class="text-center">
-        <%= paginate @favorites %>
+        <div class="mx-auto" style="width: 150px;">
+          <%= paginate @favorite_tasks_subtasks %>
+        </div>
       </div>
     </div>
   </div>
