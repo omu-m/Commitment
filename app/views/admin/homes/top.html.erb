@@ -8,9 +8,9 @@
           </tr>
         </thead>
       </table>
-      </div>
-   <div class="col-md-9 offset-md-1">
-     <table class="table table-hover table-inverse" style="text-align:center;">
+    </div>
+    <div class="col-md-9 offset-md-1">
+      <table class="table table-hover table-inverse" style="text-align:center;">
         <thead>
           <tr>
             <th>ユーザー数</th>
@@ -24,9 +24,9 @@
             <td><%= @members.count %> 名</td>
             <td><%= @members.where(is_deleted: false).count %> 名</td>
            <td><%= @members.where(is_deleted: true).count %> 名</td>
- </tr>
+          </tr>
         </tbody>
-     </table>
+      </table>
       <div class="col-md-10 offset-md-1">
         <table class="table table-hover table-inverse" style="text-align:center;">
           <thead>
@@ -44,6 +44,7 @@
             </tr>
           </tbody>
         </table>
-        </div>
+      </div>
     </div>
   </div>
+</div>
