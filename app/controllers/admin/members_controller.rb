@@ -19,7 +19,7 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
     if @member.update(member_params)
       flash[:notice] = "登録情報を変更しました。"
-      redirect_to admin_member_path
+      redirect_to admin_member_path(@member)
     else
       flash[:notice] = "登録情報の変更に失敗しました。"
       render "edit"
