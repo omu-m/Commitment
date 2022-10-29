@@ -1,10 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark p-0" style="background-color: #A9A9A9">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
   <div class="container">
-    <% if admin_signed_in? %>
-      <a class="navbar-brand" href="/admin"><%= image_tag "logo.jpg", :size => "75x75", style: "border-radius: 20px;" %></a>
-    <% else %>
-      <a class="navbar-brand" href="/"><%= image_tag "logo.jpg", :size => "75x75", style: "border-radius: 20px;" %></a>
-    <% end %>
+    <a class="navbar-brand p-3" href="/">Commitment.</a>
+    <script src="https://kit.fontawesome.com/801a1ac1e5.js" crossorigin="anonymous"></script>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                   aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

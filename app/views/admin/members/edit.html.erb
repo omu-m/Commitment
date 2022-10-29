@@ -43,11 +43,11 @@
           <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
         </div>
         <div class="text-center">
-          <td><%= f.radio_button :is_deleted, false, checked: true %> 有効</td>
-          <td><%= f.radio_button :is_deleted, true %> 退会</td>
+          <td><%= f.radio_button :is_deleted, false, checked: true %>有効</td>
+          <td><%= f.radio_button :is_deleted, true %>退会</td>
         </div>
         <div class="actions text-center mb-4 mt-5">
-          <%= f.submit "変更を保存", class: "btn btn-outline-secondary" %>
+          <%= link_to "変更を保存", admin_member_path(@member.id), class: "btn btn-outline-secondary" %>
         </div>
       <% end %>
     </div>
