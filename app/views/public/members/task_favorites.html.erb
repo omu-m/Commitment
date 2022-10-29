@@ -20,8 +20,8 @@
             <th>達成率</th>
           </tr>
         </thead>
-        <tbody>
-          <% @task_favorite_tasks.each do |task|%>
+        <% @task_favorite_tasks.each do |task|%>
+          <tbody>
             <tr>
               <td>
                 <% if task.image.attached? %>
@@ -44,8 +44,8 @@
                 <% end %>
               </td>
             </tr>
-          <% end %>
-        </tbody>
+          </tbody>
+        <% end %>
       </table>
       <div class="text-center">
         <div class="mx-auto" style="width: 150px;">

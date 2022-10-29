@@ -19,8 +19,8 @@
       <th></th>
     </tr>
   </thead>
-  <tbody>
-    <% subtasks.each do |subtask| %>
+  <% subtasks.each do |subtask| %>
+    <tbody>
       <tr>
         <td>
           <%= image_tag subtask.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
@@ -43,8 +43,8 @@
           <% end %>
           </td>
       </tr>
-    <% end %>
-  </tbody>
+    </tbody>
+  <% end %>
 </table>
 <div class="text-center">
   <div class="mx-auto" style="width: 200px;">
