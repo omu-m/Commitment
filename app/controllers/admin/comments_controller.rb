@@ -3,7 +3,7 @@ class Admin::CommentsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @comments = Comment.all
+    @comments = Comment.page(params[:page])
     @comments = @comments.order(created_at: :desc)
   end
 

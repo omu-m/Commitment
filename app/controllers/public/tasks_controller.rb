@@ -15,7 +15,6 @@ class Public::TasksController < ApplicationController
     end
     @task = Task.new
     @tasks = @tasks.order_as_specified(id: subtask_id)
-
   end
 
   def create

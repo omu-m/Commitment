@@ -1,7 +1,10 @@
 class Admin::MembersController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def index
-    @members = Member.all
+    @members = Member.page(params[:page])
+    @members = @members.order(updated_at: :desc)
   end
 
   def show
@@ -14,8 +17,14 @@ class Admin::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    @member.update(member_params)
-    redirect_to admin_member_path(@member.id)
+    if @member.update(member_params)
+      flash[:notice] = "登録情報を変更しました。"
+      redirect_to admin_member_path
+    else
+      flash[:notice] = "登録情報の変更に失敗しました。"
+      render "edit"
+    end
+
   end
 
   private

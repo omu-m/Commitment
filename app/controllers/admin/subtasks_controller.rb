@@ -4,8 +4,8 @@ class Admin::SubtasksController < ApplicationController
 
   def index
     @task = Task.find(params[:task_id])
-    @subtasks = @task.subtasks.all
-    @subtasks = @subtasks.order(created_at: :desc)
+    @subtasks = @task.subtasks.page(params[:page])
+    @subtasks = @subtasks.order(updated_at: :desc)
   end
 
   def show

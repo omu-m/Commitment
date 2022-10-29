@@ -3,8 +3,14 @@ class Admin::TasksController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @tasks = Task.all
-    @tasks = @tasks.order(created_at: :desc)
+    subtask_id = Subtask.order(updated_at: :desc).pluck(:task_id).uniq
+    if params[:member_id].present?
+      @tasks_id = TaskMember.where(member_id: params[:member_id]).pluck(:task_id)
+      @tasks = Task.where(id: @tasks_id).page(params[:page])
+    else
+      @tasks = Task.page(params[:page])
+    end
+    @tasks = @tasks.order_as_specified(id: subtask_id)
   end
 
   def show
@@ -18,11 +24,11 @@ class Admin::TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      flash[:notice] = "親タスクが正常に編集されました。"
+      flash[:notice] = "タスクが正常に編集されました。"
       redirect_to admin_tasks_path
     else
-      flash[:notice] = "親タスクの編集に失敗しました。"
-      render "show"
+      flash[:notice] = "タスクの編集に失敗しました。"
+      render "edit"
     end
   end
 
