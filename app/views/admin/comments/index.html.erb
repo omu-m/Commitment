@@ -1,15 +1,22 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-9 mx-auto">
-      <h2 class="mt-4">コメント一覧</h2>
-
-      <table class="table table-hover">
-        <thead class="table-active">
+    <div class="col-md-2 offset-md-1 mt-4">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>コメント一覧</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-md-10 offset-md-1">
+      <table class="table table-hover table-inverse">
+        <thead>
           <tr>
             <th style="width: 10%">会員ID</th>
             <th style="width: 20%">表示名</th>
             <th style="width: 15%">日時</th>
-            <th style="width: 40%">コメント内容</th>
+            <th style="width: 40%">コメント</th>
             <th style="width: 10%"></th>
           </tr>
         </thead>
@@ -18,18 +25,21 @@
             <tr>
               <td><%= comment.member.id %></td>
               <td class="overflow-ellipsis">
-                <%= image_tag comment.member.get_profile_image, size: "50x50" %>
+                <%= image_tag comment.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
                 <%= link_to comment.member.display_name.truncate(10), admin_member_path(comment.member.id) %>
               </td>
               <td><%= l comment.created_at %></td>
               <td style="display: block; overflow-y:scroll; height:100px;"><%= comment.comment %></td>
               <th>
-                <%= link_to "削除", admin_task_subtask_comment_path(comment.subtask.task, comment.subtask, comment, comment_index: true), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger" %>
+                <%= link_to "削除", admin_task_subtask_comment_path(comment.subtask.task, comment.subtask, comment, comment_index: true), method: :delete, data: {confirm: "OKを押すと削除されます。本当によろしいですか？"}, class: "btn btn-sm btn-outline-danger" %>
               </th>
             </tr>
           </tbody>
         <% end %>
       </table>
+      <div class="text-center">
+        <%= paginate @comments %>
+      </div>
     </div>
   </div>
 </div>

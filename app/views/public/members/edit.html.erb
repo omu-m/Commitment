@@ -9,6 +9,15 @@
         </thead>
       </table>
 
+      <% if @member.errors.any? %>
+      <%= @member.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
+        <ul>
+          <% @member.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= form_with model: @member, url: update_information_path, local: true do |f| %>
 
       <div class="field mb-4 mt-5">

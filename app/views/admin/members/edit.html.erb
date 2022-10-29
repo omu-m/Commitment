@@ -8,6 +8,15 @@
           </tr>
         </thead>
 
+        <% if @member.errors.any? %>
+        <%= @member.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
+          <ul>
+            <% @member.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
         <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch, local:true do |f| %>
 
         <table class="table table-bordered mb-4 mt-5">
@@ -33,9 +42,9 @@
           <img id="preview" src="/assets/no_image.jpg" class="member-icon" style="width: 100px; height: 100px">
           <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
         </div>
-        <div class="field">
-        　<td><%= f.radio_button :is_deleted, false, checked: true %>有効</td>
-        　<td><%= f.radio_button :is_deleted, true %>退会</td>
+        <div class="text-center">
+          <td><%= f.radio_button :is_deleted, false, checked: true %>有効</td>
+          <td><%= f.radio_button :is_deleted, true %>退会</td>
         </div>
         <div class="actions text-center mb-4 mt-5">
           <%= link_to "変更を保存", admin_member_path(@member.id), class: "btn btn-outline-secondary" %>
