@@ -1,52 +1,71 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-8 mx-auto">
-      <h2 class="mt-4">親タスク詳細</h2>
-    </div>
-
-    <table class="table table-hover table-inverse">
+    <div class="col-md-2 offset-md-1 mt-4">
+      <table class="table table-hover table-inverse" style="text-align:center;">
         <thead>
           <tr>
-            <th></th>
-            <th>親タスク</th>
-            <th>内容</th>
-            <th>メンバー</th>
-            <th colspan="4"></th>
+            <th>タスク詳細</th>
           </tr>
         </thead>
-        <tbody>
-  		  <tr>
-  		    <td>
-  		      <% if @task.image.attached? %>
-              <%= image_tag @task.image, size: "50x50" %>
-            <% else %>
-              <%= image_tag "no_image", size: "50x50" %>
-            <% end %>
-          </td>
-  		    <td><%= @task.task_title %></td>
-          <td><%= @task.task_content %></td>
-          <td>
-            <!--タスク(グループ)に参加していると子タスク一覧が表示されるようになる仕様。-->
-            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-              メンバー
-            </a>
-            <% memberids = [] %>
-            <% @task.members.each do |member| %>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                <% memberids.push(member.id) %>
-                <%= image_tag member.get_profile_image, size: "50x50" %>
-                <%= link_to member.display_name, admin_member_path(member.id) %>
+      </table>
+    </div>
+     <div class="col-md-10 offset-md-1">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>
+              <% if @task.image.attached? %>
+                <%= image_tag @task.image, size: "50x50", style: "border-radius: 50px;" %>
+              <% else %>
+                <%= image_tag "no_image.jpg", size: "50x50", style: "border-radius: 50px;" %>
+              <% end %>
+            </th>
+            <th>
+              <!--タスク(グループ)に参加していると子タスク一覧が表示されるようになる仕様。-->
+              <a class="btn btn-outline-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                メンバー
+              </a>
+              <% memberids = [] %>
+              <% @task.members.each do |member| %>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <% memberids.push(member.id) %>
+                  <%= image_tag member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
+                  <%= member.display_name %>
+                </div>
               </div>
-            </div>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to "子タスク一覧", admin_task_subtasks_path(@task), class: "btn btn-sm btn-success" %>
+              <% end %>
+            </th>
+            <th>
+              <%= link_to "子タスク一覧", admin_task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
+            </th>
+            <th class="text-danger font-weight-bold">
+              達成率
+              <% if @task.subtasks.size.zero? %>
+                0 %
+              <% else %>
+                <%= ((@task.subtasks.where(progress_status: 3).size / @task.subtasks.size.to_f) * 100).round(2)%> %
+              <% end %>
+            </th>
+            <th>
+              <%= link_to "編集", edit_admin_task_path(@task), class: "btn btn-outline-primary" %>
+            </th>
+          </tr>
+        </thead>
+      </table>
+      <table class="mt-5", align="center" border="1" width="750" height="500">
+        <tr>
+          <th class="table-active text-center", width="20%" height="20%">タスク</th>
+          <td class="text-center" style="word-break: break-all;"><%= @task.task_title %></td>
+        </tr>
+        <tr>
+          <th class="table-active text-center", width="20%" height="80%">詳細</th>
+          <td class="text-left", valign="top", style="display: block; overflow-y:scroll; height:430px; word-break: break-all;">
+            <%= safe_join(@task.task_content.split("\n"),tag(:br)) %>
           </td>
         </tr>
+        </tr>
       </table>
-      <%= render "edit" %>
     </div>
   </div>
 </div>

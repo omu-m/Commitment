@@ -1,14 +1,23 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-10 offset-md-1 my-4 mt-5">
-  		<table class="table table-hover table-inverse">
+    <div class="col-md-2 offset-md-1 mt-4">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>タスク詳細</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-md-10 offset-md-1">
+      <table class="table table-hover table-inverse">
         <thead>
           <tr>
             <th>
               <% if @task.image.attached? %>
-                <%= image_tag @task.image, size: "50x50" %>
+                <%= image_tag @task.image, size: "50x50", style: "border-radius: 50px;" %>
               <% else %>
-                <%= image_tag "no_image", size: "50x50" %>
+                <%= image_tag "no_image.jpg", size: "50x50", style: "border-radius: 50px;" %>
               <% end %>
             </th>
             <th>
@@ -23,7 +32,7 @@
               <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                   <% memberids.push(member.id) %>
-                  <%= image_tag member.get_profile_image, size: "50x50" %>
+                  <%= image_tag member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
                   <%= member.display_name %>
                 </div>
               </div>
@@ -34,10 +43,18 @@
                 <%= link_to "子タスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
               <% end %>
             </th>
+            <th class="text-danger font-weight-bold">
+              達成率
+              <% if @task.subtasks.size.zero? %>
+                0 %
+              <% else %>
+                <%= ((@task.subtasks.where(progress_status: 3).size / @task.subtasks.size.to_f) * 100).round(2)%> %
+              <% end %>
+            </th>
             <% unless current_member.email == "guest@example.com" %>
             <th>
               <% if @task.owner_id == current_member.id %>
-              <%= link_to "編集", edit_task_path(@task), class: "btn btn-outline-danger" %>
+              <%= link_to "編集", edit_task_path(@task), class: "btn btn-outline-primary" %>
             <% elsif @task.members.include?(current_member) %>
               <%= link_to "退出", task_out_path(@task), method: :delete, class: "btn btn-outline-danger" %>
             <% else %>
@@ -48,14 +65,16 @@
           </tr>
         </thead>
       </table>
-      <table class="mt-5", align="center" border="1" width="750" height="500">
+      <table class="my-4 mt-5", align="center" border="1" width="750" height="500">
         <tr>
-          <th class="table-active text-center", width="20%" height="10%">タスク</th>
+          <th class="table-active text-center", width="20%" height="20%">タスク</th>
           <td class="text-center" style="word-break: break-all;"><%= @task.task_title %></td>
         </tr>
         <tr>
-          <th class="table-active text-center", width="20%" height="90%">詳細</th>
-          <td class="text-left", valign="top", style="display: block; overflow-y:scroll; height:450px; word-break: break-all;"><%= @task.task_content %></td>
+          <th class="table-active text-center", width="20%" height="80%">詳細</th>
+          <td class="text-left", valign="top", style="display: block; overflow-y:scroll; height:430px; word-break: break-all;">
+            <%= safe_join(@task.task_content.split("\n"),tag(:br)) %>
+          </td>
         </tr>
         </tr>
       </table>

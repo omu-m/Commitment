@@ -1,9 +1,16 @@
-<h2 class="mt-4">コメント一覧 <%= subtask.comments.count %>件</h2>
-<hr>
-<!--コメントが3件以上の場合、残りのコメントをプルダウンで表示するボタンの作成-->
-<% if comments.length  > 3 %>
+<table class="table table-hover table-inverse" style="text-align:center;">
+  <thead>
+    <tr>
+      <th>
+        コメント一覧 <%= subtask.comments.count %>件
+      </th>
+    </tr>
+  </thead>
+</table>
+<!--コメントが2件以上の場合、残りのコメントをプルダウンで表示するボタンの作成-->
+<% if comments.length  > 2 %>
   <% comments.where(parent_id: nil).each_with_index  do |comment, index| %>
-    <%if index + 1 < 4 %>
+    <%if index + 1 < 3 %>
       <%= render "public/comments/hide_comments", comment: comment %>
     <%else %>
       <div class="collapse" id="collapseExample">
@@ -13,8 +20,8 @@
       </div>
     <%end%>
   <% end %>
-    <div class="text-center">
-      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <div class="text-center mt-5">
+      <button type="button" class="btn btn btn-secondary px-5" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         もっと見る
       </button>
     </div>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 my-4">
       <h1 class="text-center"><strong>Commitment.</strong></h1>
       <div class="text-center">
         <br>
@@ -10,15 +10,15 @@
         <br>
         <p>また達成感を感じつつ課題に取り組むことができ、それぞれの進捗状況を共有することで自身のモチベーションにつなげることができます。</p>
       </div>
-      <div class="btn-wrapper col-10 mx-auto">
+      <div class="btn-wrapper col-10 mx-auto my-4 mt-5">
         <div class="row">
-          <%= link_to "もっと詳しく", about_path, class: "btn btn-outline-dark btn-sm btn-block mb-3 About" %>
+          <%= link_to "もっと詳しく", about_path, class: "btn btn-outline-danger btn-sm btn-block mb-4 About" %>
         </div>
         <div class="row">
-          <%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+          <%= link_to 'ゲストログイン（閲覧用）', members_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-4 sign_in", method: :post %>
         </div>
         <div class="row">
-          <%= link_to "ログイン", new_member_session_path, class: "btn btn-outline-primary btn-sm btn-block mb-3 sign_in" %>
+          <%= link_to "ログイン", new_member_session_path, class: "btn btn-outline-primary btn-sm btn-block mb-4 sign_in" %>
         </div>
         <div class="row">
           <%= link_to "新規登録", new_member_registration_path, class: "btn btn-outline-success btn-sm btn-block sign_up" %>

@@ -1,4 +1,13 @@
-<table class='table table-hover table-inverse'>
+<div class="col-md-3">
+  <table class="table table-hover table-inverse" style="text-align:center;">
+    <thead>
+      <tr>
+        <th>タスク一覧</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+<table class="table table-hover table-inverse">
   <thead>
     <tr>
       <th></th>
@@ -13,9 +22,9 @@
       <tr>
         <td>
           <% if task.image.attached? %>
-            <%= image_tag task.image, size: "50x50" %>
+            <%= image_tag task.image, size: "50x50", style: "border-radius: 50px;" %>
           <% else %>
-            <%= image_tag 'no_image.jpg', size: "50x50" %>
+            <%= image_tag "no_image.jpg", size: "50x50", style: "border-radius: 50px;" %>
           <% end %>
         </td>
         <td><%= link_to task.task_title.truncate(10), task_path(task) %></td>
@@ -36,5 +45,7 @@
   </tbody>
 </table>
 <div class="text-center">
-  <%= paginate tasks %>
+  <div class="mx-auto" style="width: 80px;">
+    <%= paginate tasks %>
+  </div>
 </div>

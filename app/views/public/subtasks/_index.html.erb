@@ -1,12 +1,21 @@
+<div class="col-md-3">
+  <table class="table table-hover table-inverse" style="text-align:center;">
+    <thead>
+      <tr>
+        <th>サブタスク一覧</th>
+      </tr>
+    </thead>
+  </table>
+</div>
 <table class="table table-hover table-inverse">
   <thead>
     <tr>
       <th>メンバー</th>
       <th>サブタスク</th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th>進捗</th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -14,11 +23,10 @@
     <% subtasks.each do |subtask| %>
       <tr>
         <td>
-          <%= image_tag subtask.member.get_profile_image, size: "50x50" %>
-          <%= subtask.member.display_name %>
+          <%= image_tag subtask.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
+          <%= subtask.member.display_name.truncate(10) %>
         </td>
-        <td><%= subtask.subtask_content.truncate(8) %></td>
-        <td><%= link_to subtask.progress_status, task_subtask_path(@task, subtask) %></td>
+        <td><%= link_to subtask.subtask_content.truncate(15), task_subtask_path(@task, subtask) %></td>
         <!--favorites非同期-->
         <td id="favorite_">
         <td id="favorite_<%= subtask.id %>">
@@ -27,15 +35,19 @@
         <!--comments非同期-->
         <td id="comments-count">
           <%= render "public/comments/count", subtask: subtask %>
-        <td>
-          <% if subtask.member_id == current_member.id %>
-            <%= link_to "編集", edit_task_subtask_path(@task, subtask.id), class: "btn btn-sm btn-outline-danger" %>
-          <% end %>
         </td>
+        <td>
+          <%= subtask.progress_status %>
+          <% if subtask.member_id == current_member.id %>
+          <%= link_to "更新", edit_task_subtask_path(@task, subtask), class: "btn btn-outline-primary" %>
+          <% end %>
+          </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <div class="text-center">
-  <%= paginate subtasks %>
+  <div class="mx-auto" style="width: 200px;">
+    <%= paginate subtasks %>
+  </div>
 </div>

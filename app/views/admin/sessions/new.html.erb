@@ -1,13 +1,17 @@
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-5 px-0 mx-auto">
-      <div class="mb-4 mt-5">
-        <h4><strong>管理者ログイン</strong></h4>
-      </div>
+    <div class="col-md-6 offset-md-3 my-4 mt-5">
+      <table class="table table-hover table-inverse" style="text-align:center;">
+        <thead>
+          <tr>
+            <th>管理者ログイン</th>
+          </tr>
+        </thead>
+      </table>
 
       <%= form_with model: @admin, url: new_admin_session_path do |f| %>
 
-        <div class="field mb-4">
+        <div class="field mb-4 mt-5">
           <%= f.label :user_name, "ユーザーネーム" %>
           <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
         </div>
@@ -19,9 +23,8 @@
           <%= f.label "パスワード" %>
           <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
         </div>
-
         <div class="actions text-center mb-4 mt-5">
-          <%= f.submit "ログイン", class: "btn btn-secondary" %>
+          <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
         </div>
       <% end %>
     </div>

@@ -1,4 +1,5 @@
 class Public::MembersController < ApplicationController
+
   before_action :authenticate_member!
 
   def show
@@ -13,18 +14,25 @@ class Public::MembersController < ApplicationController
   def update
     @member = current_member
     if @member.update(member_params)
-       flash[:notice] = "登録情報を変更しました。"
-       redirect_to mypage_path
+      flash[:notice] = "登録情報を変更しました。"
+      redirect_to mypage_path
     else
-       flash[:notice] = "登録情報の変更に失敗しました。"
-       render "edit"
+      flash[:notice] = "登録情報の変更に失敗しました。"
+      render "edit"
     end
   end
 
   def task_favorites
     @member = Member.find(params[:id])
     task_favorites = TaskFavorite.where(member_id: @member.id).pluck(:task_id)
-    @task_favorite_tasks = Task.find(task_favorites)
+    @task_favorite_tasks = Task.where(id:task_favorites).page(params[:page])
+  end
+
+  def favorites
+    @member = Member.find(params[:id])
+    @task = Task.find(params[:id])
+    favorites = Favorite.where(member_id: @member.id).pluck(:subtask_id)
+    @favorite_tasks_subtasks = Subtask.where(id:favorites).page(params[:page])
   end
 
   def unsubscribe
