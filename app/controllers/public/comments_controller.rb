@@ -1,4 +1,6 @@
 class Public::CommentsController < ApplicationController
+  
+  before_action :authenticate_member!
 
   def create
     @subtask = Subtask.find(params[:subtask_id])
