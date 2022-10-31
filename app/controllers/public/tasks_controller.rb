@@ -17,6 +17,10 @@ class Public::TasksController < ApplicationController
     @tasks = @tasks.order_as_specified(id: subtask_id)
   end
 
+  def request_task
+    @task = Task.find(params[:task_id])
+  end
+
   def create
     @task = Task.new(task_params)
     @task.owner_id = current_member.id
@@ -41,7 +45,7 @@ class Public::TasksController < ApplicationController
   def join
     @task = Task.find(params[:task_id])
     @task.members << current_member
-    redirect_to  task_subtasks_path(@task)
+    redirect_to  task_path(@task)
   end
 
   # 退出
