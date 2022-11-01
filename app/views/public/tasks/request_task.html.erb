@@ -16,11 +16,11 @@
             <th>表示名</th>
           </tr>
         </thead>
-        <% @task.each do |member| %>
+        <% @task.members.seach do |member| %>
           <tbody>
             <tr>
               <td>
-                <%= image_tag member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
+                
               </td>
               <td><%= member.user_name %></td>
             </tr>

@@ -17,10 +17,6 @@ class Public::TasksController < ApplicationController
     @tasks = @tasks.order_as_specified(id: subtask_id)
   end
 
-  def request_task
-    @task = Task.find(params[:task_id])
-  end
-
   def create
     @task = Task.new(task_params)
     @task.owner_id = current_member.id
@@ -34,6 +30,11 @@ class Public::TasksController < ApplicationController
       @tasks = Task.page(params[:page])
       render "index"
     end
+  end
+
+  def request_task
+    @task = Task.find(params[:task_id])
+    @task = Task.page(params[:page])
   end
 
   def show
