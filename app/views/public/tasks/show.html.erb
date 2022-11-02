@@ -54,11 +54,6 @@
             <% unless current_member.email == "guest@example.com" %>
               <th>
               <% if @task.owner_id == current_member.id %>
-                <%= link_to "参加希望者", task_request_task_path(@task), class: "btn btn-outline-success" %>
-              <% end %>
-              </th>
-              <th>
-              <% if @task.owner_id == current_member.id %>
                 <%= link_to "編集", edit_task_path(@task), class: "btn btn-outline-primary" %>
               <% elsif @task.members.include?(current_member) %>
                 <%= link_to "退出", task_out_path(@task), method: :delete, class: "btn btn-outline-danger" %>

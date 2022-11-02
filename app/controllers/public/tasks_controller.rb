@@ -32,11 +32,6 @@ class Public::TasksController < ApplicationController
     end
   end
 
-  def request_task
-    @task = Task.find(params[:task_id])
-    @task = Task.page(params[:page])
-  end
-
   def show
     @task = Task.find(params[:id])
     @tasknew = Task.new

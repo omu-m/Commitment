@@ -28,11 +28,11 @@
                 <%= link_to member.display_name, admin_member_path(member.id) %>
               </td>
               <td><%= member.user_name %></td>
-            <% if member.is_deleted == true %>
-              <td class="text-secondary font-weight-bold">退会</td>
-            <% else %>
-              <td class="text-primary font-weight-bold">有効</td>
-            <% end %>
+              <% if member.is_deleted == true %>
+                <td class="text-secondary font-weight-bold">退会</td>
+              <% else %>
+                <td class="text-primary font-weight-bold">有効</td>
+              <% end %>
             </tr>
           </tbody>
         <% end %>
