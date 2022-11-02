@@ -6,6 +6,14 @@ ja: #日本語の設定を行う
         processing: "処理中"
         treated: "処理済み"
         complete: "完了"
+
+  enums:
+    tasks:
+      approval_status:
+        approval_pending: "承認待ち"
+        approval: "承認"
+        non_approval: "非承認"
+
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
