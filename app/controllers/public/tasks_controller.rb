@@ -84,6 +84,26 @@ class Public::TasksController < ApplicationController
     end
   end
 
+  def request_join
+    # ログイン中のユーザーが、特定のタスクに参加申請を行う
+    TaskMember.create(task_id: , member_id: , approval_status: 0)
+
+    # タスク詳細ページに戻る
+    @task = Task.find(params[:task_id])
+    @task.members << current_member
+    redirect_to  task_path(@task)
+  end
+
+  def approval_request
+    # ログイン中のユーザーが、特定のタスクに参加する承認を行う
+    TaskMember.update(task_id: , member_id: , approval_status: 1)
+  end
+
+  def non_approval_request
+    # ログイン中のユーザーが、特定のタスクに参加する否認を行う
+    TaskMember.update(task_id: , member_id: , approval_status: 2)
+  end
+
   private
 
   def task_params

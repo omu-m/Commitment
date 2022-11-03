@@ -13,9 +13,6 @@ class Task < ApplicationRecord
 
   has_one_attached :image
 
-  # 承認ステータス
-  enum approval_status: { 承認待ち:0, 承認:1, 非承認:2 }
-
   # いいねボタンはいいねしている状態としていない状態によってアクションが変わる。
   def task_favorited_by?(member)
     task_favorites.where(member_id: member.id).exists?
