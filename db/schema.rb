@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2022_10_19_055925) do
   create_table "task_members", force: :cascade do |t|
     t.integer "task_id", null: false
     t.integer "member_id", null: false
+    t.integer "approval_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -113,7 +114,6 @@ ActiveRecord::Schema.define(version: 2022_10_19_055925) do
     t.integer "owner_id", null: false
     t.string "task_title", null: false
     t.text "task_content", null: false
-    t.integer "approval_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
