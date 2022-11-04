@@ -3,7 +3,6 @@ class Task < ApplicationRecord
   extend OrderAsSpecified
 
   has_many :task_members, dependent: :destroy
-  has_many :request_tasks, dependent: :destroy
   has_many :subtasks, dependent: :destroy
   has_many :members, through: :task_members
   has_many :task_favorites, dependent: :destroy

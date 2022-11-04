@@ -53,24 +53,31 @@
             </th>
             <% unless current_member.email == "guest@example.com" %>
               <th>
+
+                申請ボタンは、以下の条件で表示させたい。
+                  1. すでに加入している場合：退会するボタンが表示
+                  2. まだ加入していない場合：申請ボタンが表示
+                  3. すでに加入申請済の場合：申請取消ボタンを表示
+                
                 <% @task.task_members.find_by(member: current_member).approval_status == 0 %>
                   承認待ち
 
                 <% @task.task_members.find_by(member: current_member).approval_status == 1 %>
                   退出
 
-                <% @task.task_members.find_by(member: current_member).blank? || @task.task_members.find_by(member: current_user).approval_status == 2 %>
-                  <%= link_to "参加希望", task_request_join_path(@task), class: "btn btn-outline-primary" %>
+                <% @task.task_members.find_by(member: current_member).blank? || @task.task_members.find_by(member: current_member).approval_status == 2 %>
+                  <%= link_to "参加申請", task_request_join_path(@task), class: "btn btn-outline-primary" %>
 
 
                   <%= link_to "申請を承認する", task_approval_request_path(@task), class: "btn btn-outline-primary" %>
                   <%= link_to "申請を否認する", task_non_approval_request_path(@task), class: "btn btn-outline-primary" %>
+
               <%# if @task.owner_id == current_member.id %>
                 <%#= link_to "編集", edit_task_path(@task), class: "btn btn-outline-primary" %>
               <%# elsif @task.members.include?(current_member) %>
                 <%#= link_to "退出", task_out_path(@task), method: :delete, class: "btn btn-outline-danger" %>
               <%# else %>
-                <%#= link_to "参加希望", task_join_path(@task), class: "btn btn-outline-success" %>
+                <%#= link_to "参加申請", task_join_path(@task), class: "btn btn-outline-success" %>
               <%# end %>
               </th>
             <% end %>

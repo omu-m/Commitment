@@ -9,7 +9,7 @@ class Subtask < ApplicationRecord
   validates :subtask_content, presence: true
 
   # 進捗ステータス
-  enum progress_status: { 未完了:0, 処理中:1, 処理済み:2, 完了:3 }
+  enum progress_status: { incomplete: 0, processing: 1, treated: 2, complete: 3 }
 
   # いいねボタンはいいねしている状態としていない状態によってアクションが変わる。
   def favorited_by?(member)
