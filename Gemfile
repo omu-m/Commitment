@@ -65,6 +65,8 @@ gem 'kaminari','~> 1.2.1'
 
 gem 'order_as_specified'
 
+gem 'enum_help'
+
 # デプロイ
 gem 'dotenv-rails'
 group :production do

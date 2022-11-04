@@ -4,6 +4,6 @@ class TaskMember < ApplicationRecord
   belongs_to :task
 
   # 承認ステータス
-  enum approval_status: { 承認待ち:0, 承認:1, 非承認:2 }
+  enum approval_status: { approval_pending: 0, approval: 1, non_approval: 2 }
 
 end
