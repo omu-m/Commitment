@@ -45,8 +45,10 @@ Rails.application.routes.draw do
       # 親タスク(グループ)
       get "join" => "tasks#join"
       get "request_join" => "tasks#request_join"
+      delete "request_join_destroy" => "tasks#request_join_destroy"
       get "approval_request" => "tasks#approval_request"
       get "non_approval_request" => "tasks#non_approval_request"
+      get "applies" => "tasks#applies"
       delete "out" => "tasks#out"
       delete "all_destroy" => "tasks#all_destroy"
       resource :task_favorites, only: [:create, :destroy]
