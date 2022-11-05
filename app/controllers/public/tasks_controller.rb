@@ -35,6 +35,8 @@ class Public::TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @tasknew = Task.new
+    @task_member = @task.task_members.find_by(member: current_member)
+    @status = @task_member.present? ? @task_member.approval_status : "before_participation"
   end
 
   # 参加
@@ -86,10 +88,14 @@ class Public::TasksController < ApplicationController
 
   def request_join
     # ログイン中のユーザーが、特定のタスクに参加申請を行う
-    if TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).present?
-      TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 0)
+    task_member =  TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id)
+    if task_member.present?
+      p task_member.approval_status
+      if task_member.approval_status == 3 || 4
+        TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 1)
+      end
     else
-      TaskMember.create(task_id: params[:task_id], member_id: current_member.id, approval_status: 2)
+      TaskMember.create(task_id: params[:task_id], member_id: current_member.id, approval_status: 1)
     end
 
     # タスク詳細ページに戻る
@@ -99,7 +105,7 @@ class Public::TasksController < ApplicationController
   end
 
   def request_join_destroy
-    TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 2)
+    TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 4)
 
     # タスク詳細ページに戻る
     @task = Task.find(params[:task_id])
@@ -109,16 +115,19 @@ class Public::TasksController < ApplicationController
 
   def applies
     @task = Task.find(params[:task_id])
+    @task_members = @task.task_members.where(approval_status: 1)
   end
 
   def approval_request
     # オーナーがログイン中のユーザーが、特定のタスクに参加する承認を行う
-    TaskMember.update(task_id: , member_id: , approval_status: 1)
+    TaskMember.update(task_id: params[:task_id], member_id: current_member.id, approval_status: 2)
+    redirect_to task_applies_path(params[:task_id])
   end
 
   def non_approval_request
     # オーナーがログイン中のユーザーが、特定のタスクに参加する非承認を行う
-    TaskMember.update(task_id: , member_id: , approval_status: 2)
+    TaskMember.update(task_id: params[:task_id], member_id: current_member.id, approval_status: 3)
+    redirect_to task_applies_path(params[:task_id])
   end
 
   private

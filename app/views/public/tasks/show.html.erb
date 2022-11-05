@@ -27,11 +27,11 @@
                 メンバー
               </a>
               <% end %>
-              <% memberids = [] %>
-              <% @task.members.each do |member| %>
+              <% member_ids = @task.task_members.where(approval_status: 1).pluck(:member_id).uniq %>
+              <% @members = Member.where(id: member_ids) %>
+              <% @members.each do |member| %>
               <div class="collapse" id="collapseExample">
                 <div class="card card-body">
-                  <% memberids.push(member.id) %>
                   <%= image_tag member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
                   <%= member.display_name %>
                 </div>
@@ -39,7 +39,7 @@
               <% end %>
             </th>
             <th>
-              <% if memberids.include?(current_member.id) %>
+              <% if @status == "approval" %>
                 <%= link_to "子タスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
               <% end %>
             </th>
@@ -51,8 +51,6 @@
                 <%= ((@task.subtasks.where(progress_status: 3).size / @task.subtasks.size.to_f) * 100).round(2)%> %
               <% end %>
             </th>
-            <% @status = @task.task_members.find_by(member: current_member).present? ? @task.task_members.find_by(member: current_member).approval_status : "approval_pending" %>
-            <% @task_member = @task.task_members.find_by(member: current_member) %>
             <th>
               現在のステータス: <%= @status %>
               <%#= @task_member.id %>
@@ -64,11 +62,11 @@
                 <!--  1. すでに加入している場合：退会するボタンが表示-->
                 <!--  2. まだ加入していない場合：申請ボタンが表示-->
                 <!--  3. すでに加入申請済の場合：申請取消ボタンを表示-->
-
-              <% if @task_member.blank? || @status == "non_approval" %>
-                <%= link_to "参加申請", task_request_join_path(@task), class: "btn btn-outline-primary" %>
-              <% elsif @status == "approval_pending" %>
+              <% task_member = @task.task_members.find_by(member: current_member) %>
+              <% if @status == "approval_pending" %>
                 <%= link_to "申請取消", task_request_join_destroy_path(@task), method: :delete, class: "btn btn-outline-danger" %>
+              <% elsif @status == "before_participation" || "denial_by_owner" || "denial_by_member" %>
+                <%= link_to "参加申請", task_request_join_path(@task), class: "btn btn-outline-primary" %>
               <% elsif @status == "approval" %>
                 <%= link_to "退出", task_out_path(@task), method: :delete, class: "btn btn-outline-danger" %>
               <% end %>
