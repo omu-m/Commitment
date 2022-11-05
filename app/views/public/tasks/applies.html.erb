@@ -3,7 +3,29 @@
     <div class="col-md-2 offset-md-1 mt-4">
       <th>承認待ちユーザ一覧</th>
     </div>
+    <table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>メンバー</th>
+      <th>承認</th>
+      <th>非承認</th>
+    </tr>
+  </thead>
+  <% @task_members.each do |task_member| %>
+    <tbody>
+      <tr>
+        <td>
+          <%= image_tag task_member.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
+          <%= task_member.member.display_name %>
+        </td>
+        <td><%= link_to "承認", task_approval_request_path(@task), class: "btn btn-outline-primary" %></td>
+        <td><%= link_to "非承認", task_non_approval_request_path(@task), class: "btn btn-outline-primary" %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
 
 
-<%#= link_to "承認", task_approval_request_path(@task), class: "btn btn-outline-primary" %>
-<%#= link_to "非承認", task_non_approval_request_path(@task), class: "btn btn-outline-primary" %>
+
+
+

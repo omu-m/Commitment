@@ -10,16 +10,11 @@ ja: #日本語の設定を行う
   enums:
     tasks:
       approval_status:
+        before_participation: "参加前"
         approval_pending: "承認待ち"
         approval: "承認"
-        non_approval: "非承認"
-
-  enums:
-    task_members:
-      approval_status:
-        approval_pending: "承認待ち"
-        approval: "承認"
-        non_approval: "非承認"
+        denial_by_owner: "非承認"
+        denial_by_member: "申請取り下げ"
 
   time:
     formats:
