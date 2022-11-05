@@ -38,11 +38,11 @@ class Public::TasksController < ApplicationController
   end
 
   # 参加
-  def join
-    @task = Task.find(params[:task_id])
-    @task.members << current_member
-    redirect_to  task_path(@task)
-  end
+  # def join
+  #   @task = Task.find(params[:task_id])
+  #   @task.members << current_member
+  #   redirect_to  task_path(@task)
+  # end
 
   # 退出
   def out
@@ -86,7 +86,11 @@ class Public::TasksController < ApplicationController
 
   def request_join
     # ログイン中のユーザーが、特定のタスクに参加申請を行う
-    TaskMember.create(task_id: , member_id: , approval_status: 0)
+    if TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).present?
+      TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 0)
+    else
+      TaskMember.create(task_id: params[:task_id], member_id: current_member.id, approval_status: 2)
+    end
 
     # タスク詳細ページに戻る
     @task = Task.find(params[:task_id])
@@ -94,13 +98,26 @@ class Public::TasksController < ApplicationController
     redirect_to  task_path(@task)
   end
 
+  def request_join_destroy
+    TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 2)
+
+    # タスク詳細ページに戻る
+    @task = Task.find(params[:task_id])
+    @task.members << current_member
+    redirect_to  task_path(@task)
+  end
+
+  def applies
+    @task = Task.find(params[:task_id])
+  end
+
   def approval_request
-    # ログイン中のユーザーが、特定のタスクに参加する承認を行う
+    # オーナーがログイン中のユーザーが、特定のタスクに参加する承認を行う
     TaskMember.update(task_id: , member_id: , approval_status: 1)
   end
 
   def non_approval_request
-    # ログイン中のユーザーが、特定のタスクに参加する否認を行う
+    # オーナーがログイン中のユーザーが、特定のタスクに参加する非承認を行う
     TaskMember.update(task_id: , member_id: , approval_status: 2)
   end
 
