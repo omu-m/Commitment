@@ -21,7 +21,7 @@
     <%= form_with model: @subtask, url: task_subtask_path(@task.id, @subtask.id), local: true do |f| %>
       <div class="form-group text-center">
         <%= f.label :進捗 %><br>
-        <%= f.select :progress_status, Subtask.progress_statuses.keys %>
+        <%= f.select :progress_status, Subtask.progress_statuses_i18n.keys.map{|k| [I18n.t("enums.subtask.progress_status.#{k}"), k]} %>
         <%= f.submit "更新", class: "btn btn-outline-primary ml-5" %>
       </div>
       <hr>
