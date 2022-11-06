@@ -28,6 +28,7 @@
           <% end %>
         </td>
         <td><%= link_to task.task_title.truncate(10), task_path(task) %></td>
+        <!--+1はオーナーです。-->
         <td><%= task.task_members.where(approval_status: 2).pluck(:member_id).uniq.count + 1 %></td>
         <!--task_favorites非同期-->
         <td id="task_favorite_<%= task.id %>">

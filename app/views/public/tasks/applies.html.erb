@@ -11,18 +11,18 @@
       <th>非承認</th>
     </tr>
   </thead>
-  <% @task_members.each do |task_member| %>
-    <tbody>
+  <tbody>
+    <% @task_members.each do |task_member| %>
       <tr>
         <td>
           <%= image_tag task_member.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
           <%= task_member.member.display_name %>
         </td>
-        <td><%= link_to "承認", task_approval_request_path(@task), class: "btn btn-outline-primary" %></td>
-        <td><%= link_to "非承認", task_non_approval_request_path(@task), class: "btn btn-outline-primary" %></td>
+        <td><%= link_to "承認", task_approval_request_path(@task, member_id: task_member.member_id), class: "btn btn-outline-success" %></td>
+        <td><%= link_to "非承認", task_non_approval_request_path(@task, member_id: task_member.member_id), class: "btn btn-outline-danger" %></td>
       </tr>
-    </tbody>
-  <% end %>
+    <% end %>
+  </tbody>
 </table>
 
 

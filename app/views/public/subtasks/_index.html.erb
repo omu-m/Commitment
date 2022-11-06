@@ -37,7 +37,7 @@
           <%= render "public/comments/count", subtask: subtask %>
         </td>
         <td>
-          <%= subtask.progress_status %>
+          <%= subtask.progress_status_i18n %>
           <% if subtask.member_id == current_member.id %>
           <%= link_to "更新", edit_task_subtask_path(@task, subtask), class: "btn btn-outline-primary" %>
           <% end %>
