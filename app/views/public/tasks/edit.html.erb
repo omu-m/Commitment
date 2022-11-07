@@ -1,13 +1,10 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-6 offset-md-3 my-4 mt-5">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>タスク編集</th>
-          </tr>
-        </thead>
-      </table>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>タスク編集</strong></h5>
+        <hr class="col-md-2 mt-2">
+      </div>
 
       <% if @task.errors.any? %>
       <%= @task.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
