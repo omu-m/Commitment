@@ -3,7 +3,7 @@
     <div class="col-md-6 offset-md-3 my-4 mt-5">
       <div style="text-align:center;">
         <h5 class="text-center"><strong>タスク編集</strong></h5>
-        <hr class="col-md-2 mt-2">
+        <hr class="col-md-12 mt-2">
       </div>
 
       <% if @task.errors.any? %>
@@ -16,22 +16,22 @@
       <% end %>
 
   		<%= form_with model: @task, local: true do |f| %>
-        <div class="form-group">
+        <div class="form-group mb-4 mt-5">
           <%= f.label :タスク %>
           <%= f.text_field :task_title, autofocus: true, class: "form-control" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-4">
           <%= f.label :詳細 %>
           <%= f.text_area :task_content, class: "form-control" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-4">
           <%= f.label :タスク画像（変更する場合は選択してください） %><br>
           <img id="preview" src="/assets/no_image.jpeg" class="member-icon" style="width: 100px; height: 100px">
           <%= f.file_field :image, accept: "image/*" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-4">
           <%= f.label :オーナー %><br>
-          <%= f.select :owner_id, options_from_collection_for_select( @task.members.where.not(id: @task.owner_id), :id, :display_name), { include_blank: "変更する場合は選択してください"}
+          <%= f.select :owner_id, options_from_collection_for_select(@task.members.where.not(id: @task.owner_id), :id, :display_name), { include_blank: "変更する場合は選択してください"}
  %>
         </div>
         <div class="form-group text-center my-4 mt-5">

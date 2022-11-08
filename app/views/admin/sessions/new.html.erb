@@ -1,13 +1,10 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-6 offset-md-3 my-4 mt-5">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>管理者ログイン</th>
-          </tr>
-        </thead>
-      </table>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>管理者ログイン</strong></h5>
+        <hr class="col-md-12 mt-2">
+      </div>
 
       <%= form_with model: @admin, url: new_admin_session_path do |f| %>
 

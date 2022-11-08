@@ -1,13 +1,10 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3 offset-md-1 mt-4">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>サブタスク詳細／コメント</th>
-          </tr>
-        </thead>
-      </table>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>サブタスク詳細／コメント</strong></h5>
+        <hr class="col-md-10 mt-2">
+      </div>
     </div>
     <div class="col-md-10 offset-md-1">
       <table class="table table-hover table-inverse">
@@ -18,8 +15,10 @@
               <%= image_tag @subtask.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
               <%= @subtask.member.display_name %>
             </th>
-            <th class="text-danger font-weight-bold">
-              <%= @subtask.progress_status %>
+            <th class="text-center text-danger font-weight-bold">
+              <%= @subtask.progress_status_i18n %>
+            </th>
+            <th style="text-align:right;">
               <% if @subtask.member_id == current_member.id %>
                 <%= link_to "更新/編集", edit_task_subtask_path(@task, @subtask), class: "btn btn-outline-primary ml-3" %>
               <% end %>

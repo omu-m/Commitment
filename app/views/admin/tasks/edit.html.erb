@@ -1,13 +1,10 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-6 offset-md-3 my-4 mt-5">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>タスク編集</th>
-          </tr>
-        </thead>
-      </table>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>タスク編集</strong></h5>
+        <hr class="col-md-12 mt-2">
+      </div>
 
       <% if @task.errors.any? %>
       <%= @task.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
@@ -20,20 +17,20 @@
 
   	  <%= form_with model: @task, url: admin_task_path, local: true do |f| %>
 
-        <div class="form-group">
+        <div class="form-group mb-4 mt-5">
           <%= f.label :タスク %>
           <%= f.text_field :task_title, autofocus: true, class: "form-control" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-4">
           <%= f.label :詳細 %>
           <%= f.text_area :task_content, class: "form-control" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-4">
           <%= f.label :タスク画像（変更する場合は選択してください） %><br>
           <img id="preview" src="/assets/no_image.jpg" class="member-icon" style="width: 100px; height: 100px">
           <%= f.file_field :image, accept: "image/*" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-4">
           <%= f.label :オーナー %>
           <%= f.select :owner_id, options_from_collection_for_select( @task.members.where.not(id: @task.owner_id), :id, :display_name), { include_blank: "オーナーを変更したい場合は選択"}
    %>
