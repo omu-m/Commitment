@@ -1,41 +1,38 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-6 offset-md-3 my-4 mt-5">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>サブタスク編集</th>
-          </tr>
-        </thead>
-      </table>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>サブタスク編集</strong></h5>
+        <hr class="mt-2">
+      </div>
 
-    <% if @subtask.errors.any? %>
-    <%= @subtask.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
-      <ul>
-        <% @subtask.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
+      <% if @subtask.errors.any? %>
+      <%= @subtask.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
+        <ul>
+          <% @subtask.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
-    <%= form_with model: @subtask, url: task_subtask_path(@task.id, @subtask.id), local: true do |f| %>
-      <div class="form-group text-center">
-        <%= f.label :進捗 %><br>
-        <%= f.select :progress_status, Subtask.progress_statuses_i18n.keys.map{|k| [I18n.t("enums.subtask.progress_status.#{k}"), k]} %>
-        <%= f.submit "更新", class: "btn btn-outline-primary ml-5" %>
-      </div>
-      <hr>
-      <div class="form-group">
-        <%= f.label :サブタスク %>
-        <%= f.text_area :subtask_content, autofocus: true, class: "form-control" %>
-      </div>
-      <div class="form-group text-center my-4 mt-5">
-        <%= f.submit "変更を保存", class: "btn btn-outline-secondary mr-5" %>
-        <% if @subtask.member_id == current_member.id %>
-        <%= link_to "削除", task_subtask_path(@task.id, @subtask.id),method: :delete, data: { confirm: "OKを押すと削除されます。本当によろしいですか？" }, class: "btn btn-outline-danger ml-5 px-4" %>
-        <% end %>
-      </div>
-    <% end %>
-  	</div>
+      <%= form_with model: @subtask, url: task_subtask_path(@task.id, @subtask.id), local: true do |f| %>
+        <div class="form-group text-center mb-4 mt-5">
+          <%= f.label :進捗 %><br>
+          <%= f.select :progress_status, Subtask.progress_statuses_i18n.keys.map{|k| [I18n.t("enums.subtask.progress_status.#{k}"), k]} %>
+          <%= f.submit "更新", class: "btn btn-outline-primary ml-5" %>
+        </div>
+        <hr class="col-md-6">
+        <div class="form-group mb-4">
+          <%= f.label :サブタスク %>
+          <%= f.text_area :subtask_content, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group text-center my-4 mt-5">
+          <%= f.submit "変更を保存", class: "btn btn-outline-secondary mr-5" %>
+          <% if @subtask.member_id == current_member.id %>
+          <%= link_to "削除", task_subtask_path(@task.id, @subtask.id),method: :delete, data: { confirm: "OKを押すと削除されます。本当によろしいですか？" }, class: "btn btn-outline-danger ml-5 px-4" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

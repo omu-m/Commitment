@@ -1,12 +1,8 @@
-<table class="table table-hover table-inverse mt-5" style="text-align:center;">
-  <thead>
-    <tr>
-      <th>
-        コメント一覧 <%= subtask.comments.count %>件
-      </th>
-    </tr>
-  </thead>
-</table>
+<div style="text-align:center;">
+  <hr>
+  <h6 class="text-center"><strong>コメント一覧 <%= subtask.comments.count %>件</strong></h6>
+  <hr class="mt-2">
+</div>
 <!--コメントが2件以上の場合、残りのコメントをプルダウンで表示するボタンの作成-->
 <% if comments.length  > 2 %>
   <% comments.each_with_index  do |comment, index| %>
