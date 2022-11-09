@@ -32,6 +32,13 @@ class Public::TasksController < ApplicationController
     end
   end
 
+  def search
+    @tasks = Task.search(params[:keyword]).page(params[:page])
+    @keyword = params[:keyword]
+    @task = Task.new
+    render "index"
+  end
+
   def show
     @task = Task.find(params[:id])
     @tasknew = Task.new
@@ -132,7 +139,7 @@ class Public::TasksController < ApplicationController
 
   private
 
-  def task_params
+  def task_paramss
     params.require(:task).permit(:task_title, :task_content, :image)
   end
 

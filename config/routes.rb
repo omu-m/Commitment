@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       get "applies" => "tasks#applies"
       delete "out" => "tasks#out"
       delete "all_destroy" => "tasks#all_destroy"
+      get "search" => "tasks#search"
       resource :task_favorites, only: [:create, :destroy]
       resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy] do
         get "search" => "subtasks#search"
