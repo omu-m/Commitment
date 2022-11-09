@@ -18,11 +18,11 @@ class Public::TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(task_paramss)
     @task.owner_id = current_member.id
     # @task.membersに、current_memberを追加しているという記述。
-    @task.members << current_member
     if @task.save
+      @task.task_members.create(member_id: current_member.id, approval_status: 2)
       flash[:notice] = "親タスクが正常に作成されました。"
       redirect_to tasks_path
     else
@@ -36,6 +36,16 @@ class Public::TasksController < ApplicationController
     @tasks = Task.search(params[:keyword]).page(params[:page])
     @keyword = params[:keyword]
     @task = Task.new
+    render "index"
+  end
+
+  def search_tasks
+    @task = Task.new
+    if params[:new]
+      @tasks = Task.all.order(created_at: "DESC").page(params[:page])
+    elsif params[:old]
+      @tasks = Task.all.order(created_at: "ASC").page(params[:page])
+    end
     render "index"
   end
 
@@ -69,9 +79,9 @@ class Public::TasksController < ApplicationController
     if nil != (params[:task][:owner_id] =~ /\A[0-9]+\z/)
       @task.owner_id = params[:task][:owner_id]
     end
-    if @task.update(task_params)
+    if @task.update(task_paramss)
       flash[:notice] = "親タスクが正常に編集されました。"
-      redirect_to tasks_path
+      redirect_to task_path
     else
       flash[:notice] = "親タスクの編集に失敗しました。"
       render "edit"
@@ -96,7 +106,7 @@ class Public::TasksController < ApplicationController
 
   def request_join
     # ログイン中のユーザーが、特定のタスクに参加申請を行う
-    task_member =  TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id)
+    task_member = TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id)
     if task_member.present?
       if task_member.approval_status == 3 || 4
         TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 1)
@@ -104,19 +114,15 @@ class Public::TasksController < ApplicationController
     else
       TaskMember.create(task_id: params[:task_id], member_id: current_member.id, approval_status: 1)
     end
-
     # タスク詳細ページに戻る
     @task = Task.find(params[:task_id])
-    @task.members << current_member
     redirect_to  task_path(@task)
   end
 
   def request_join_destroy
     TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 4)
-
     # タスク詳細ページに戻る
     @task = Task.find(params[:task_id])
-    @task.members << current_member
     redirect_to  task_path(@task)
   end
 
