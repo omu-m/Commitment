@@ -5,7 +5,11 @@ class Public::SubtasksController < ApplicationController
 
   def index
     @task = Task.find(params[:task_id])
-    @subtasks = @task.subtasks.page(params[:page])
+    if params[:status].nil?
+      @subtasks = @task.subtasks.page(params[:page])
+    else
+      @subtasks = @task.subtasks.where(progress_status: params[:status]).page(params[:page])
+    end
     @subtask = Subtask.new
     @subtasks = @subtasks.order(updated_at: :desc)
   end
