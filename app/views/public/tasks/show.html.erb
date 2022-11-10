@@ -32,10 +32,13 @@
               <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                   <%= image_tag owner.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
-                  <%= owner.display_name %>
+                  <%= owner.display_name.truncate(10) %>
                   <% @members.each do |member| %>
                   <%= image_tag member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
-                  <%= member.display_name %>
+                  <%= member.display_name.truncate(10) %>
+                  <% if current_member.id == @task.owner_id %>
+                  <%= link_to "削除", task_leaving_path(@task, member_id: @task_member.member_id), method: :delete, data: { confirm: "OKを押すと削除されます。本当によろしいですか？" }, class: "btn btn-sm btn-outline-danger" %>
+                  <% end %>
                   <% end %>
                 </div>
               </div>
@@ -70,7 +73,7 @@
                   <%= link_to "退出", task_out_path(@task), method: :delete, class: "btn btn-outline-danger" %>
                 <% elsif @status == 1 %>
                   <%= link_to "申請取消", task_request_join_destroy_path(@task), method: :delete, class: "btn btn-outline-danger" %>
-                <% elsif @status == 0 || 3 || 4 %>
+                <% elsif @status == 0 || 3 || 4 || 5 %>
                   <%= link_to "参加申請", task_request_join_path(@task), class: "btn btn-outline-success" %>
                 <% end %>
               <% end %>

@@ -7,6 +7,9 @@
       </div>
     </div>
      <div class="col-md-10 offset-md-1">
+      <div style="text-align:right;">
+        <%= link_to "戻る" , admin_tasks_path, class: "btn btn-outline-secondary fa-solid fa-arrow-rotate-left" %>
+      </div>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -23,15 +26,14 @@
                 メンバー
               </a>
               <% owner = Member.find_by(id: @task.owner_id) %>
-              <% member_ids = @task.task_members.where(approval_status: 2).pluck(:member_id).uniq %>
-              <% @members = Member.where(id: member_ids) %>
+              <% @members = @task.members.includes(:task_members).where(task_members: {approval_status: 2}).where.not(id: @task.owner_id) %>
               <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                   <%= image_tag owner.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
-                  <%= owner.display_name %>
+                  <%= owner.display_name.truncate(10) %>
                   <% @members.each do |member| %>
                   <%= image_tag member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
-                  <%= member.display_name %>
+                  <%= member.display_name.truncate(10) %>
                   <% end %>
                 </div>
               </div>

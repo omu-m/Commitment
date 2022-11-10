@@ -131,6 +131,11 @@ class Public::TasksController < ApplicationController
     @task_members = @task.task_members.where(approval_status: 1)
   end
 
+  def leaving
+    TaskMember.find_by(task_id: params[:task_id], member_id: params[:member_id]).update(approval_status: 5)
+    redirect_to  tasks_path(@task)
+  end
+
   def approval_request
     # オーナーがログイン中のユーザーが、特定のタスクに参加する承認を行う
     TaskMember.find_by(task_id: params[:task_id], member_id: params[:member_id]).update(approval_status: 2)
