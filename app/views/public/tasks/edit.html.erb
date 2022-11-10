@@ -31,7 +31,7 @@
         </div>
         <div class="form-group mb-4">
           <%= f.label :オーナー %><br>
-          <%= f.select :owner_id, options_from_collection_for_select(@task.members.includes(:task_members).where(task_members: {approval_status: 2}), :id, :display_name), { include_blank: "変更する場合は選択してください"}
+          <%= f.select :owner_id, options_from_collection_for_select(@task.members.includes(:task_members).where.not(id: @task.owner_id).where(task_members: {approval_status: 2}), :id, :display_name), { include_blank: "変更する場合は選択してください"}
  %>
         </div>
         <div class="form-group text-center my-4 mt-5">

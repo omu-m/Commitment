@@ -30,8 +30,7 @@
               </td>
               <td><%= link_to task.task_title.truncate(10), admin_task_path(task) %></td>
               <td><%= task.task_content.truncate(10) %></td>
-              <!--+1はオーナーです。-->
-              <td><%= task.task_members.where(approval_status: 2).pluck(:member_id).uniq.count + 1 %></td>
+              <td><%= task.task_members.where(approval_status: 2).count %></td>
               <td>
                 <i class="fa-solid fa-star"></i> <%= task.task_favorites.count %>
               </td>

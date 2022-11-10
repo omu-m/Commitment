@@ -51,8 +51,9 @@ Rails.application.routes.draw do
       get "approval_request" => "tasks#approval_request"
       get "non_approval_request" => "tasks#non_approval_request"
       get "applies" => "tasks#applies"
+      delete "leaving" => "tasks#leaving"
+      delete "applies_destroy" => "tasks#applies_destroy"
       delete "out" => "tasks#out"
-      delete "all_destroy" => "tasks#all_destroy"
       get "search" => "tasks#search"
       resource :task_favorites, only: [:create, :destroy]
       resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy] do

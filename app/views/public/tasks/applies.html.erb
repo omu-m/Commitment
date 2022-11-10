@@ -1,29 +1,39 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-2 offset-md-1 mt-4">
-      <th>承認待ちユーザ一覧</th>
+    <div class="col-md-3 offset-md-1 mt-4">
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>承認待ちユーザ一覧</strong></h5>
+        <hr class="col-md-8 mt-2">
+      </div>
     </div>
-    <table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th>メンバー</th>
-      <th>承認</th>
-      <th>非承認</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @task_members.each do |task_member| %>
-      <tr>
-        <td>
-          <%= image_tag task_member.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
-          <%= task_member.member.display_name %>
-        </td>
-        <td><%= link_to "承認", task_approval_request_path(@task, member_id: task_member.member_id), class: "btn btn-outline-success" %></td>
-        <td><%= link_to "非承認", task_non_approval_request_path(@task, member_id: task_member.member_id), class: "btn btn-outline-danger" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="col-md-10 offset-md-1">
+      <div style="text-align:right;">
+        <%= link_to "戻る" , task_path(@task), class: "btn btn-outline-secondary fa-solid fa-arrow-rotate-left" %>
+      </div>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>メンバー</th>
+            <th>承認</th>
+            <th>非承認</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @task_members.each do |task_member| %>
+            <tr>
+              <td>
+                <%= image_tag task_member.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
+                <%= task_member.member.display_name %>
+              </td>
+              <td><%= link_to "承認", task_approval_request_path(@task, member_id: task_member.member_id), class: "btn btn-outline-success" %></td>
+              <td><%= link_to "非承認", task_non_approval_request_path(@task, member_id: task_member.member_id), class: "btn btn-outline-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 
 
