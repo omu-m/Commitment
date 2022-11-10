@@ -18,7 +18,7 @@ class Public::TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_paramss)
+    @task = Task.new(task_params)
     @task.owner_id = current_member.id
     # @task.membersに、current_memberを追加しているという記述。
     if @task.save
@@ -79,7 +79,7 @@ class Public::TasksController < ApplicationController
     if nil != (params[:task][:owner_id] =~ /\A[0-9]+\z/)
       @task.owner_id = params[:task][:owner_id]
     end
-    if @task.update(task_paramss)
+    if @task.update(task_params)
       flash[:notice] = "親タスクが正常に編集されました。"
       redirect_to task_path
     else
@@ -133,7 +133,7 @@ class Public::TasksController < ApplicationController
 
   def leaving
     TaskMember.find_by(task_id: params[:task_id], member_id: params[:member_id]).update(approval_status: 5)
-    redirect_to  tasks_path(@task)
+    redirect_to  task_path(params[:task_id])
   end
 
   def approval_request
@@ -150,7 +150,7 @@ class Public::TasksController < ApplicationController
 
   private
 
-  def task_paramss
+  def task_params
     params.require(:task).permit(:task_title, :task_content, :image)
   end
 
