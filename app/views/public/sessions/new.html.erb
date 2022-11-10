@@ -15,18 +15,19 @@
       </div>
 
       <%= form_with model: @member, url: member_session_path, local: true do |f| %>
-
-        <div class="field mb-4 mt-5">
-          <%= f.label :user_name, "ユーザーネーム" %>
-          <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
-        </div>
-        <div class="field mb-4">
-          <%= f.label "パスワード" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-        </div>
-
-        <div class="actions text-center mb-4 mt-5">
-          <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
+        <div class="col-md-8 offset-md-2">
+          <div class="field mb-4 mt-5">
+            <%= f.label :user_name, "ユーザーネーム" %>
+            <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
+          </div>
+          <div class="field mb-4">
+            <%= f.label "パスワード" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          </div>
+  
+          <div class="actions text-center mb-4 mt-5">
+            <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
+          </div>
         </div>
       <% end %>
     </div>
