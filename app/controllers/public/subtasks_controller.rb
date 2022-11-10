@@ -5,7 +5,11 @@ class Public::SubtasksController < ApplicationController
 
   def index
     @task = Task.find(params[:task_id])
-    @subtasks = @task.subtasks.page(params[:page])
+    if params[:status].nil?
+      @subtasks = @task.subtasks.page(params[:page])
+    else
+      @subtasks = @task.subtasks.where(progress_status: params[:status]).page(params[:page])
+    end
     @subtask = Subtask.new
     @subtasks = @subtasks.order(updated_at: :desc)
   end
@@ -46,7 +50,7 @@ class Public::SubtasksController < ApplicationController
   def update
     if @subtask.update(subtask_params)
       flash[:notice] = "子タスクが正常に編集されました。"
-      redirect_to task_subtasks_path(@subtask.task_id)
+      redirect_to task_subtask_path(@subtask.task_id)
     else
       flash[:notice] = "子タスクの編集に失敗しました。"
       render "edit"

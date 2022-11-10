@@ -3,7 +3,14 @@
     <div class= "col-md-8 my-4">
       <%= render "index", subtasks: @subtasks %>
     </div>
-    <div class="col-md-4 my-4 mt-5">
+    <div class="col-md-4 my-4">
+      <div style="text-align:right;">
+        <%= link_to "すべて", task_subtasks_path(@task) %> |
+        <%= link_to "未完了", task_subtasks_path(@task, status: :incomplete) %> |
+        <%= link_to "処理中", task_subtasks_path(@task, status: :processing) %> |
+        <%= link_to "処理済み", task_subtasks_path(@task, status: :treated) %> |
+        <%= link_to "完了", task_subtasks_path(@task, status: :complete) %>
+      </div>
       <%= render "search", keyword: @keyword, task: @task %>
     <br>
       <%= render "form", subtask: @subtask %>

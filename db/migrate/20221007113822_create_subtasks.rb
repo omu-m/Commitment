@@ -9,7 +9,7 @@ class CreateSubtasks < ActiveRecord::Migration[6.1]
       # 子タスクの内容を保存するカラム
       t.text :subtask_content, null: false
       # enumで管理　integer型の進捗ステータスカラム
-      t.integer :progress_status,null: false, default: 0
+      t.integer :progress_status, null: false, default: 0
 
       t.timestamps null: false
     end

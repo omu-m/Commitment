@@ -1,13 +1,10 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-2 offset-md-1 mt-4">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>いいねサブタスク</th>
-          </tr>
-        </thead>
-      </table>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>いいねサブタスク</strong></h5>
+        <hr class="col-md-10 mt-2">
+      </div>
     </div>
     <div class="col-md-10 offset-md-1">
       <table class="table table-hover table-inverse">
@@ -19,7 +16,6 @@
             <th></th>
             <th></th>
             <th>進捗</th>
-            <th></th>
           </tr>
         </thead>
         <% @favorite_tasks_subtasks.each do |subtask| %>
@@ -29,7 +25,7 @@
                 <%= image_tag subtask.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
                 <%= subtask.member.display_name.truncate(10) %>
               </td>
-              <td><%= link_to subtask.subtask_content.truncate(15), task_subtask_path(@task, subtask) %></td>
+              <td><%= link_to subtask.subtask_content.truncate(40), task_subtask_path(@task, subtask) %></td>
               <!--favorites非同期-->
               <td id="favorite_">
               <td id="favorite_<%= subtask.id %>">
@@ -40,10 +36,7 @@
                 <%= render "public/comments/count", subtask: subtask %>
               </td>
               <td>
-                <%= subtask.progress_status %>
-                <% if subtask.member_id == current_member.id %>
-                <%= link_to "更新", edit_task_subtask_path(@task, subtask), class: "btn btn-outline-primary" %>
-                <% end %>
+                <%= subtask.progress_status_i18n %>
               </td>
             </tr>
           </tbody>

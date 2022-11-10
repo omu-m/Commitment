@@ -21,8 +21,8 @@ class Public::TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.owner_id = current_member.id
     # @task.membersに、current_memberを追加しているという記述。
-    @task.members << current_member
     if @task.save
+      @task.task_members.create(member_id: current_member.id, approval_status: 2)
       flash[:notice] = "親タスクが正常に作成されました。"
       redirect_to tasks_path
     else
@@ -32,17 +32,37 @@ class Public::TasksController < ApplicationController
     end
   end
 
+  def search
+    @tasks = Task.search(params[:keyword]).page(params[:page])
+    @keyword = params[:keyword]
+    @task = Task.new
+    render "index"
+  end
+
+  def search_tasks
+    @task = Task.new
+    if params[:new]
+      @tasks = Task.all.order(created_at: "DESC").page(params[:page])
+    elsif params[:old]
+      @tasks = Task.all.order(created_at: "ASC").page(params[:page])
+    end
+    render "index"
+  end
+
   def show
     @task = Task.find(params[:id])
     @tasknew = Task.new
+    @task_member = @task.task_members.find_by(member: current_member)
+    @status = @task_member.present? ? @task_member.approval_status_before_type_cast : 0
+    @current_status = @task_member.present? ? @task_member.approval_status_i18n : "参加前"
   end
 
   # 参加
-  def join
-    @task = Task.find(params[:task_id])
-    @task.members << current_member
-    redirect_to  task_subtasks_path(@task)
-  end
+  # def join
+  #   @task = Task.find(params[:task_id])
+  #   @task.members << current_member
+  #   redirect_to  task_path(@task)
+  # end
 
   # 退出
   def out
@@ -61,7 +81,7 @@ class Public::TasksController < ApplicationController
     end
     if @task.update(task_params)
       flash[:notice] = "親タスクが正常に編集されました。"
-      redirect_to tasks_path
+      redirect_to task_path
     else
       flash[:notice] = "親タスクの編集に失敗しました。"
       render "edit"
@@ -82,6 +102,50 @@ class Public::TasksController < ApplicationController
     if @task.destroy
     redirect_to tasks_path
     end
+  end
+
+  def request_join
+    # ログイン中のユーザーが、特定のタスクに参加申請を行う
+    task_member = TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id)
+    if task_member.present?
+      if task_member.approval_status == 3 || 4
+        TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 1)
+      end
+    else
+      TaskMember.create(task_id: params[:task_id], member_id: current_member.id, approval_status: 1)
+    end
+    # タスク詳細ページに戻る
+    @task = Task.find(params[:task_id])
+    redirect_to  task_path(@task)
+  end
+
+  def request_join_destroy
+    TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 4)
+    # タスク詳細ページに戻る
+    @task = Task.find(params[:task_id])
+    redirect_to  task_path(@task)
+  end
+
+  def applies
+    @task = Task.find(params[:task_id])
+    @task_members = @task.task_members.where(approval_status: 1)
+  end
+
+  def leaving
+    TaskMember.find_by(task_id: params[:task_id], member_id: params[:member_id]).update(approval_status: 5)
+    redirect_to  task_path(params[:task_id])
+  end
+
+  def approval_request
+    # オーナーがログイン中のユーザーが、特定のタスクに参加する承認を行う
+    TaskMember.find_by(task_id: params[:task_id], member_id: params[:member_id]).update(approval_status: 2)
+    redirect_to task_applies_path(params[:task_id])
+  end
+
+  def non_approval_request
+    # オーナーがログイン中のユーザーが、特定のタスクに参加する非承認を行う
+    TaskMember.find_by(task_id: params[:task_id], member_id: params[:member_id]).update(approval_status: 3)
+    redirect_to task_applies_path(params[:task_id])
   end
 
   private

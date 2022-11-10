@@ -40,12 +40,21 @@ Rails.application.routes.draw do
     patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
     get "members/:id/task_favorites" => "members#task_favorites", as: "task_favorites"
     get "members/:id/favorites" => "members#favorites", as: "favorites"
+    get "tasks/sort_new" => "tasks#search_tasks", as: "sort_new"
+    get "tasks/sort_old" => "tasks#search_tasks", as: "sort_old"
 
     resources :tasks, only: [:index, :show, :create, :edit, :update, :destroy] do
       # 親タスク(グループ)
-      get "join" => "tasks#join"
+      # get "join" => "tasks#join"
+      get "request_join" => "tasks#request_join"
+      delete "request_join_destroy" => "tasks#request_join_destroy"
+      get "approval_request" => "tasks#approval_request"
+      get "non_approval_request" => "tasks#non_approval_request"
+      get "applies" => "tasks#applies"
+      post "leaving" => "tasks#leaving"
       delete "out" => "tasks#out"
       delete "all_destroy" => "tasks#all_destroy"
+      get "search" => "tasks#search"
       resource :task_favorites, only: [:create, :destroy]
       resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy] do
         get "search" => "subtasks#search"

@@ -1,9 +1,15 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class= "col-md-8 my-4">
-      <%= render "index", tasks: @tasks%>
+      <%= render "index", tasks: @tasks %>
     </div>
-    <div class="col-md-4 my-4 mt-5">
+    <div class="col-md-4 my-4">
+      <div style="text-align:right;">
+        <%= link_to "更新順", tasks_path %> |
+        <%= link_to "新着順", sort_new_path(new: "true") %> |
+        <%= link_to "古い順", sort_old_path(old: "true") %>
+      </div>
+      <%= render "search", keyword: @keyword %>
       <%= render 'form', task: @task %>
     </div>
   </div>

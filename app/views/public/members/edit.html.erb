@@ -1,13 +1,10 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-6 offset-md-3 my-4 mt-5">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>マイページ編集</th>
-          </tr>
-        </thead>
-      </table>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>マイページ編集</strong></h5>
+        <hr class="col-md-12 mt-2">
+      </div>
 
       <% if @member.errors.any? %>
       <%= @member.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
@@ -39,8 +36,8 @@
         <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
       </div>
       <div class="actions text-center mt-4">
-        <th><%= f.submit "編集内容を保存", class: "btn btn-outline-secondary mr-5" %></th>
-        <th><%= link_to "退会する" , confirm_unsubscribe_path, class: "btn btn-outline-danger ml-5 px-4" %></th>
+        <%= f.submit "編集内容を保存", class: "btn btn-outline-secondary mr-5" %>
+        <%= link_to "退会する" , confirm_unsubscribe_path, class: "btn btn-outline-danger ml-5 px-4" %>
       </div>
       <% end %>
     </div>

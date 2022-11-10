@@ -1,15 +1,15 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-2 offset-md-1 mt-4">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>タスク詳細</th>
-          </tr>
-        </thead>
-      </table>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>タスク詳細</strong></h5>
+        <hr class="col-md-8 mt-2">
+      </div>
     </div>
     <div class="col-md-10 offset-md-1">
+      <div style="text-align:right;">
+        <%= link_to "戻る" , tasks_path, class: "btn btn-outline-secondary fa-solid fa-arrow-rotate-left" %>
+      </div>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -22,24 +22,32 @@
             </th>
             <th>
               <% unless current_member.email == "guest@example.com" %>
-              <!--タスク(グループ)に参加していると子タスク一覧が表示されるようになる仕様。-->
+              <!--タスク(グループ)に参加しているとサブタスク一覧が表示されるようになる仕様。-->
               <a class="btn btn-outline-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 メンバー
               </a>
               <% end %>
-              <% memberids = [] %>
-              <% @task.members.each do |member| %>
+              <% owner = Member.find_by(id: @task.owner_id) %>
+              <% @members = @task.members.includes(:task_members).where(task_members: {approval_status: 2}).where.not(id: @task.owner_id) %>
               <div class="collapse" id="collapseExample">
                 <div class="card card-body">
-                  <% memberids.push(member.id) %>
+                  <%= image_tag owner.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
+                  <%= owner.display_name.truncate(10) %>
+                  <% @members.each do |member| %>
                   <%= image_tag member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
-                  <%= member.display_name %>
+                  <%= member.display_name.truncate(10) %>
+                    <% if current_member.id == @task.owner_id %>
+                      <%= form_with url: task_leaving_path(@task), method: :post, local: true do |f| %>
+                        <%= f.hidden_field :member_id, value: member.id %>
+                        <%= f.submit "削除", class: "btn btn-sm btn-outline-danger" %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
-              <% end %>
             </th>
             <th>
-              <% if memberids.include?(current_member.id) %>
+              <% if @status == 2 || @task.owner_id == current_member.id %>
                 <%= link_to "子タスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
               <% end %>
             </th>
@@ -51,16 +59,37 @@
                 <%= ((@task.subtasks.where(progress_status: 3).size / @task.subtasks.size.to_f) * 100).round(2)%> %
               <% end %>
             </th>
-            <% unless current_member.email == "guest@example.com" %>
             <th>
-              <% if @task.owner_id == current_member.id %>
-              <%= link_to "編集", edit_task_path(@task), class: "btn btn-outline-primary" %>
-            <% elsif @task.members.include?(current_member) %>
-              <%= link_to "退出", task_out_path(@task), method: :delete, class: "btn btn-outline-danger" %>
-            <% else %>
-              <%= link_to "参加", task_join_path(@task), class: "btn btn-outline-success" %>
-            <% end %>
+              <% unless current_member.id == @task.owner_id %>
+              現在のステータス: <%= @current_status %>
+              <% end %>
             </th>
+            <% unless current_member.email == "guest@example.com" %>
+              <th>
+                <!--申請ボタンは、以下の条件で表示させたい。-->
+                <!--  1. すでに加入している場合：退会するボタンが表示-->
+                <!--  2. まだ加入していない場合：申請ボタンが表示-->
+                <!--  3. すでに加入申請済の場合：申請取消ボタンを表示-->
+              <% unless current_member.id == @task.owner_id %>
+                <% task_member = @task.task_members.find_by(member: current_member) %>
+                <% if @status == 2 %>
+                  <%= link_to "退出", task_out_path(@task), method: :delete, class: "btn btn-outline-danger" %>
+                <% elsif @status == 1 %>
+                  <%= link_to "申請取消", task_request_join_destroy_path(@task), method: :delete, class: "btn btn-outline-danger" %>
+                <% elsif @status == 0 || @status == 3 || @status == 4 || @status == 5 %>
+                  <%= link_to "参加申請", task_request_join_path(@task), class: "btn btn-outline-success" %>
+                <% end %>
+              <% end %>
+              </th>
+
+              <% if @task.owner_id == current_member.id %>
+                <th><%= link_to "編集", edit_task_path(@task), class: "btn btn-outline-primary" %></th>
+                <th><%= link_to "承認待ち一覧", task_applies_path(@task), class: "btn btn-outline-success" %></th>
+              <%# elsif @task.members.include?(current_member) %>
+                <%#= link_to "退出", task_out_path(@task), method: :delete, class: "btn btn-outline-danger" %>
+              <%# else %>
+                <%#= link_to "参加", task_join_path(@task), class: "btn btn-outline-success" %>
+              <% end %>
             <% end %>
           </tr>
         </thead>
@@ -70,13 +99,21 @@
           <th class="table-active text-center", width="20%" height="20%">タスク</th>
           <td class="text-center" style="word-break: break-all;"><%= @task.task_title %></td>
         </tr>
-        <tr>
-          <th class="table-active text-center", width="20%" height="80%">詳細</th>
-          <td class="text-left", valign="top", style="display: block; overflow-y:scroll; height:430px; word-break: break-all;">
-            <%= safe_join(@task.task_content.split("\n"),tag(:br)) %>
-          </td>
-        </tr>
-        </tr>
+        <% if @status == 2 || @task.owner_id == current_member.id %>
+          <tr>
+            <th class="table-active text-center", width="20%" height="80%">詳細</th>
+            <td class="text-left", valign="top", style="display: block; overflow-y:scroll; height:430px; word-break: break-all;">
+              <%= safe_join(@task.task_content.split("\n"),tag(:br)) %>
+            </td>
+          </tr>
+        <% else %>
+          <tr>
+            <th class="table-active text-center", width="20%" height="80%">詳細</th>
+            <td class="text-center">
+              参加後、詳細が表示されます。
+            </td>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div>

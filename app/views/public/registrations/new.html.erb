@@ -1,60 +1,55 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-6 offset-md-3 my-4 mt-5">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>新規会員登録</th>
-          </tr>
-        </thead>
-      </table>
-
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>新規会員登録</strong></h5>
+        <hr class="mt-2">
+      </div>
       <div class="col-md-10 offset-md-1 mt-5">
-        <table class="table table-hover table-inverse">
-          <thead>
-            <tr>
-              <th>既に登録済みの方</th>
-              <th><%= link_to "こちら", new_member_session_path %>からログインしてください。</th>
-            </tr>
-          </thead>
-        </table>
+        <div style="text-align:center;">
+          <h6 class="text-center"><strong>既に登録済みの方</strong></h6>
+          <hr class="col-md-4 mt-0">
+          <h6 class="text-center"><strong><%= link_to "こちら", new_member_session_path %>からログインしてください。</strong></h6>
+          <hr class="col-md-7 mt-2">
+        </div>
       </div>
 
       <%= form_with model: @member, url: member_registration_path, local: true do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
-
-        <div class="field mb-4 mt-5">
-          <%= f.label :display_name, "表示名" %>
-          <%= f.text_field :display_name, autofocus: true, autocomplete: "display_name", class: "form-control" %>
-        </div>
-        <div class="field mb-4">
-          <%= f.label :user_name, "ユーザーネーム" %>
-            <br><span class="text">※『半角英数字(a-z/0-9)』のみ使用できます。</span></td>
-          <%= f.text_field :user_name, autocomplete: "user_name", class: "form-control" %>
-        </div>
-        <div class="field mb-4">
-          <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
-        </div>
-        <div class="field mb-4">
-         <%= f.label :password, "パスワード" %>
-          <% if @minimum_password_length %>
-            <br><span class="text">※<%= @minimum_password_length %>文字以上で入力してください。</span>
-          <% end %>
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-        </div>
-        <div class="field mb-4">
-          <%= f.label :password_confirmation, "パスワード" %>
-            <br><span class="note-text">※確認用です。</span></td>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-        </div>
-        <div class="field mb-4">
-          <%= f.label :profile_image, "プロフィール画像" %><br>
-          <img id="preview" src="/assets/no_image.jpg" class="member-icon" style="width: 100px; height: 100px">
-          <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
-        </div>
-        <div class="actions text-center mb-4 mt-5">
-          <%= f.submit "新規登録", class: "btn btn-outline-secondary" %>
+        <div class="col-md-8 offset-md-2">
+          <div class="field mb-4 mt-5">
+            <%= f.label :display_name, "表示名" %>
+            <%= f.text_field :display_name, autofocus: true, autocomplete: "display_name", class: "form-control" %>
+          </div>
+          <div class="field mb-4">
+            <%= f.label :user_name, "ユーザーネーム" %>
+              <br><span class="text">※『半角英数字(a-z/0-9)』のみ使用できます。</span></td>
+            <%= f.text_field :user_name, autocomplete: "user_name", class: "form-control" %>
+          </div>
+          <div class="field mb-4">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+          </div>
+          <div class="field mb-4">
+           <%= f.label :password, "パスワード" %>
+            <% if @minimum_password_length %>
+              <br><span class="text">※<%= @minimum_password_length %>文字以上で入力してください。</span>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
+          <div class="field mb-4">
+            <%= f.label :password_confirmation, "パスワード" %>
+              <br><span class="note-text">※確認用です。</span></td>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
+          <div class="field mb-4">
+            <%= f.label :profile_image, "プロフィール画像" %><br>
+            <img id="preview" src="/assets/no_image.jpg" class="member-icon" style="width: 100px; height: 100px">
+            <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
+          </div>
+          <div class="actions text-center mb-4 mt-5">
+            <%= f.submit "新規登録", class: "btn btn-outline-secondary" %>
+          </div>
         </div>
       <% end %>
     </div>

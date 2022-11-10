@@ -16,4 +16,9 @@ class Task < ApplicationRecord
   def task_favorited_by?(member)
     task_favorites.where(member_id: member.id).exists?
   end
+
+  # 検索キーワードが部分一致すれば、その記事を出力する。
+  def self.search(keyword)
+    where(["task_title like?", "%#{keyword}%"])
+  end
 end

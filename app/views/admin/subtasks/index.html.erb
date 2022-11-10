@@ -1,15 +1,15 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-2 offset-md-1 mt-4">
-      <table class="table table-hover table-inverse" style="text-align:center;">
-        <thead>
-          <tr>
-            <th>サブタスク一覧</th>
-          </tr>
-        </thead>
-      </table>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>サブタスク一覧</strong></h5>
+        <hr class="col-md-10 mt-2">
+      </div>
     </div>
     <div class="col-md-10 offset-md-1">
+      <div style="text-align:right;">
+        <%= link_to "戻る" , admin_task_path(@task), class: "btn btn-outline-secondary fa-solid fa-arrow-rotate-left" %>
+      </div>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -30,7 +30,7 @@
               <td><%= link_to subtask.subtask_content.truncate(15), admin_task_subtask_path(@task, subtask) %></td>
               <td><i class="fa-solid fa-face-smile"></i> <%= subtask.favorites.count %></td>
               <td><i class="fa-regular fa-comment-dots"></i> <%= subtask.comments.count %></td>
-              <td><%= subtask.progress_status %></td>
+              <td><%= subtask.progress_status_i18n %></td>
             </tr>
           <% end %>
         </tbody>

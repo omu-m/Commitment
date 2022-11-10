@@ -1,11 +1,19 @@
 ja: #日本語の設定を行う
   enums: #enumの設定を行う
-    subtasks: #モデル名
+    subtask: #モデル名
       progress_status: #カラム名
         incomplete: "未完了"
         processing: "処理中"
         treated: "処理済み"
         complete: "完了"
+    task_member:
+      approval_status:
+        before_participation: "参加前"
+        approval_pending: "承認待ち"
+        approval: "承認"
+        denial_by_owner: "非承認"
+        denial_by_member: "申請取り下げ"
+        leaving: "退出"
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
@@ -19,11 +27,10 @@ ja: #日本語の設定を行う
         task_content: "詳細"
       subtask:
         subtask_content: "サブタスク"
-  ja:
-    views:
-      pagination:
-        first: "&laquo; 最初"
-        last: "最後 &raquo;"
-        previous: "&lsaquo; 前"
-        next: "次 &rsaquo;"
-        truncate: "..."
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
