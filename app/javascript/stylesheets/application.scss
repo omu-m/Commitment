@@ -3,6 +3,10 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 /*ページネーション自体のデザイン*/
+.page-item.active .page-link {
+  background-color: #ccc;   /*背景の色を変える*/
+}
+
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
@@ -11,10 +15,14 @@
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {
   background: #93c9ff;     /*背景の色を変える*/
-  border-radius: 50px;     /*角を丸くする*/
+  border-radius: 20px;     /*角を丸くする*/
 }
 
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
-  border-radius: 50px;    /*角を丸くする*/
+  border-radius: 20px;    /*角を丸くする*/
+}
+
+.pagination {
+  justify-content: center;  /*中心に寄せる*/
 }

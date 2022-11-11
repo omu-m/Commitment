@@ -26,7 +26,7 @@ class Public::TasksController < ApplicationController
       flash[:notice] = "親タスクが正常に作成されました。"
       redirect_to tasks_path
     else
-      flash[:notice] = "親タスクの作成に失敗しました。"
+      flash[:alert] = "親タスクの作成に失敗しました。"
       @tasks = Task.page(params[:page])
       render "index"
     end
@@ -83,7 +83,7 @@ class Public::TasksController < ApplicationController
       flash[:notice] = "親タスクが正常に編集されました。"
       redirect_to task_path
     else
-      flash[:notice] = "親タスクの編集に失敗しました。"
+      flash[:alert] = "親タスクの編集に失敗しました。"
       render "edit"
     end
   end
@@ -105,18 +105,18 @@ class Public::TasksController < ApplicationController
   end
 
   def request_join
+    task = Task.find(params[:task_id])
     # ログイン中のユーザーが、特定のタスクに参加申請を行う
-    task_member = TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id)
+    task_member = task.task_members.find_by(member_id: current_member.id)
     if task_member.present?
-      if task_member.approval_status == 3 || 4
-        TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 1)
+      if task_member.before_participation? || task_member.denial_by_owner? || task_member.denial_by_member? || task_member.leaving?
+        task_member.approval_pending!
       end
     else
-      TaskMember.create(task_id: params[:task_id], member_id: current_member.id, approval_status: 1)
+      task.task_members.create!(member_id: current_member.id, approval_status: 1)
     end
     # タスク詳細ページに戻る
-    @task = Task.find(params[:task_id])
-    redirect_to  task_path(@task)
+    redirect_to task_path(task)
   end
 
   def request_join_destroy
