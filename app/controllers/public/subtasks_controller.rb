@@ -22,7 +22,7 @@ class Public::SubtasksController < ApplicationController
       flash[:notice] = "子タスクが正常に投稿されました。"
       redirect_to task_subtasks_path
     else
-      flash[:notice] = "子タスクの投稿に失敗しました。"
+      flash[:alert] = "子タスクの投稿に失敗しました。"
       @task = Task.find(params[:task_id])
       @subtasks = Subtask.page(params[:page])
       render "index"
@@ -52,7 +52,7 @@ class Public::SubtasksController < ApplicationController
       flash[:notice] = "子タスクが正常に編集されました。"
       redirect_to task_subtask_path(@subtask.task_id)
     else
-      flash[:notice] = "子タスクの編集に失敗しました。"
+      flash[:alert] = "子タスクの編集に失敗しました。"
       render "edit"
     end
   end
