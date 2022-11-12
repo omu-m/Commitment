@@ -45,6 +45,9 @@
           </tbody>
         <% end %>
       </table>
+      <% if tasks.count == 0 %>
+        <h6 class="text-center mt-5"><strong>該当するタスクはありません。</strong></h6>
+      <% end %>
       <%= paginate @tasks %>
     </div>
   </div>
