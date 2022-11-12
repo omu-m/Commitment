@@ -3,6 +3,9 @@
   <h6 class="text-center"><strong>コメント一覧 <%= subtask.comments.count %>件</strong></h6>
   <hr class="mt-2">
 </div>
+<% if comments.count == 0 %>
+  <h6 class="text-center mt-5"><strong>まだコメントはありません。</strong></h6>
+<% end %>
 <!--コメントが2件以上の場合、残りのコメントをプルダウンで表示するボタンの作成-->
 <% if comments.length  > 2 %>
   <% comments.each_with_index  do |comment, index| %>
