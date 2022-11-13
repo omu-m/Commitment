@@ -78,6 +78,7 @@ class Public::TasksController < ApplicationController
     @task = Task.find(params[:id])
     if nil != (params[:task][:owner_id] =~ /\A[0-9]+\z/)
       @task.owner_id = params[:task][:owner_id]
+      @task.create_activities(@task, "change_owner", current_member.id, @task.owner_id)
     end
     if @task.update(task_params)
       flash[:notice] = "親タスクが正常に編集されました。"
@@ -115,6 +116,8 @@ class Public::TasksController < ApplicationController
     else
       task.task_members.create!(member_id: current_member.id, approval_status: 1)
     end
+    # 通知
+    task.create_activities(task, "request_join", current_member.id, task.owner_id)
     # タスク詳細ページに戻る
     redirect_to task_path(task)
   end

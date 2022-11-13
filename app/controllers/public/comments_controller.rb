@@ -9,6 +9,7 @@ class Public::CommentsController < ApplicationController
     @comment_reply = @subtask.comments.new
     @comments = @subtask.comments.order(created_at: :desc)
     if @comment.save
+      @comment.create_activities(@comment, "comment", current_member.id, @subtask.member_id)
       flash.now[:notice] = "コメントの投稿に成功しました。"
     else
       flash.now[:alert] ="コメントの投稿に失敗しました。"
