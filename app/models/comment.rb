@@ -10,4 +10,14 @@ class Comment < ApplicationRecord
 
   validates :comment, presence: true, length: { maximum: 300 }
 
+  # 通知
+  def create_activities(task, action, visitor_id, visited_id)
+    Activity.create!(
+        target: task,
+        action: action,
+        visitor_id: visitor_id,
+        visited_id: visited_id
+      )
+  end
+
 end

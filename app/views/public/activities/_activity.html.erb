@@ -1,0 +1,46 @@
+<table class="table table-hover table-inverse mt-5">
+  <% @activities.each do |activity| %>
+    <tbody>
+      <tr>
+        <% visitor = Member.find(activity.visitor_id) %>
+        <% visited = Member.find(activity.visited_id) %>
+
+        <% case activity.target_type %>
+        <% when "Task" then %>
+        <!--タスク関連-->
+        <% task = Task.find(activity.target_id) %>
+        <% case activity.action %>
+          <% when "change_owner" %>
+            <td>
+              <%= visitor.display_name %>が<%= link_to task.task_title, root_path %>のオーナーを<%= visited.display_name %>に変更しました。
+            </td>
+          <% when "request_join" %>
+            <td>
+              <%= visitor.display_name %>が<%= link_to task.task_title, root_path %>への参加申請を<%= visited.display_name %>にしました。
+            </td>
+          <% else %>
+            <td>
+              <%= "予期しない通知" %>
+            </td>
+          <% end %>
+        <% when "Comment" then %>
+          <!--コメント関連-->
+          <% comment = Comment.find(activity.target_id) %>
+          <td>
+            <%= "#{visitor.display_name}が#{comment.subtask.subtask_content.truncate(10)}にコメントしました。" %>
+          </td>
+        <% when "Favorite" then %>
+          <!--いいね関連-->
+          <% favorite = Favorite.find(activity.target_id) %>
+          <td>
+            <%= "#{visitor.display_name}が#{favorite.subtask.subtask_content.truncate(10)}にいいねしました。" %>
+          </td>
+        <% else %>
+          <td>
+            <%= "予期しない通知" %>
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
