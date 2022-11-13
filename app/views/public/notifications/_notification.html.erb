@@ -1,0 +1,24 @@
+<% notifications.each do |notification| %>
+
+  <% visitor = notification.visitor %>
+  <% subtask = notification.association_id %>
+  <% favorite_id = notification.association_id %>
+  <% favorite = Favorite.find(favorite_id) %>
+  <% subtask_id = favorite.subtask_id %>
+  <% your_subtask = Subtask.find(subtask_id) %>
+  <% visitor_name = notification.visitor.display_name %>
+
+  <div class="user-view clearfix ">
+    <%= visitor = image_tag notification.visitor.profile_image, size: "50x50", style: "border-radius: 50px;" %>
+    <%= visitor_name %>が
+    <%= link_to task_subtask_path(task_id: your_subtask.task_id, id: your_subtask.id) do %>
+      <%= your_subtask.subtask_content %>
+    <% end %>
+    <%= notification_form(notification) %>
+    <span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
+    <br>
+    <% if !@comment.nil? %>
+      <p class="moderate-font"><%= @comment %></p>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 my-4 mt-5">
+      <div style="text-align:right;">
+        <%= link_to "通知を消去", notification_path(@notifications), method: :delete, class: "btn btn-sm btn-outline-danger" %>
+      </div>
+      <div style="text-align:center;">
+        <h5 class="text-center"><strong>通知</strong></h5>
+        <hr class="mt-2">
+      </div>
+
+      <% if @notifications.present? %>
+        <%= render 'notification', notifications: @notifications %>
+        <%= paginate @notifications %>
+      <% else %>
+        <h6 class="text-center mt-5"><strong>通知はありません。</strong></h6>
+      <% end %>
+    </div>
+  </div>
+</div>
