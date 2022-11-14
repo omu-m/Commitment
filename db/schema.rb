@@ -97,19 +97,6 @@ ActiveRecord::Schema.define(version: 2022_11_13_110616) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
-    t.integer "association_id"
-    t.string "action", default: "", null: false
-    t.boolean "check", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["association_id"], name: "index_notifications_on_association_id"
-    t.index ["visited_id"], name: "index_notifications_on_visited_id"
-    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
-  end
-
   create_table "subtasks", force: :cascade do |t|
     t.integer "task_id", null: false
     t.integer "member_id", null: false

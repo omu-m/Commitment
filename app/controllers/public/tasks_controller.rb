@@ -23,10 +23,10 @@ class Public::TasksController < ApplicationController
     # @task.membersに、current_memberを追加しているという記述。
     if @task.save
       @task.task_members.create(member_id: current_member.id, approval_status: 2)
-      flash[:notice] = "親タスクが正常に作成されました。"
+      flash[:notice] = "タスクが正常に作成されました。"
       redirect_to tasks_path
     else
-      flash[:alert] = "親タスクの作成に失敗しました。"
+      flash[:alert] = "タスクの作成に失敗しました。"
       @tasks = Task.page(params[:page])
       render "index"
     end
@@ -78,13 +78,14 @@ class Public::TasksController < ApplicationController
     @task = Task.find(params[:id])
     if nil != (params[:task][:owner_id] =~ /\A[0-9]+\z/)
       @task.owner_id = params[:task][:owner_id]
+      # 通知
       @task.create_activities(@task, "change_owner", current_member.id, @task.owner_id)
     end
     if @task.update(task_params)
-      flash[:notice] = "親タスクが正常に編集されました。"
+      flash[:notice] = "タスクが正常に編集されました。"
       redirect_to task_path
     else
-      flash[:alert] = "親タスクの編集に失敗しました。"
+      flash[:alert] = "タスクの編集に失敗しました。"
       render "edit"
     end
   end
@@ -124,8 +125,10 @@ class Public::TasksController < ApplicationController
 
   def request_join_destroy
     TaskMember.find_by(task_id: params[:task_id], member_id: current_member.id).update(approval_status: 4)
-    # タスク詳細ページに戻る
     @task = Task.find(params[:task_id])
+    # 通知
+    @task.create_activities(@task, "request_join_destroy", current_member.id, @task.owner_id)
+    # タスク詳細ページに戻る
     redirect_to  task_path(@task)
   end
 
@@ -136,18 +139,27 @@ class Public::TasksController < ApplicationController
 
   def leaving
     TaskMember.find_by(task_id: params[:task_id], member_id: params[:member_id]).update(approval_status: 5)
+    # 通知
+    @task = Task.find(params[:task_id])
+    @task.create_activities(@task, "leaving", @task.owner_id, params[:member_id])
     redirect_to  task_path(params[:task_id])
   end
 
   def approval_request
     # オーナーがログイン中のユーザーが、特定のタスクに参加する承認を行う
     TaskMember.find_by(task_id: params[:task_id], member_id: params[:member_id]).update(approval_status: 2)
+    # 通知
+    @task = Task.find(params[:task_id])
+    @task.create_activities(@task, "approval_request", @task.owner_id, params[:member_id])
     redirect_to task_applies_path(params[:task_id])
   end
 
   def non_approval_request
     # オーナーがログイン中のユーザーが、特定のタスクに参加する非承認を行う
     TaskMember.find_by(task_id: params[:task_id], member_id: params[:member_id]).update(approval_status: 3)
+    # 通知
+    @task = Task.find(params[:task_id])
+    @task.create_activities(@task, "non_approval_request", @task.owner_id, params[:member_id])
     redirect_to task_applies_path(params[:task_id])
   end
 

@@ -4,10 +4,6 @@ class Public::ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.where(visited_id: current_member.id).where.not(visitor_id: current_member.id).page(params[:page]).per(15)
-  end
-
-  def destroy
-    @activities = current_member.passive_activities.destroy_all
-    redirect_to activities_path
+    @activities = @activities.order(updated_at: :desc)
   end
 end

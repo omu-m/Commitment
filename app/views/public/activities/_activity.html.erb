@@ -3,7 +3,7 @@
     <tbody>
       <tr>
         <% visitor = Member.find(activity.visitor_id) %>
-        <% visited = Member.find(activity.visited_id) %>
+        <%# visited = Member.find(activity.visited_id) %>
 
         <% case activity.target_type %>
         <% when "Task" then %>
@@ -12,11 +12,57 @@
         <% case activity.action %>
           <% when "change_owner" %>
             <td>
-              <%= visitor.display_name %>が<%= link_to task.task_title, root_path %>のオーナーを<%= visited.display_name %>に変更しました。
+              <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+              <%= visitor.display_name.truncate(8) %>が<%= link_to "『#{task.task_title.truncate(8)}』", task_path(task) %>のオーナーをあなたに変更しました。
+              <br>
+              <div style="text-align:right;">
+                <%= I18n.l(task.created_at, format: :custom) %>
+              </div>
             </td>
           <% when "request_join" %>
             <td>
-              <%= visitor.display_name %>が<%= link_to task.task_title, root_path %>への参加申請を<%= visited.display_name %>にしました。
+              <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+              <%= visitor.display_name.truncate(8) %>が<%= link_to "『#{task.task_title.truncate(8)}』", task_applies_path(task) %>への参加申請をあなたにしました。
+              <br>
+              <div style="text-align:right;">
+                <%= I18n.l(task.created_at, format: :custom) %>
+              </div>
+            </td>
+          <% when "request_join_destroy" %>
+            <td>
+              <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+              <%= visitor.display_name.truncate(8) %>が<%= link_to "『#{task.task_title.truncate(8)}』", task_path(task) %>への参加申請をキャンセルしました。
+              <br>
+              <div style="text-align:right;">
+                <%= I18n.l(task.created_at, format: :custom) %>
+              </div>
+            </td>
+          <% when "approval_request" %>
+            <td>
+              <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+              <%= visitor.display_name.truncate(8) %>が<%= link_to "『#{task.task_title.truncate(8)}』", task_path(task) %>への参加申請を承認しました。
+              <br>
+              <div style="text-align:right;">
+                <%= I18n.l(task.created_at, format: :custom) %>
+              </div>
+            </td>
+          <% when "non_approval_request" %>
+            <td>
+              <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+              <%= visitor.display_name.truncate(8) %>が<%= link_to "『#{task.task_title.truncate(8)}』", task_path(task) %>への参加申請を非承認しました。
+              <br>
+              <div style="text-align:right;">
+                <%= I18n.l(task.created_at, format: :custom) %>
+              </div>
+            </td>
+          <% when "leaving" %>
+            <td>
+              <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+              <%= visitor.display_name.truncate(8) %>があなたを<%= link_to "『#{task.task_title.truncate(8)}』", task_path(task) %>への参加から退出させました。
+              <br>
+              <div style="text-align:right;">
+                <%= I18n.l(task.created_at, format: :custom) %>
+              </div>
             </td>
           <% else %>
             <td>
@@ -27,13 +73,23 @@
           <!--コメント関連-->
           <% comment = Comment.find(activity.target_id) %>
           <td>
-            <%= "#{visitor.display_name}が#{comment.subtask.subtask_content.truncate(10)}にコメントしました。" %>
+            <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+            <%= visitor.display_name.truncate(8) %>が<%= link_to "『#{comment.subtask.subtask_content.truncate(8)}』", task_subtask_path(comment.subtask.task.id, comment.subtask.id) %>にコメントしました。
+            <br>
+            <div style="text-align:right;">
+              <%= I18n.l(comment.created_at, format: :custom) %>
+            </div>
           </td>
         <% when "Favorite" then %>
           <!--いいね関連-->
           <% favorite = Favorite.find(activity.target_id) %>
           <td>
-            <%= "#{visitor.display_name}が#{favorite.subtask.subtask_content.truncate(10)}にいいねしました。" %>
+            <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
+            <%= visitor.display_name.truncate(8) %>が<%= link_to "『#{favorite.subtask.subtask_content.truncate(8)}』", task_subtask_path(favorite.subtask.task.id, favorite.subtask.id) %>にいいねしました。
+            <br>
+            <div style="text-align:right;">
+              <%= I18n.l(favorite.created_at, format: :custom) %>
+            </div>
           </td>
         <% else %>
           <td>

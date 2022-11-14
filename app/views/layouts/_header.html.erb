@@ -48,13 +48,13 @@
           </li>
           <% unless current_member.email == "guest@example.com" %>
           <li class="nav-item text-center">
-            <%= link_to mypage_path, class: "nav-link text-light" do %>
-              <i class="fa-solid fa-user"></i><br>マイページ
+            <%= link_to activities_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-bell"></i><br>通知
             <% end %>
           </li>
           <li class="nav-item text-center">
-            <%= link_to activities_path, class: "nav-link text-light" do %>
-              <i class="fa-solid fa-bell"></i><br>通知
+            <%= link_to mypage_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-user"></i><br>マイページ
             <% end %>
           </li>
           <% end %>
