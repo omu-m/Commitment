@@ -48,7 +48,7 @@
             </th>
             <th>
               <% if @status == 2 || @task.owner_id == current_member.id %>
-                <%= link_to "子タスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
+                <%= link_to "サブタスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
               <% end %>
             </th>
             <th class="text-danger font-weight-bold">

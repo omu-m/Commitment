@@ -12,6 +12,7 @@ class Member < ApplicationRecord
   has_many :subtasks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :activities, dependent: :destroy
 
   validates :display_name, presence: true, length: { minimum: 2, maximum: 12 }
   validates :user_name, presence: true, uniqueness: true, format: { with: /\A[a-z0-9]+\z/, message: "は半角英数字で入力してください。" }
