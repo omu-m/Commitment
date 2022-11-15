@@ -10,6 +10,8 @@ class CreateActivities < ActiveRecord::Migration[6.1]
       t.integer :visitor_id, null: false
       # 通知を送られたユーザーを保存するカラム
       t.integer :visited_id, null: false
+      # 既読になったか確認するカラム
+      t.boolean :checked, null: false, default: false
 
       t.timestamps null: false
     end

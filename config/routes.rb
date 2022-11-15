@@ -42,7 +42,12 @@ Rails.application.routes.draw do
     get "members/:id/favorites" => "members#favorites", as: "favorites"
     get "tasks/sort_new" => "tasks#search_tasks", as: "sort_new"
     get "tasks/sort_old" => "tasks#search_tasks", as: "sort_old"
-    resources :activities, only: [:index]
+    resources :activities, only: [:index] do
+      collection do
+        get "checked" => "activities#checked"
+        put "update_all" => "activities#update_all"
+      end
+    end
 
     resources :tasks, only: [:index, :show, :create, :edit, :update, :destroy] do
       # 親タスク(グループ)
