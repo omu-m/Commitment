@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_11_13_110616) do
     t.string "action"
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["target_type", "target_id"], name: "index_activities_on_target"

@@ -26,3 +26,31 @@
 .pagination {
   justify-content: center;  /*中心に寄せる*/
 }
+
+/*通知countバッチ*/
+#icon-badge{
+  position: relative;
+}
+#icon-badge[data-num="0"]::before {
+  display: none;
+}
+#icon-badge::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    content: attr(data-num);
+    min-width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+    padding: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    background-color: #D2B48C;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    top: 0;
+    right: 0;
+    transform: translate(5%, -5%); //位置
+    z-index: 1;
+}

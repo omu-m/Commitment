@@ -1,5 +1,5 @@
 <table class="table table-hover table-inverse mt-5">
-  <% @activities.each do |activity| %>
+  <% activities.each do |activity| %>
     <tbody>
       <tr>
         <% visitor = Member.find(activity.visitor_id) %>
