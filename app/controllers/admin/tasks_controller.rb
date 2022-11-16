@@ -27,7 +27,7 @@ class Admin::TasksController < ApplicationController
       flash[:notice] = "タスクが正常に編集されました。"
       redirect_to admin_tasks_path
     else
-      flash[:notice] = "タスクの編集に失敗しました。"
+      flash[:alert] = "タスクの編集に失敗しました。"
       render "edit"
     end
   end

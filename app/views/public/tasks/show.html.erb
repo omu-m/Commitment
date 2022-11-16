@@ -39,7 +39,7 @@
                     <% if current_member.id == @task.owner_id %>
                       <%= form_with url: task_leaving_path(@task), method: :post, local: true do |f| %>
                         <%= f.hidden_field :member_id, value: member.id %>
-                        <%= f.submit "削除", class: "btn btn-sm btn-outline-danger" %>
+                        <%= f.submit "削除", data: { confirm: "OKを押すとメンバーの『#{member.display_name}さん』が削除されます。本当によろしいですか？" }, class: "btn btn-sm btn-outline-danger" %>
                       <% end %>
                     <% end %>
                   <% end %>
@@ -48,7 +48,7 @@
             </th>
             <th>
               <% if @status == 2 || @task.owner_id == current_member.id %>
-                <%= link_to "子タスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
+                <%= link_to "サブタスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
               <% end %>
             </th>
             <th class="text-danger font-weight-bold">
@@ -110,7 +110,7 @@
           <tr>
             <th class="table-active text-center", width="20%" height="80%">詳細</th>
             <td class="text-center">
-              参加後、詳細が表示されます。
+              <h6><strong>参加後、詳細が表示されます。</strong></h6>
             </td>
           </tr>
         <% end %>

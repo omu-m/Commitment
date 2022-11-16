@@ -1,4 +1,11 @@
 class ApplicationController < ActionController::Base
+  before_action :activities_checker
+
+  def activities_checker
+    unless current_member.nil?
+      @activity_count = Activity.where(visited_id: current_member.id, checked: false).count
+    end
+  end
 
   private
 

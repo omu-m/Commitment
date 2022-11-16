@@ -35,11 +35,10 @@
           <% end %>
         </tbody>
       </table>
-      <div class="text-center">
-        <div class="mx-auto" style="width: 100px;">
-          <%= paginate @subtasks %>
-        </div>
-      </div>
+      <% if subtasks.count == 0 %>
+        <h6 class="text-center mt-5"><strong>該当するサブタスクはありません。</strong></h6>
+      <% end %>
+      <%= paginate @subtasks %>
     </div>
   </div>
 </div>

@@ -34,11 +34,10 @@
           </tbody>
         <% end %>
       </table>
-      <div class="text-center">
-        <div class="mx-auto" style="width: 100px;">
-          <%= paginate @comments %>
-        </div>
-      </div>
+      <% if comments.count == 0 %>
+        <h6 class="text-center mt-5"><strong>まだコメントはありません。</strong></h6>
+      <% end %>
+      <%= paginate @comments %>
     </div>
   </div>
 </div>

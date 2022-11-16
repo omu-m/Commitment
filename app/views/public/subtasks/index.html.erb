@@ -12,7 +12,7 @@
         <%= link_to "完了", task_subtasks_path(@task, status: :complete) %>
       </div>
       <%= render "search", keyword: @keyword, task: @task %>
-    <br>
+      <br>
       <%= render "form", subtask: @subtask %>
     </div>
   </div>

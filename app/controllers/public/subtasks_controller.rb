@@ -19,10 +19,10 @@ class Public::SubtasksController < ApplicationController
     @subtask.task_id = params[:task_id]
     @subtask.member_id = current_member.id
     if @subtask.save
-      flash[:notice] = "子タスクが正常に投稿されました。"
+      flash[:notice] = "サブタスクが正常に投稿されました。"
       redirect_to task_subtasks_path
     else
-      flash[:notice] = "子タスクの投稿に失敗しました。"
+      flash[:alert] = "サブタスクの投稿に失敗しました。"
       @task = Task.find(params[:task_id])
       @subtasks = Subtask.page(params[:page])
       render "index"
@@ -49,10 +49,10 @@ class Public::SubtasksController < ApplicationController
 
   def update
     if @subtask.update(subtask_params)
-      flash[:notice] = "子タスクが正常に編集されました。"
+      flash[:notice] = "サブタスクが正常に編集されました。"
       redirect_to task_subtask_path(@subtask.task_id)
     else
-      flash[:notice] = "子タスクの編集に失敗しました。"
+      flash[:alert] = "サブタスクの編集に失敗しました。"
       render "edit"
     end
   end
