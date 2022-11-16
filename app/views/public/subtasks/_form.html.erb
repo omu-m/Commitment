@@ -1,10 +1,12 @@
 <% if @subtask.errors.any? %>
+<div class="alert alert-secondary">
 <%= @subtask.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
   <ul>
     <% @subtask.errors.full_messages.each do |message| %>
     <li><%= message %></li>
     <% end %>
   </ul>
+</div>
 <% end %>
 <%= form_with model: @subtask, url: task_subtasks_path(@task.id), local: true do |f| %>
   <div class="form-group">
