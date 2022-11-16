@@ -1,6 +1,4 @@
 <%= form_with  url: task_subtask_comments_path(@subtask.task, @subtask), method: :post, local: false do |f| %>
-  <!--エラーメッセージ-->
-  <!--<= render 'layouts/error_messages', model: f.object %>-->
   <div class="form-group">
     <%= f.text_area :comment, :size => "3x3", placeholder: "返信コメントを入力してください", class: "form-control" %>
   </div>
