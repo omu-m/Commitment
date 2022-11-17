@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-2 offset-md-1 mt-4">
       <div style="text-align:center;">
-        <h5 class="text-center"><strong>お気に入りタスク</strong></h5>
+        <h5 class="text-center fa-solid fa-star"><strong> お気に入り</strong></h5>
         <hr class="col-md-10 mt-2">
       </div>
     </div>
@@ -44,6 +44,9 @@
           </tbody>
         <% end %>
       </table>
+      <% if @task_favorite_tasks.count == 0 %>
+        <h6 class="text-center mt-5"><strong>まだありません。</strong></h6>
+      <% end %>
       <%= paginate @task_favorite_tasks %>
     </div>
   </div>

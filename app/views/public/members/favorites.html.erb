@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-2 offset-md-1 mt-4">
       <div style="text-align:center;">
-        <h5 class="text-center"><strong>いいねサブタスク</strong></h5>
-        <hr class="col-md-10 mt-2">
+        <h5 class="text-center fa-solid fa-face-smile"><strong> いいね</strong></h5>
+        <hr class="col-md-6 mt-2">
       </div>
     </div>
     <div class="col-md-10 offset-md-1">
@@ -13,7 +13,7 @@
             <th>メンバー</th>
             <th>サブタスク</th>
             <th></th>
-            <th></th>
+            <th>いいね</th>
             <th></th>
             <th>進捗</th>
           </tr>
@@ -42,6 +42,9 @@
           </tbody>
         <% end %>
       </table>
+      <% if @favorite_tasks_subtasks.count == 0 %>
+        <h6 class="text-center mt-5"><strong>まだありません。</strong></h6>
+      <% end %>
       <%= paginate @favorite_tasks_subtasks %>
     </div>
   </div>
