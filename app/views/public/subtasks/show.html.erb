@@ -42,11 +42,11 @@
         </tr>
       </table>
       <!--comments非同期-->
-      <div class="form-group  my-4 mt-5">
+      <div class="form-group  my-4 mt-5" id="comments-form">
         <hr>
         <%= render "public/comments/form", subtask: @subtask, comment: @comment %>
       </div>
-      <div id="comments-area">
+      <div id="comments-index">
         <%= render "public/comments/index", subtask: @subtask, comments: @comments %>
       </div>
     </div>
