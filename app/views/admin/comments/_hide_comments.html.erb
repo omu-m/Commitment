@@ -23,7 +23,7 @@
   <div class="d-flex flex-row-reverse bd-highlight">
     <div class="p-2 bd-highlight">
       <div class="form-group">
-        <%= link_to "削除", admin_task_subtask_comment_path(comment.subtask.task, comment.subtask, comment, reply_id: reply.id), method: :delete, data: {confirm: "OKを押すと削除されます。本当によろしいですか？"}, class: "btn btn-sm btn-outline-danger", remote: true %>
+        <%= link_to "削除", admin_task_subtask_comment_path(comment.subtask.task, comment.subtask, reply, reply_id: reply.id), method: :delete, data: {confirm: "OKを押すと削除されます。本当によろしいですか？"}, class: "btn btn-sm btn-outline-danger", remote: true %>
       </div>
     </div>
     <div class="p-2 bd-highlight"><%= I18n.l(reply.created_at, format: :custom) %></div>
