@@ -24,17 +24,18 @@
             <th class="table-active">会員ID</th><td><%= @member.id %></td>
           </tr>
           <tr>
+            <th class="table-active">プロフィール画像</th><td><%= image_tag @member.get_profile_image, size: "80x80", style: "border-radius: 50px;" %></td>
+          </tr>
+          <tr>
+            <th class="table-active">ユーザーネーム</th><td><%= @member.user_name %></td>
+          </tr>
+          <tr>
             <th class="table-active">メールアドレス</th><td><%= @member.email %></td>
           </tr>
         </table>
         <div class="field mb-4 mt-5">
           <%= f.label :display_name, "表示名" %>
           <%= f.text_field :display_name, autofocus: true, autocomplete: "display_name", class: "form-control" %>
-        </div>
-        <div class="field mb-4">
-          <%= f.label :user_name, "ユーザーネーム" %>
-            <br><span class="text">※『半角英数字(a-z/0-9)』のみ使用できます。</span>
-          <%= f.text_field :user_name, autocomplete: "user_name", class: "form-control" %>
         </div>
         <div class="field mb-4">
           <%= f.label :profile_image, "プロフィール画像（変更する場合は選択してください。）" %><br>
