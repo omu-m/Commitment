@@ -30,13 +30,13 @@
         <thead>
           <tr>
             <th>
-              <%= link_to "お気に入りタスク",  task_favorites_path(@member), class: "btn btn-outline-secondary" %>
+              <%= link_to "お気に入り",  task_favorites_path(@member), class: "btn btn-outline-secondary" %>
             </th>
             <th>
               <%= link_to "参加タスク",  tasks_path(member_id: @member.id), class: "btn btn-outline-secondary" %>
             </th>
             <th>
-              <%= link_to "いいねサブタスク",  favorites_path(@member), class: "btn btn-outline-secondary" %>
+              <%= link_to "いいね",  favorites_path(@member), class: "btn btn-outline-secondary" %>
             </th>
           </tr>
         </thead>
