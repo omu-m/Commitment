@@ -34,7 +34,7 @@
           </tbody>
         <% end %>
       </table>
-      <% if @comments.count == 0 %>
+      <% if comments.count == 0 %>
         <h6 class="text-center mt-5"><strong>まだコメントはありません。</strong></h6>
       <% end %>
       <%= paginate @comments %>
