@@ -1,6 +1,15 @@
+<!--<div class="flash"></div>-->
+<div style="text-align:center;">
+  <% if comment.errors.any? %>
+  <div class="alert alert-secondary">
+  <%= comment.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
+    <% comment.errors.full_messages.each do |message| %>
+    <li ><%= message %></li>
+    <% end %>
+  </div>
+  <% end %>
+</div>
 <%= form_with  url: task_subtask_comments_path(@subtask.task, @subtask), method: :post, local: false do |f| %>
-  <!--エラーメッセージ-->
-  <!--<= render 'layouts/error_messages', model: f.object %>-->
   <div class="form-group">
     <%= f.text_area :comment, :size => "3x3", placeholder: "コメントを入力してください", autofocus: true, class: "form-control" %>
   </div>

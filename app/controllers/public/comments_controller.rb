@@ -10,9 +10,9 @@ class Public::CommentsController < ApplicationController
     @comments = @subtask.comments.order(created_at: :desc)
     if @comment.save
       @comment.create_activities(@comment, "comment", current_member.id, @subtask.member_id)
-      flash.now[:notice] = "コメントの投稿に成功しました。"
+      # @message = "コメントの投稿に成功しました。"
     else
-      flash.now[:alert] ="コメントの投稿に失敗しました。"
+      # @message ="コメントの投稿に失敗しました。"
     end
   end
 
@@ -24,14 +24,14 @@ class Public::CommentsController < ApplicationController
       if params[:reply_id].present?
         #replyの削除
         Comment.find(params[:reply_id]).destroy
-        flash.now[:alert] = "リプライを削除しました。"
+        # @flash_message = "リプライを削除しました。"
       else
         #コメントの削除
         @comment.destroy
-        flash.now[:alert] = "コメントを削除しました。"
+        # @flash_message = "コメントを削除しました。"
       end
     else
-      flash.now[:alert] = "削除出来ませんでした。"
+      # @flash_message = "コメントの削除は出来ませんでした。"
     end
     @subtask = Subtask.find(params[:subtask_id])
     @comments = @subtask.comments.order(created_at: :desc)

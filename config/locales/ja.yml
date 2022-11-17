@@ -27,6 +27,8 @@ ja: #日本語の設定を行う
         task_content: "詳細"
       subtask:
         subtask_content: "サブタスク"
+      comment:
+        comment: "コメント"
   views:
     pagination:
       first: "&laquo; 最初"
