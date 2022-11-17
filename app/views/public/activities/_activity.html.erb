@@ -80,6 +80,11 @@
               <%= I18n.l(comment.created_at, format: :custom) %>
             </div>
           </td>
+        <% else %>
+        <td>
+          <%= "予期しない通知" %>
+        </td>
+        <% end %>
         <% when "Favorite" then %>
           <!--いいね関連-->
           <% favorite = Favorite.find(activity.target_id) %>
