@@ -23,7 +23,7 @@
               <td><%= comment.member.id %></td>
               <td class="overflow-ellipsis">
                 <%= image_tag comment.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
-                <%= link_to comment.member.display_name.truncate(10), admin_member_path(comment.member.id) %>
+                <%= link_to comment.member.display_name.truncate(8), admin_member_path(comment.member.id) %>
               </td>
               <td><%= l comment.created_at %></td>
               <td style="display: block; overflow-y:scroll; height:100px;"><%= comment.comment %></td>

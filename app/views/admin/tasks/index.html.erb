@@ -12,10 +12,10 @@
           <tr>
             <th></th>
             <th>タスク</th>
-            <th>内容</th>
             <th>メンバー</th>
             <th>お気に入り</th>
             <th>達成率</th>
+            <th></th>
           </tr>
         </thead>
         <% @tasks.each do |task| %>
@@ -29,7 +29,6 @@
                 <% end %>
               </td>
               <td><%= link_to task.task_title.truncate(10), admin_task_path(task) %></td>
-              <td><%= task.task_content.truncate(10) %></td>
               <td><%= task.task_members.where(approval_status: 2).count %></td>
               <td>
                 <i class="fa-solid fa-star"></i> <%= task.task_favorites.count %>
@@ -40,6 +39,9 @@
                 <% else %>
                   <%= ((task.subtasks.where(progress_status: 3).size / task.subtasks.size.to_f) * 100).round(2)%> %
                 <% end %>
+              </td>
+              <td>
+                <%= I18n.l(task.updated_at, format: :custom) %>
               </td>
             </tr>
           </tbody>
