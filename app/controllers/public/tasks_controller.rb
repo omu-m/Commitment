@@ -39,7 +39,7 @@ class Public::TasksController < ApplicationController
     render "index"
   end
 
-  def search_tasks
+  def sort_tasks
     @task = Task.new
     if params[:new]
       @tasks = Task.all.order(created_at: "DESC").page(params[:page])
@@ -99,7 +99,7 @@ class Public::TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def all_destroy
+  def destroy_all
     @task = Task.find(params[:task_id])
     if @task.destroy
     redirect_to tasks_path

@@ -3,7 +3,7 @@
     <div class="col-md-2 offset-md-1 mt-4">
       <div style="text-align:center;">
         <h5 class="text-center"><strong>タスク詳細</strong></h5>
-        <hr class="col-md-8 mt-2">
+        <hr class="mt-2">
       </div>
     </div>
     <div class="col-md-10 offset-md-1">
@@ -50,6 +50,9 @@
               <% if @status == 2 || @task.owner_id == current_member.id %>
                 <%= link_to "サブタスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
               <% end %>
+            </th>
+            <th>
+              <%= I18n.l(@task.updated_at, format: :custom) %>
             </th>
             <th class="text-danger font-weight-bold">
               達成率

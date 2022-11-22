@@ -19,7 +19,7 @@
               <%= @subtask.member.display_name %>
             </th>
             <th class="text-center font-weight-bold">
-              投稿日時：<%= I18n.l(@subtask.created_at, format: :custom) %>
+              <%= I18n.l(@subtask.updated_at, format: :custom) %>
             </th>
             <th class="text-center text-danger font-weight-bold">
               <%= @subtask.progress_status_i18n %>
