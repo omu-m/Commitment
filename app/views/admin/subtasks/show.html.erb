@@ -21,6 +21,9 @@
             <th class="text-danger font-weight-bold">
               <%= @subtask.progress_status_i18n %>
             </th>
+            <th>
+              <%= I18n.l(@subtask.updated_at, format: :custom) %>
+            </th>
           </tr>
         </thead>
       </table>

@@ -1,7 +1,7 @@
-<div class="col-md-3">
+<div class="col-md-8">
   <div style="text-align:center;">
-    <h5 class="text-center"><strong>サブタスク一覧</strong></h5>
-    <hr class="col-md-10 mt-2">
+    <h5 class="text-center"><strong>『<%= @task.task_title.truncate(14) %>』のサブタスク一覧</strong></h5>
+    <hr class="mt-2">
   </div>
 </div>
 <div style="text-align:right;">
@@ -41,7 +41,7 @@
           <% if subtask.member_id == current_member.id %>
           <%= link_to "更新", edit_task_subtask_path(@task, subtask), class: "btn btn-outline-primary" %>
           <% end %>
-          </td>
+        </td>
       </tr>
     </tbody>
   <% end %>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3 my-4 mt-5">
       <div style="text-align:center;">
-        <h5 class="text-center"><strong><%= @member.display_name %>さんの会員情報編集</strong></h5>
+        <h5 class="text-center"><strong>『<%= @member.display_name %>さん』の会員情報編集</strong></h5>
         <hr class="mt-2">
       </div>
 
@@ -42,9 +42,9 @@
           <img id="preview" src="/assets/no_image.jpg" class="member-icon" style="width: 100px; height: 100px">
           <%= f.file_field :profile_image, accept: "image/*", onchange: "previewImage(this);" %>
         </div>
-        <div class="field mb-4">
+        <div class="field mb-4 text-center">
           <pre>
-                 <%= f.radio_button :is_deleted, false, checked: true %> 有効　　　　　　　　　　　　　  <%= f.radio_button :is_deleted, true%> 退会
+<%= f.radio_button :is_deleted, false, checked: true %> <%= f.label :is_deleted, "有効", value: false %>                 <%= f.radio_button :is_deleted, true%> <%= f.label :is_deleted, "退会", value: true %>
           </pre>
         </div>
         <div class="actions text-center mb-4 mt-5">
