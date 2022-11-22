@@ -94,6 +94,9 @@
           </tr>
         </thead>
       </table>
+      <div style="text-align:right;">
+        <strong><%= I18n.l(@task.updated_at, format: :custom) %></strong>
+      </div>
       <table class="my-4 mt-5", align="center" border="1" width="750" height="500">
         <tr>
           <th class="table-active text-center", width="20%" height="20%">タスク</th>
