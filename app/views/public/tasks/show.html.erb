@@ -51,9 +51,6 @@
                 <%= link_to "サブタスク一覧", task_subtasks_path(@task), class: "btn btn-outline-secondary" %>
               <% end %>
             </th>
-            <th>
-              <%= I18n.l(@task.updated_at, format: :custom) %>
-            </th>
             <th class="text-danger font-weight-bold">
               達成率
               <% if @task.subtasks.size.zero? %>
