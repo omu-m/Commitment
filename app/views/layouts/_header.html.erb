@@ -46,8 +46,7 @@
               <i class="fa-solid fa-list-check"></i><br>タスク一覧
             <% end %>
           </li>
-          <% unless current_member.email == "guest@example.com" %>
-
+          <% unless current_member.guest? %>
           <li class="nav-item text-center">
             <span id="icon-badge" data-num="<%= @activities_count %>">
               <%= link_to activities_path, class: "nav-link text-light" do %>

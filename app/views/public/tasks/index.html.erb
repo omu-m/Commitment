@@ -6,8 +6,8 @@
     <div class="col-md-4 my-4">
       <div style="text-align:right;">
         <%= link_to "更新順", tasks_path %> |
-        <%= link_to "新着順", sort_new_path(new: "true") %> |
-        <%= link_to "古い順", sort_old_path(old: "true") %>
+        <%= link_to "新着順", sort_new_tasks_path(new: "true") %> |
+        <%= link_to "古い順", sort_old_tasks_path(old: "true") %>
       </div>
       <%= render "search", keyword: @keyword %>
       <%= render 'form', task: @task %>
