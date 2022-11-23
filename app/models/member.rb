@@ -1,4 +1,7 @@
 class Member < ApplicationRecord
+
+  GUEST_EMAIL = "guest@example.com"
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,7 +10,7 @@ class Member < ApplicationRecord
   has_many :task_members, dependent: :destroy
   has_many :request_tasks, dependent: :destroy
   has_many :tasks, through: :task_members
-  has_many :tasks, dependent: :destroy
+  has_many :owned_tasks, dependent: :destroy, class_name: "Task", foreign_key: "owner_id"
   has_many :task_favorites, dependent: :destroy
   has_many :subtasks, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -37,15 +40,19 @@ class Member < ApplicationRecord
 
   # is_deletedがfalseならtrueを返すようにしている
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && !is_deleted
+  end
+
+  def guest?
+    email == GUEST_EMAIL
   end
 
   # ゲストログイン（閲覧用）
   def self.guest
-    find_or_create_by!(user_name: "guestuser",email: "guest@example.com") do |member|
+    find_or_create_by!(email: GUEST_EMAIL) do |member|
       member.password = SecureRandom.urlsafe_base64
+      member.user_name = "guestuser"
       member.display_name = "ゲストユーザー"
-      member.email = "guest@example.com"
     end
   end
 

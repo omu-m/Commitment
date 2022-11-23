@@ -25,8 +25,8 @@
                 <%= image_tag task_member.member.get_profile_image, size: "50x50", style: "border-radius: 50px;" %>
                 <%= task_member.member.display_name %>
               </td>
-              <td><%= link_to "承認", task_approval_request_path(@task, member_id: task_member.member_id), class: "btn btn-outline-success" %></td>
-              <td><%= link_to "非承認", task_non_approval_request_path(@task, member_id: task_member.member_id), class: "btn btn-outline-danger" %></td>
+              <td><%= link_to "承認", approval_request_task_path(@task, member_id: task_member.member_id), class: "btn btn-outline-success" %></td>
+              <td><%= link_to "非承認", non_approval_request_task_path(@task, member_id: task_member.member_id), class: "btn btn-outline-danger" %></td>
             </tr>
           <% end %>
         </tbody>

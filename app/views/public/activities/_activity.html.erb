@@ -22,7 +22,7 @@
           <% when "request_join" %>
             <td>
               <%= image_tag visitor.profile_image, size: "40x40", style: "border-radius: 50px;" %>
-              <%= visitor.display_name.truncate(8) %>が<%= link_to "『#{task.task_title.truncate(8)}』", task_applies_path(task) %>への参加申請をあなたにしました。
+              <%= visitor.display_name.truncate(8) %>が<%= link_to "『#{task.task_title.truncate(8)}』", applies_task_path(task) %>への参加申請をあなたにしました。
               <br>
               <div style="text-align:right;">
                 <%= I18n.l(task.created_at, format: :custom) %>
