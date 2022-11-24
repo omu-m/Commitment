@@ -8,7 +8,7 @@
         <% case activity.target_type %>
         <% when "Task" then %>
         <!--タスク関連-->
-        <% task = Task.find(activity.target_id) %>
+        <% task = Task.find_by(@activity) %>
         <% case activity.action %>
           <% when "change_owner" %>
             <td>
