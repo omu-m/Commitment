@@ -40,28 +40,34 @@ Rails.application.routes.draw do
     patch "/members/withdrawal" => "members#withdrawal", as: "withdrawal_member"
     get "members/:id/task_favorites" => "members#task_favorites", as: "task_favorites"
     get "members/:id/favorites" => "members#favorites", as: "favorites"
-    get "tasks/sort_new" => "tasks#sort_tasks", as: "sort_new"
-    get "tasks/sort_old" => "tasks#sort_tasks", as: "sort_old"
     resources :activities, only: [:index] do
-      # :idが不要の場合
+      # :idが不要な場合
       collection do
         get "checked" => "activities#checked"
         put "update_all" => "activities#update_all"
       end
     end
 
+    # 親タスク(グループ)
     resources :tasks, only: [:index, :show, :create, :edit, :update, :destroy] do
-      # 親タスク(グループ)
-      # get "join" => "tasks#join"
-      get "request_join" => "tasks#request_join"
-      delete "request_join_destroy" => "tasks#request_join_destroy"
-      get "approval_request" => "tasks#approval_request"
-      get "non_approval_request" => "tasks#non_approval_request"
-      get "applies" => "tasks#applies"
-      post "leaving" => "tasks#leaving"
-      delete "out" => "tasks#out"
-      delete "destroy_all" => "tasks#destroy_all"
-      get "search" => "tasks#search"
+      # :idが不要な場合
+      collection do
+        get "sort_new" => "tasks#sort_tasks"
+        get "sort_old" => "tasks#sort_tasks"
+      end
+      # :idが必要な場合
+      member do
+        # get "join" => "tasks#join"
+        get "request_join" => "tasks#request_join"
+        delete "request_join_destroy" => "tasks#request_join_destroy"
+        get "approval_request" => "tasks#approval_request"
+        get "non_approval_request" => "tasks#non_approval_request"
+        get "applies" => "tasks#applies"
+        post "leaving" => "tasks#leaving"
+        delete "out" => "tasks#out"
+        delete "destroy_all" => "tasks#destroy_all"
+        get "search" => "tasks#search"
+      end
       resource :task_favorites, only: [:create, :destroy]
       resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy] do
         get "search" => "subtasks#search"
