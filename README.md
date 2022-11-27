@@ -27,6 +27,7 @@
 * 作業の進捗やプロジェクトの達成率を共有、見える化したい時
 
 ## 設計書
+* [UI Flows](https://app.diagrams.net/#G1ED9i09qfcdCoMlJT1RRulln7BF8J8beX)
 * [ER図](https://app.diagrams.net/#G1NwsLNiIDBMdJ6jEUUS_x-ylvcn4qI39h)
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/1J5WMYpYJgvOGHER-iW5T6h3_FzXjzxxz/edit#gid=1243549839)
 * [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1_NSU1_DB0bcY1KKYoaHZXE4ItJHV1Mv1UsMJ_AMEsWE/edit#gid=549108681)
