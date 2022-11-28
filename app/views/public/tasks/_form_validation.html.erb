@@ -1,0 +1,65 @@
+<script>
+  // フォーム全体の要素
+  var taskForm = document.querySelector("#taskForm");
+
+  // 各入力フィールド(title, content) の要素
+  var taskTitleField = document.querySelector("#taskTitle");
+  var taskContentField = document.querySelector("#taskContent");
+
+  // 各入力フィールド内の<input>タグ
+  var taskTitle = document.querySelector("#task_title");
+  var taskContent = document.querySelector("#task_content");
+
+  // フォーム送信ボタン（Submit）の要素
+  var taskSubmitBtn = document.querySelector("#task_submit");
+
+  // 各フィールドのエラーメッセージ表示用の paragraph
+  var titlePara = document.createElement('p');
+  var contentPara = document.createElement('p');
+
+  // 各入力フィールドのバリデーションチェック用の変数
+  // エラー時は"false", OK時は"true"を代入する（後述）
+  var activeTitle;
+  var activeContent;
+
+  // Submitボタンの有効化条件
+  taskSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
+  taskForm.addEventListener('input', ()=>{
+    if(activeTitle === true && activeContent === true){
+      taskSubmitBtn.disabled = false;
+    }else{
+      taskSubmitBtn.disabled = true;
+    }
+  // });
+
+  // タスクのバリデーション
+  // taskTitle.addEventListener("input", ()=>{
+    if(taskTitle.value === ""){ // 入力フォームが空の場合
+      titlePara.textContent = "タスクを入力してください";
+      titlePara.style.color = "olive";
+      activeTitle = false;
+    }else if(taskTitle.value.length > 30){ // 文字数が30文字以上の場合
+      titlePara.textContent = "タスクは30文字以内で入力してください";
+      titlePara.style.color = "olive";
+      taskSubmitActive -= 1;
+      activeTitle = false;
+    }else{ // バリデーションチェック完了時（OK時）の処理
+      titlePara.textContent = "";
+      activeTitle = true;
+    }
+    taskTitleField.appendChild(titlePara); // title用のバリデーションエラーメッセージを表示
+  // });
+
+  // 詳細のバリデーション
+  // taskContent.addEventListener("input", ()=>{
+    if(taskContent.value === ""){ // 入力フォームが空の場合
+      contentPara.textContent = "詳細を入力してください";
+      contentPara.style.color = "olive";
+      activeContent = false;
+    }else{ // バリデーションチェック完了時（OK時）の処理
+      contentPara.textContent = "";
+      activeContent = true;
+    }
+    taskContentField.appendChild(contentPara); // content用のバリデーションエラーメッセージを表示
+  });
+</script>

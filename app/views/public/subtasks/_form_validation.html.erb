@@ -1,0 +1,43 @@
+<script>
+  // フォーム全体の要素
+  var subtaskForm = document.querySelector("#subtaskForm");
+
+  // 各入力フィールド(content) の要素
+  var subtaskContentField = document.querySelector("#subtaskContent");
+
+  // 各入力フィールド内の<input>タグ
+  var subtaskContent = document.querySelector("#subtask_content");
+
+  // フォーム送信ボタン（Submit）の要素
+  var subtaskSubmitBtn = document.querySelector("#subtask_submit");
+
+  // 各フィールドのエラーメッセージ表示用の paragraph
+  var contentPara = document.createElement('p');
+
+  // 各入力フィールドのバリデーションチェック用の変数
+  // エラー時は"false", OK時は"true"を代入する（後述）
+  var activeContent;
+
+  // Submitボタンの有効化条件
+  subtaskSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
+  subtaskForm.addEventListener('input', ()=>{
+    if(activeContent === true){
+      subtaskSubmitBtn.disabled = false;
+    }else{
+      subtaskSubmitBtn.disabled = true;
+    }
+  // });
+
+  // サブタスクのバリデーション
+  // subtaskContent.addEventListener("input", ()=>{
+    if(subtaskContent.value === ""){ // 入力フォームが空の場合
+      contentPara.textContent = "サブタスクを入力してください";
+      contentPara.style.color = "olive";
+      activeContent = false;
+    }else{ // バリデーションチェック完了時（OK時）の処理
+      contentPara.textContent = "";
+      activeContent = true;
+    }
+    subtaskContentField.appendChild(contentPara); // content用のバリデーションエラーメッセージを表示
+  });
+</script>

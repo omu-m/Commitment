@@ -9,14 +9,14 @@
     </ul>
   </div>
   <% end %>
-  <%= form_with model: task, local: true do |f| %>
-    <div class="form-group">
+  <%= form_with model: task, id: "taskForm", local: true do |f| %>
+    <div id="taskTitle" class="field mb-4">
       <%= f.label :タスク（新着順でご確認お願いいたします。） %>
-      <%= f.text_field :task_title, autofocus: true, class: "form-control" %>
+      <%= f.text_field :task_title, autofocus: true, class: "form-control", id: "task_title" %>
     </div>
-    <div class="form-group">
+    <div id="taskContent" class="field mb-4">
       <%= f.label :詳細 %>
-      <%= f.text_area :task_content, class: "form-control" %>
+      <%= f.text_area :task_content, class: "form-control", id: "task_content" %>
     </div>
     <div class="form-group">
       <%= f.label :タスク画像 %>
@@ -24,9 +24,12 @@
       <%= f.file_field :image, accept: "image/*" %>
     </div>
     <% unless current_member.email == "guest@example.com" %>
-    <div class="form-group">
-      <%= f.submit "作成", class: "btn btn-outline-secondary btn-block" %>
+    <div id="taskSubmit" class="actions mt-4">
+      <%= f.submit "作成", class: "btn btn-outline-secondary btn-block", id: "task_submit" %>
     </div>
     <% end %>
   <% end %>
 </div>
+
+<!--JavaScriptで動的なバリデーション（リアルタイムでチェック）-->
+<%= render "form_validation" %>
