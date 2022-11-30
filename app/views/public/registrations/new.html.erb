@@ -15,7 +15,16 @@
       </div>
 
       <%= form_with model: @member, id: "registrationNew", url: member_registration_path, local: true do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
+        <div style="text-align:center;">
+          <% if @member.errors.any? %>
+          <div class="alert alert-secondary">
+          <%= @member.errors.count %>件エラーが発生しました。以下ご確認お願いいたします。
+            <% @member.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
         <div class="col-md-8 offset-md-2">
           <div id="registrationDisplayName" class="field mb-4 mt-5">
             <%= f.label :display_name, "表示名" %>
