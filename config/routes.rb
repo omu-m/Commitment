@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       collection do
         get "sort_new" => "tasks#sort_tasks"
         get "sort_old" => "tasks#sort_tasks"
+        get "search" => "tasks#search"
       end
       # :idが必要な場合
       member do
@@ -66,7 +67,6 @@ Rails.application.routes.draw do
         post "leaving" => "tasks#leaving"
         delete "out" => "tasks#out"
         delete "destroy_all" => "tasks#destroy_all"
-        get "search" => "tasks#search"
       end
       resource :task_favorites, only: [:create, :destroy]
       resources :subtasks, only: [:index, :show, :create, :edit, :update, :destroy] do
