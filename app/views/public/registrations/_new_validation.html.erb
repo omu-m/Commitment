@@ -39,7 +39,7 @@
   // Submitボタンの有効化条件
   registrationSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
   registrationNew.addEventListener('input', ()=>{
-    if(activeDisplayName === true && activeUserName === true && activeEmail === true && activePassword === true && activePasswordConfirmation === true){
+    if(activeDisplayName === true && activeUserName === true && activeEmail === true && activePassword === true){
       registrationSubmitBtn.disabled = false;
     }else{
       registrationSubmitBtn.disabled = true;
