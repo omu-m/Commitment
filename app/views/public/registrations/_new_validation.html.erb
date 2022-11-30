@@ -1,0 +1,171 @@
+<script>
+  // フォーム全体の要素
+  var registrationNew = document.querySelector("#registrationNew");
+
+  // 各入力フィールド(display_name, user_name etc.) の要素
+  var registrationDisplayNameField = document.querySelector("#registrationDisplayName");
+  var registrationUserNameField = document.querySelector("#registrationUserName");
+  var registrationEmailField = document.querySelector("#registrationEmail");
+  var registrationPasswordField = document.querySelector("#registrationPassword");
+  var registrationPasswordConfirmationField = document.querySelector("#registrationPasswordConfirmation");
+
+  // パスワードおよびパスワード確認用フィールドの要素グループ
+  var registrationPasswordGroup = document.querySelector('#registrationPasswordGroup');
+
+  // 各入力フィールド内の<input>タグ
+  var registrationDisplayName = document.querySelector("#registration_display_name");
+  var registrationUserName = document.querySelector("#registration_user_name");
+  var registrationEmail = document.querySelector("#registration_email");
+  var registrationPassword = document.querySelector("#registration_password");
+  var registrationPasswordConfirmation = document.querySelector("#registration_password_confirmation");
+
+  // フォーム送信ボタン（Submit）の要素
+  var registrationSubmitBtn = document.querySelector("#registration_submit");
+
+  // 各フィールドのエラーメッセージ表示用の paragraph
+  var display_namePara = document.createElement('p');
+  var user_namePara = document.createElement('p');
+  var emailPara = document.createElement('p');
+  var passwordPara = document.createElement('p');
+  var password_confirmationPara = document.createElement('p');
+
+  // 各入力フィールドのバリデーションチェック用の変数
+  // エラー時は"false", OK時は"true"を代入する（後述）
+  var activeDisplayName;
+  var activeUserName;
+  var activeEmail;
+  var activePassword;
+
+  // Submitボタンの有効化条件
+  registrationSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
+  registrationNew.addEventListener('input', ()=>{
+    if(activeDisplayName === true && activeUserName === true && activeEmail === true && activePassword === true && activePasswordConfirmation === true){
+      registrationSubmitBtn.disabled = false;
+    }else{
+      registrationSubmitBtn.disabled = true;
+    }
+  // });
+
+  // 表示名のバリデーション
+  // registrationDisplayName.addEventListener("input", ()=>{
+    if(registrationDisplayName.value === ""){ // 入力フォームが空の場合
+      display_namePara.textContent = "表示名を入力してください";
+      display_namePara.style.color = "olive";
+      activeDisplayName = false;
+    }else if(registrationDisplayName.value.length < 2){ // 文字数が2文字未満の場合
+      display_namePara.textContent = "表示名は2文字以上で入力してください";
+      display_namePara.style.color = "olive";
+      activeDisplayName = false;
+    }else if(registrationDisplayName.value.length > 12){ // 文字数が12文字以上の場合
+      display_namePara.textContent = "表示名は12文字以内で入力してください";
+      display_namePara.style.color = "olive";
+      registrationSubmitActive -= 1;
+      activeDisplayName = false;
+    }else{ // バリデーションチェック完了時（OK時）の処理
+      display_namePara.textContent = "";
+      activeDisplayName = true;
+    }
+    registrationDisplayNameField.appendChild(display_namePara); // display_name用のバリデーションエラーメッセージを表示
+  // });
+
+  // ユーザーネームのバリデーション
+  // registrationUserName.addEventListener("input", ()=>{
+    // user_nameの正規表現パターン↓
+    var user_nameRegex = /^([a-z0-9]{2,})$/;
+    if(registrationUserName.value === ""){ // 入力フォームが空の場合
+      user_namePara.textContent = "ユーザーネームを入力してください";
+      user_namePara.style.color = "olive";
+      activeUserName = false;
+    }else if(!user_nameRegex.test(registrationUserName.value)){ // 入力した値がuser_nameRegexの正規表現パターンにマッチしない場合
+      user_namePara.textContent = "有効なユーザーネームを入力してください";
+      user_namePara.style.color = "olive";
+      activeUserName = false;
+    }else{ // バリデーションチェック完了時（OK時）の処理
+      user_namePara.textContent = "";
+      activeUserName = true;
+    }
+    registrationUserNameField.appendChild(user_namePara); // user_name用のバリデーションエラーメッセージを表示
+  // });
+
+  //メールアドレスのバリデーション
+  // registrationEmail.addEventListener('input', ()=>{
+    // email の正規表現パターン↓
+    var emailRegex = /^[a-zA-Z0-9_+-]+(\.[a-zA-Z0-9_+-]+)*@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
+    if(registrationEmail.value === ""){ // 入力フォームが空の場合
+      emailPara.textContent = "メールアドレスを入力してください";
+      emailPara.style.color = "olive";
+      activeEmail = false;
+    }else if(!emailRegex.test(registrationEmail.value)){ // 入力した値がemailRegexの正規表現パターンにマッチしない場合
+      emailPara.textContent = "有効なアドレスを入力してください";
+      emailPara.style.color = "olive";
+      activeEmail = false;
+    }else{ // バリデーションチェック完了時（OK時）の処理
+      emailPara.textContent = "";
+      activeEmail = true;
+    }
+    registrationEmailField.appendChild(emailPara); // email用のバリデーションエラーメッセージを表示
+  });
+
+  //パスワードのバリデーション
+  registrationPasswordGroup.addEventListener('input', ()=>{
+    var passwordRegex = /^([a-zA-Z0-9]{6,})$/; // 半角英数字6文字以上を表す正規表現
+    console.log('event registrationPasswordGroup 1')
+    // パスワードがpasswordRegexの正規表現パターンに一致しない時の処理
+    if(!passwordRegex.test(registrationPassword.value)){
+      if(registrationPassword.value === ""){ // 入力フォームが空の場合
+        password_confirmationPara.textContent = "";
+        passwordPara.textContent = "パスワードを入力してください";
+        passwordPara.style.color = "olive";
+        activePassword = false;
+      }else{ // 入力した値が1文字以上6文字未満である場合
+        password_confirmationPara.textContent = "";
+        passwordPara.textContent = "6文字以上の半角英数字を入力してください";
+        passwordPara.style.color = "olive";
+        registrationPasswordConfirmation.parentElement.style.border = "none";
+        activePassword = false;
+      }
+    }
+  });
+
+
+  //パスワードのバリデーション
+  registrationPasswordGroup.addEventListener('input', ()=>{
+    var passwordRegex = /^([a-zA-Z0-9]{6,})$/; // 半角英数字6文字以上を表す正規表現
+    console.log('event userPasswordGroup 2')
+    // パスワードがpasswordRegexの正規表現パターンに一致しない時の処理
+    if(!passwordRegex.test(registrationPassword.value)){
+      if(registrationPassword.value === ""){ // 入力フォームが空の場合
+        password_confirmationPara.textContent = "";
+        passwordPara.textContent = "パスワードを入力してください";
+        passwordPara.style.color = "olive";
+        activePassword = false;
+      }else{ // 入力した値が1文字以上6文字未満である場合
+        password_confirmationPara.textContent = "";
+        passwordPara.textContent = "6文字以上の半角英数字を入力してください";
+        passwordPara.style.color = "olive";
+        registrationPasswordConfirmation.parentElement.style.border = "none";
+        activePassword = false;
+      }
+    }
+    // パスワードがpasswordRegexの正規表現パターンに一致した時の処理
+    else{
+      if(registrationPasswordConfirmation.value === ""){ // 入力フォームが空の場合
+        passwordPara.textContent = "";
+        password_confirmationPara.textContent = "パスワード(確認用)を入力してください";
+        password_confirmationPara.style.color = "olive";
+        activePassword = false;
+      }else if(registrationPasswordConfirmation.value === registrationPassword.value){ // パスワード、パスワード確認用の値が一致する場合
+        passwordPara.textContent = "";
+        password_confirmationPara.textContent = "";
+        activePassword = true;
+      }else{ // パスワード、パスワード確認用の値が一致しない場合
+        passwordPara.textContent = "";
+        password_confirmationPara.textContent = "入力したパスワードと一致しません";
+        password_confirmationPara.style.color = "olive";
+        activePassword = false;
+      }
+    }
+    registrationPasswordField.appendChild(passwordPara); // password用のバリデーションエラーメッセージを表示
+    registrationPasswordConfirmationField.appendChild(password_confirmationPara); // password_confirmation用のバリデーションエラーメッセージを表示
+  });
+</script>
