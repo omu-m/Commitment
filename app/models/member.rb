@@ -18,7 +18,7 @@ class Member < ApplicationRecord
   has_many :activities, dependent: :destroy
 
   validates :display_name, presence: true, length: { minimum: 2, maximum: 12 }
-  validates :user_name, presence: true, uniqueness: true, format: { with: /\A[a-z0-9]+\z/, message: "は半角英数字で入力してください。" }
+  validates :user_name, presence: true, uniqueness: true, length: { minimum: 6 }, format: { with: /\A[a-z0-9]+\z/, message: "は半角英数字で入力してください。" }
   validates :email, presence: true, uniqueness: true
 
   # 名称が部分一致する
