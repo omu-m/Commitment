@@ -71,7 +71,7 @@
   // ユーザーネームのバリデーション
   // registrationUserName.addEventListener("input", ()=>{
     // user_nameの正規表現パターン↓
-    var user_nameRegex = /^([a-z0-9]{2,})$/;
+    var user_nameRegex = /^([a-z0-9]{6,})$/;
     if(registrationUserName.value === ""){ // 入力フォームが空の場合
       user_namePara.textContent = "ユーザーネームを入力してください";
       user_namePara.style.color = "olive";
