@@ -32,7 +32,7 @@
           </div>
           <div id="registrationUserName" class="field mb-4">
             <%= f.label :user_name, "ユーザーネーム" %>
-              <br><span class="text">※『半角英数字(a-z/0-9)』のみ使用できます。</span></td>
+              <br><span class="text">※『半角英数字(a-z/0-9)』のみ使用できます。<br>※6文字以上で入力してください。</span></td>
             <%= f.text_field :user_name, autocomplete: "user_name", class: "form-control", id: "registration_user_name" %>
           </div>
           <div id="registrationEmail" class="field mb-4">
