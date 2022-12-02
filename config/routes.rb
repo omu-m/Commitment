@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'comments/index'
-  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -11,12 +8,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
+    get 'comments/index'
     resources :members, only: [:index, :show, :edit, :update]
     resources :tasks, only: [:index, :show, :edit, :update, :destroy] do
       resources :subtasks, only: [:index, :show, :destroy] do
         resources :comments, only: [:destroy]
       end
-      get "index" => "comments#index"
     end
   end
 
